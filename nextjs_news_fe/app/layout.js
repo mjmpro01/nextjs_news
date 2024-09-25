@@ -1,5 +1,10 @@
+import clsx from "clsx";
 import localFont from "next/font/local";
+
 import "./globals.css";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,9 +26,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={clsx(
+          `${geistSans.variable} ${geistMono.variable} antialiased`,
+          'max-w-[1170px] mx-auto'
+        )}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
