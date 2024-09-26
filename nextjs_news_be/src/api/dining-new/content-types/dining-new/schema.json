@@ -4,7 +4,7 @@
   "info": {
     "singularName": "dining-new",
     "pluralName": "dining-news",
-    "displayName": "dining new",
+    "displayName": "Tin tức ăn uống",
     "description": ""
   },
   "options": {
@@ -40,6 +40,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::new.new"
+    },
+    "is_outstanding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "beauty-new",
     "pluralName": "beauty-news",
-    "displayName": "Tin  tức làm đẹp",
+    "displayName": "Tin tức làm đẹp",
     "description": ""
   },
   "options": {
@@ -42,6 +42,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::new.new"
+    },
+    "is_outstanding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

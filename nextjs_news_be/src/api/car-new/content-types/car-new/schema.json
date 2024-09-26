@@ -4,7 +4,7 @@
   "info": {
     "singularName": "car-new",
     "pluralName": "car-news",
-    "displayName": "car new",
+    "displayName": "Tin tức xe cộ",
     "description": ""
   },
   "options": {
@@ -19,14 +19,15 @@
       "type": "string"
     },
     "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "content": {
       "type": "customField",
@@ -39,6 +40,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::new.new"
+    },
+    "is_outstanding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

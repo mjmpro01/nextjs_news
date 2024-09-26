@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-26T02:46:37.864Z"
+    "x-generation-date": "2024-09-26T03:19:53.309Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -437,6 +437,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -1368,6 +1371,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -1415,6 +1421,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -1521,6 +1530,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -2452,6 +2464,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -2499,6 +2514,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -2605,6 +2623,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -3536,6 +3557,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -3583,6 +3607,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -4469,6 +4496,9 @@
                             }
                           }
                         },
+                        "is_outstanding": {
+                          "type": "boolean"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -4623,6 +4653,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -5554,6 +5587,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -5601,6 +5637,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -5707,6 +5746,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -6638,6 +6680,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -6685,6 +6730,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -7566,6 +7614,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -8448,6 +8499,9 @@
                                         }
                                       }
                                     },
+                                    "is_outstanding": {
+                                      "type": "boolean"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -8544,6 +8598,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -8650,6 +8707,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -9581,6 +9641,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -9628,6 +9691,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -9734,6 +9800,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -10665,6 +10734,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -10712,6 +10784,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -10818,6 +10893,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -11749,6 +11827,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -11796,6 +11877,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -11902,6 +11986,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "is_outstanding": {
+                "type": "boolean"
               }
             }
           }
@@ -12833,6 +12920,9 @@
                           }
                         }
                       },
+                      "is_outstanding": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -12880,6 +12970,9 @@
                 }
               }
             }
+          },
+          "is_outstanding": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",

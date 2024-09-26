@@ -4,7 +4,7 @@
   "info": {
     "singularName": "travel-new",
     "pluralName": "travel-news",
-    "displayName": "travel new",
+    "displayName": "Tin tức du lịch",
     "description": ""
   },
   "options": {
@@ -40,6 +40,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::new.new"
+    },
+    "is_outstanding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

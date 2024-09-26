@@ -28,6 +28,7 @@ export default {
             category: {
               id: CATEGORY_ENUM.BEAUTIFY,
             },
+            is_outstanding: beautyNew?.is_outstanding || false,
           },
         });
       } else {
@@ -39,6 +40,8 @@ export default {
             category: {
               id: CATEGORY_ENUM.BEAUTIFY,
             },
+            is_outstanding: beautyNew?.is_outstanding || false,
+
           },
         });
       }
@@ -69,7 +72,6 @@ export default {
       }
     );
 
-    debug(beautyNew);
     if (beautyNew?.new?.id && beautyNew?.avatar?.id) {
       await strapi.entityService.update("api::new.new", beautyNew?.new?.id, {
         data: {
@@ -79,6 +81,8 @@ export default {
           avatar: {
             id: beautyNew?.avatar?.id,
           },
+          is_outstanding: beautyNew?.is_outstanding || false,
+
         },
       });
     } else {
@@ -86,6 +90,7 @@ export default {
         data: {
           title: beautyNew.title,
           content: beautyNew.content,
+          is_outstanding: beautyNew?.is_outstanding || false,
         },
       });
     }

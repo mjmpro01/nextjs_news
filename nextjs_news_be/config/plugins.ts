@@ -104,9 +104,9 @@ export default ({ env }) => ({
       // Your master key or private key
       apiKey: env('MEILISEARCH_API_KEY','masterKey'),
 
-      product: {
+      new: {
         settings: {
-          searchableAttributes: ['name', 'description', 'categories']
+          searchableAttributes: ['title', 'content', 'category']
         }
       }
     }

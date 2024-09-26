@@ -866,7 +866,7 @@ export interface ApiBeautyNewBeautyNew extends Schema.CollectionType {
   info: {
     singularName: 'beauty-new';
     pluralName: 'beauty-news';
-    displayName: 'Tin  t\u1EE9c l\u00E0m \u0111\u1EB9p';
+    displayName: 'Tin t\u1EE9c l\u00E0m \u0111\u1EB9p';
     description: '';
   };
   options: {
@@ -888,6 +888,7 @@ export interface ApiBeautyNewBeautyNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -910,7 +911,7 @@ export interface ApiBusinessNewBusinessNew extends Schema.CollectionType {
   info: {
     singularName: 'business-new';
     pluralName: 'business-news';
-    displayName: 'business new';
+    displayName: 'Tin t\u1EE9c kinh doanh';
     description: '';
   };
   options: {
@@ -932,6 +933,7 @@ export interface ApiBusinessNewBusinessNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -954,7 +956,7 @@ export interface ApiCarNewCarNew extends Schema.CollectionType {
   info: {
     singularName: 'car-new';
     pluralName: 'car-news';
-    displayName: 'car new';
+    displayName: 'Tin t\u1EE9c xe c\u1ED9';
     description: '';
   };
   options: {
@@ -972,6 +974,7 @@ export interface ApiCarNewCarNew extends Schema.CollectionType {
         }
       >;
     new: Attribute.Relation<'api::car-new.car-new', 'oneToOne', 'api::new.new'>;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1030,7 +1033,7 @@ export interface ApiDiningNewDiningNew extends Schema.CollectionType {
   info: {
     singularName: 'dining-new';
     pluralName: 'dining-news';
-    displayName: 'dining new';
+    displayName: 'Tin t\u1EE9c \u0103n u\u1ED1ng';
     description: '';
   };
   options: {
@@ -1052,6 +1055,7 @@ export interface ApiDiningNewDiningNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1074,7 +1078,8 @@ export interface ApiEventNewEventNew extends Schema.CollectionType {
   info: {
     singularName: 'event-new';
     pluralName: 'event-news';
-    displayName: 'event new';
+    displayName: 'Tin t\u1EE9c s\u1EF1 ki\u1EC7n';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1095,6 +1100,7 @@ export interface ApiEventNewEventNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1172,6 +1178,7 @@ export interface ApiNewNew extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
@@ -1186,7 +1193,8 @@ export interface ApiRealEstateNewRealEstateNew extends Schema.CollectionType {
   info: {
     singularName: 'real-estate-new';
     pluralName: 'real-estate-news';
-    displayName: 'Real Estate new';
+    displayName: 'Tin t\u1EE9c b\u1EA5t \u0111\u1ED9ng s\u1EA3n';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1207,6 +1215,7 @@ export interface ApiRealEstateNewRealEstateNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1229,7 +1238,8 @@ export interface ApiShoppingNewShoppingNew extends Schema.CollectionType {
   info: {
     singularName: 'shopping-new';
     pluralName: 'shopping-news';
-    displayName: 'shopping new';
+    displayName: 'Tin t\u1EE9c mua s\u1EAFm';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1250,6 +1260,7 @@ export interface ApiShoppingNewShoppingNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1272,7 +1283,7 @@ export interface ApiTechnicalNewTechnicalNew extends Schema.CollectionType {
   info: {
     singularName: 'technical-new';
     pluralName: 'technical-news';
-    displayName: 'technical new';
+    displayName: 'Tin t\u1EE9c c\u00F4ng ngh\u1EC7';
     description: '';
   };
   options: {
@@ -1294,6 +1305,7 @@ export interface ApiTechnicalNewTechnicalNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1316,7 +1328,7 @@ export interface ApiTravelNewTravelNew extends Schema.CollectionType {
   info: {
     singularName: 'travel-new';
     pluralName: 'travel-news';
-    displayName: 'travel new';
+    displayName: 'Tin t\u1EE9c du l\u1ECBch';
     description: '';
   };
   options: {
@@ -1338,6 +1350,7 @@ export interface ApiTravelNewTravelNew extends Schema.CollectionType {
       'oneToOne',
       'api::new.new'
     >;
+    is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

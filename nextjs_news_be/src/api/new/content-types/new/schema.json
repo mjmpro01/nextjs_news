@@ -41,6 +41,10 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "news"
+    },
+    "is_outstanding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

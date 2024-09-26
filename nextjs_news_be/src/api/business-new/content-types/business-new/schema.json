@@ -4,7 +4,7 @@
   "info": {
     "singularName": "business-new",
     "pluralName": "business-news",
-    "displayName": "business new",
+    "displayName": "Tin tức kinh doanh",
     "description": ""
   },
   "options": {
@@ -40,6 +40,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::new.new"
+    },
+    "is_outstanding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
