@@ -2,9 +2,10 @@ import { ChatBubbleBottomCenterIcon, ShareIcon } from '@heroicons/react/24/outli
 import Image from 'next/image'
 
 import { images } from '@/assets/images'
-import NewsCard from '@/components/newsCard'
 
-const News = () => (
+import NewsCard from '../news-card'
+
+const NewsDetail = () => (
   <>
     <Image src={images.xperia} width={595} height={100} alt="" className="w-full" />
 
@@ -86,4 +87,4 @@ const News = () => (
   </>
 )
 
-export default News
+export default NewsDetail

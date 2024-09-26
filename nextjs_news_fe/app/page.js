@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
 import { images } from "@/assets/images";
-import NewsCard from "@/components/newsCard";
+import NewsCard from "@/components/news-card";
 
 export default function Home() {
   return (
