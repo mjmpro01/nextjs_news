@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technical_news",
+  "info": {
+    "singularName": "technical-new",
+    "pluralName": "technical-news",
+    "displayName": "technical new",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "new": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::new.new"
+    }
+  }
+}

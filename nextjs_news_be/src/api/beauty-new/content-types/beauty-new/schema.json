@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "beauty_news",
+  "info": {
+    "singularName": "beauty-new",
+    "pluralName": "beauty-news",
+    "displayName": "Tin  tức làm đẹp",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "unique": true
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "new": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::new.new"
+    }
+  }
+}

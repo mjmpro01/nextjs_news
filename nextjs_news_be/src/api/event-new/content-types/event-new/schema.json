@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_news",
+  "info": {
+    "singularName": "event-new",
+    "pluralName": "event-news",
+    "displayName": "event new"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "new": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::new.new"
+    }
+  }
+}

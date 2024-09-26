@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "header_banners",
+  "info": {
+    "singularName": "header-banner",
+    "pluralName": "header-banners",
+    "displayName": "Bannner cho header",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "link": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
