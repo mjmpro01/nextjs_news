@@ -63,7 +63,22 @@ const News = () => (
             width={300}
             height={209}
             alt=''
-            className=' aspect-square w-full h-auto'
+            className=' aspect-square w-full h-auto object-cover'
+          />
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <p className="text-[19px] mb-[10px] text-[#980d17]">
+        Cùng danh mục
+      </p>
+      <div className='flex items-start justify-between mx-[-10px]'>
+        {Array.from({ length: 6 }).map(index => (
+          <NewsCard
+            key={index}
+            titleSmall={false}
+            hasExcerpt={false}
           />
         ))}
       </div>
