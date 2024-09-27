@@ -8,7 +8,7 @@ import NewsCard from "@/components/news-card";
 export default function Home() {
   return (
     <>
-      <section className="pt-[10px]">
+      <section className="pt-[10px] hidden md:block">
         <div className="flex items-start w-full">
           <div className="basis-3/4 max-w-[75%]">
             <div className="flex">
@@ -66,12 +66,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex items-center gap-[10px] my-[20px]">
+      <section className="hidden md:flex flex-col md:flex-row items-center gap-[10px] my-[20px]">
         <Image src={images.xperia} width={595} height={100} alt="" />
         <Image src={images.xperia} width={595} height={100} alt="" />
       </section>
 
-      <section>
+      <section className="hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
             Mở khóa tài khoản Google
@@ -97,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-[10px]">
+      <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
             Danh mục
@@ -126,7 +126,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-[10px]">
+      <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
             Danh mục
@@ -156,7 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-[10px]">
+      <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
             Danh mục
@@ -185,9 +185,9 @@ export default function Home() {
         </div>
       </section>
 
-      <Image src={images.xperia} width={595} height={100} alt="" className="w-full" />
+      <Image src={images.xperia} width={595} height={100} alt="" className="w-full hidden md:block" />
 
-      <section>
+      <section className="hidden md:block">
         <div className="flex items-start">
           <div className="basis-2/3 max-w-[66.666667%] flex flex-col">
             {Array.from({ length: 6 }).map(index =>
@@ -228,8 +228,64 @@ export default function Home() {
         </div>
       </section>
 
-      <Image src={images.xperia} width={595} height={100} alt="" className="w-full" />
+      <Image src={images.xperia} width={595} height={100} alt="" className="w-full hidden md:block" />
 
+
+      {/* Mobile */}
+      <section className="my-[20px] md:hidden">
+        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+          Bài viết mới nhất
+        </p>
+        <div className="grid grid-cols-2">
+          {Array.from({ length: 6 }).map(index =>
+            <NewsCard key={index} hasExcerpt={false} />
+          )}
+        </div>
+      </section>
+
+      <section className="my-[20px] md:hidden">
+        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+          Gỡ bỏ tài khoản Google
+        </p>
+        <div className="grid grid-cols-2">
+          {Array.from({ length: 6 }).map(index =>
+            <NewsCard key={index} hasExcerpt={false} />
+          )}
+        </div>
+      </section>
+
+      <section className="my-[20px] md:hidden">
+        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+          Gỡ bỏ tài khoản Icloud
+        </p>
+        <div className="grid grid-cols-2">
+          {Array.from({ length: 6 }).map(index =>
+            <NewsCard key={index} hasExcerpt={false} />
+          )}
+        </div>
+      </section>
+
+      <section className="my-[20px] md:hidden">
+        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+          Mở khóa nhà mạng
+        </p>
+        <div className="grid grid-cols-2">
+          {Array.from({ length: 6 }).map(index =>
+            <NewsCard key={index} hasExcerpt={false} />
+          )}
+        </div>
+      </section>
+
+      <section className="my-[20px] md:hidden">
+        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+          Thủ thuật – kinh nghiệm
+        </p>
+        <div className="grid grid-cols-2">
+          {Array.from({ length: 6 }).map(index =>
+            <NewsCard key={index} hasExcerpt={false} />
+          )}
+        </div>
+      </section>
     </>
   );
 }

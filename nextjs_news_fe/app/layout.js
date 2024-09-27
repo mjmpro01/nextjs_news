@@ -1,3 +1,4 @@
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import clsx from "clsx";
 import localFont from "next/font/local";
 
@@ -31,9 +32,11 @@ export default function RootLayout({ children }) {
           'max-w-[1170px] mx-auto'
         )}
       >
-        <Header />
-        {children}
-        <Footer />
+        <AntdRegistry>
+          <Header />
+          {children}
+          <Footer />
+        </AntdRegistry>
       </body>
     </html>
   );

@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import Image from "next/image"
 
 import { images } from "@/assets/images"
@@ -6,27 +5,33 @@ import NewsCard from "@/components/news-card"
 
 const page = () => (
   <>
-    <div className='flex items-center gap-[10px] text-[10px] py-[10px]'>
+    <div className='flex items-center gap-[10px] text-[10px] py-[10px] px-[10px] md:px-0'>
       <p>Diễn đàn</p>
       <p>{">"}</p>
       <p>Điện tử - Tiêu dùng</p>
     </div>
 
     <div className='flex flex-col bg-[#f8f8f8] py-[10px]'>
-      <div className='grid grid-cols-2'>
+      <div className='grid grid-cols-1 md:grid-cols-2'>
         <NewsCard titleSmall={false} hasExcerpt={false} />
         <NewsCard titleSmall={false} hasExcerpt={false} />
       </div>
 
-      <div className="grid grid-cols-3">
+      <div className="hidden md:grid grid-cols-3">
         <NewsCard titleSmall={false} hasExcerpt={false} />
         <NewsCard titleSmall={false} hasExcerpt={false} />
         <NewsCard titleSmall={false} hasExcerpt={false} />
+      </div>
 
+      <div className="grid md:hidden grid-cols-2">
+        <NewsCard titleSmall={false} hasExcerpt={false} />
+        <NewsCard titleSmall={false} hasExcerpt={false} />
+        <NewsCard titleSmall={false} hasExcerpt={false} />
+        <NewsCard titleSmall={false} hasExcerpt={false} />
       </div>
     </div>
 
-    <section>
+    <section className="hidden md:block">
       <div className="flex items-start">
         <div className="basis-2/3 max-w-[66.666667%] flex flex-col">
           {Array.from({ length: 6 }).map(index =>
@@ -38,7 +43,7 @@ const page = () => (
           )}
         </div>
 
-        <div className=' basis-1/3 w-full flex flex-col gap-[20px]'>
+        <div className='basis-1/3 w-full flex flex-col gap-[20px]'>
           <p className="text-[19px] text-[#000] font-semibold px-[10px]">
             Bài mới
           </p>
@@ -74,6 +79,17 @@ const page = () => (
             />
           ))}
         </div>
+      </div>
+    </section>
+
+    <section className="md:hidden py-[10px]">
+      <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+        Tin mới
+      </p>
+      <div className="grid grid-cols-2">
+        {Array.from({ length: 6 }).map(index =>
+          <NewsCard titleSmall={false} hasExcerpt={false} key={index} />
+        )}
       </div>
     </section>
   </>

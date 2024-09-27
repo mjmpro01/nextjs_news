@@ -5,8 +5,8 @@ import { images } from "@/assets/images"
 const Footer = () => (
   <footer>
     <div className="w-full border-b border-b-[#CCC] my-[10px]" />
-    <div className="flex mx-[-16px]">
-      <div className="p-[16px] w-1/3">
+    <div className="flex flex-col md:flex-row md:mx-[-16px]">
+      <div className="p-[16px] w-full md:w-1/3">
         <p className="text-[20px] leading-[32px] text-[#c11a2b] mb-[10px]">
           Công ty TNHH Giải pháp Công nghệ Trí Anh
         </p>
@@ -27,7 +27,7 @@ const Footer = () => (
         </ul>
       </div>
 
-      <div className="p-[16px] w-1/3">
+      <div className="p-[16px] w-full md:w-1/3">
         <p className="text-[20px] leading-[32px] text-[#c11a2b] mb-[10px]">
           Hỗ trợ khách hàng
         </p>
@@ -70,7 +70,7 @@ const Footer = () => (
         </ul>
       </div>
 
-      <div className="p-[16px] w-1/3">
+      <div className="p-[16px] w-full md:w-1/3">
         <p className="text-[20px] leading-[32px] text-[#c11a2b] mb-[10px]">
           Chính sách và quy định chung
         </p>
