@@ -2,7 +2,7 @@
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
-import { getNewsByCategory } from "@/apis/categories";
+import { getNewsByCategoryId } from "@/apis/categories";
 import { getAllNews } from "@/apis/news";
 import { images } from "@/assets/images";
 import NewsCard from "@/components/news-card";
@@ -10,11 +10,11 @@ import NewsCard from "@/components/news-card";
 export default async function Home() {
   const newsData = await getAllNews();
   const [newsCat1, newsCat2, newsCat3, newsCat4, newsCat5] = await Promise.all([
-    getNewsByCategory(1),
-    getNewsByCategory(2),
-    getNewsByCategory(3),
-    getNewsByCategory(4),
-    getNewsByCategory(5),
+    getNewsByCategoryId(1),
+    getNewsByCategoryId(2),
+    getNewsByCategoryId(3),
+    getNewsByCategoryId(4),
+    getNewsByCategoryId(5),
   ]);
 
   return (
@@ -300,53 +300,53 @@ export default async function Home() {
           Bài viết mới nhất
         </p>
         <div className="grid grid-cols-2">
-          {Array.from({ length: 6 }).map(index =>
-            <NewsCard key={index} hasExcerpt={false} />
+          {newsData?.slice(0, 6)?.map((news, index) =>
+            <NewsCard key={index} hasExcerpt={false} data={news} />
           )}
         </div>
       </section>
 
       <section className="my-[20px] md:hidden">
         <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
-          Gỡ bỏ tài khoản Google
+          {newsCat1?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {Array.from({ length: 6 }).map(index =>
-            <NewsCard key={index} hasExcerpt={false} />
-          )}
+          {newsCat1?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+            <NewsCard key={index} hasExcerpt={false} data={news} />
+          ))}
         </div>
       </section>
 
       <section className="my-[20px] md:hidden">
         <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
-          Gỡ bỏ tài khoản Icloud
+          {newsCat2?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {Array.from({ length: 6 }).map(index =>
-            <NewsCard key={index} hasExcerpt={false} />
-          )}
+          {newsCat2?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+            <NewsCard key={index} hasExcerpt={false} data={news} />
+          ))}
         </div>
       </section>
 
       <section className="my-[20px] md:hidden">
         <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
-          Mở khóa nhà mạng
+          {newsCat3?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {Array.from({ length: 6 }).map(index =>
-            <NewsCard key={index} hasExcerpt={false} />
-          )}
+          {newsCat3?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+            <NewsCard key={index} hasExcerpt={false} data={news} />
+          ))}
         </div>
       </section>
 
       <section className="my-[20px] md:hidden">
         <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
-          Thủ thuật – kinh nghiệm
+          {newsCat4?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {Array.from({ length: 6 }).map(index =>
-            <NewsCard key={index} hasExcerpt={false} />
-          )}
+          {newsCat4?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+            <NewsCard key={index} hasExcerpt={false} data={news} />
+          ))}
         </div>
       </section>
     </>

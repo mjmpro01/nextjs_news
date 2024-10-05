@@ -29,20 +29,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Suspense fallback={<Loading />}>
-        <body
-          className={clsx(
-            `${geistSans.variable} ${geistMono.variable} antialiased`,
-            'max-w-[1170px] mx-auto'
-          )}
-        >
+      <body
+        className={clsx(
+          `${geistSans.variable} ${geistMono.variable} antialiased`,
+          'max-w-[1170px] mx-auto'
+        )}
+      >
+        <Suspense fallback={<Loading />}>
           <AntdRegistry>
             <Header />
             {children}
             <Footer />
           </AntdRegistry>
-        </body>
-      </Suspense>
+        </Suspense>
+      </body>
     </html>
   );
 }

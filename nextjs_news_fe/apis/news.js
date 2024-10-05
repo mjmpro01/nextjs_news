@@ -13,7 +13,28 @@ export const getAllNews = async () => {
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
-      'cache': 'no-store'
+    },
+    cache: 'no-store'
+  })
+
+  const body = await res.json();
+
+  if (body?.errors) {
+    throw body?.errors?.message
+  }
+
+  return body?.data
+}
+
+export const getNewsBySlug = async (slug) => {
+  const params = {
+    populate: 'deep,2',
+  }
+  const endpoint = `${urls.baseUrl}/api/slugify/slugs${paths.NEW}/${slug}?${queryString.stringify(params)}`
+  const res = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
     },
   })
 

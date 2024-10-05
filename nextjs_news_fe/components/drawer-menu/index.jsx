@@ -41,7 +41,7 @@ const DrawerMenu = () => {
         }}
       >
         {menuList.map((item, index) => (
-          <>
+          <div key={index}>
             <p className="flex items-center justify-start gap-[4px] p-[15px]" key={index}>
               {item.icon}
               <p className='text-[0.9rem] whitespace-nowrap'>
@@ -50,7 +50,7 @@ const DrawerMenu = () => {
             </p>
 
             <div className="border-b border-[#CCC]"></div>
-          </>
+          </div>
         ))}
       </Drawer>
     </>
