@@ -889,6 +889,7 @@ export interface ApiBeautyNewBeautyNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -934,6 +935,7 @@ export interface ApiBusinessNewBusinessNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -975,6 +977,7 @@ export interface ApiCarNewCarNew extends Schema.CollectionType {
       >;
     new: Attribute.Relation<'api::car-new.car-new', 'oneToOne', 'api::new.new'>;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1056,6 +1059,7 @@ export interface ApiDiningNewDiningNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1101,6 +1105,7 @@ export interface ApiEventNewEventNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1179,6 +1184,7 @@ export interface ApiNewNew extends Schema.CollectionType {
       'api::category.category'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
@@ -1216,6 +1222,7 @@ export interface ApiRealEstateNewRealEstateNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1261,6 +1268,7 @@ export interface ApiShoppingNewShoppingNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1306,6 +1314,7 @@ export interface ApiTechnicalNewTechnicalNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1351,6 +1360,7 @@ export interface ApiTravelNewTravelNew extends Schema.CollectionType {
       'api::new.new'
     >;
     is_outstanding: Attribute.Boolean & Attribute.DefaultTo<false>;
+    short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

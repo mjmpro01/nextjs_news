@@ -29,6 +29,7 @@ export default {
               id: CATEGORY_ENUM.BEAUTIFY,
             },
             is_outstanding: beautyNew?.is_outstanding || false,
+            short_description: beautyNew?.short_description || "",
           },
         });
       } else {
@@ -41,7 +42,7 @@ export default {
               id: CATEGORY_ENUM.BEAUTIFY,
             },
             is_outstanding: beautyNew?.is_outstanding || false,
-
+            short_description: beautyNew?.short_description || "",
           },
         });
       }
@@ -82,7 +83,7 @@ export default {
             id: beautyNew?.avatar?.id,
           },
           is_outstanding: beautyNew?.is_outstanding || false,
-
+          short_description: beautyNew?.short_description || "",
         },
       });
     } else {
@@ -91,6 +92,7 @@ export default {
           title: beautyNew.title,
           content: beautyNew.content,
           is_outstanding: beautyNew?.is_outstanding || false,
+          short_description: beautyNew?.short_description || "",
         },
       });
     }

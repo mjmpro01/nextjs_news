@@ -44,6 +44,9 @@
     "is_outstanding": {
       "type": "boolean",
       "default": false
+    },
+    "short_description": {
+      "type": "text"
     }
   }
 }

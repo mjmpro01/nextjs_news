@@ -29,6 +29,7 @@ export default {
               id: CATEGORY_ENUM.EVENT,
             },
             is_outstanding: commonNew?.is_outstanding || false,
+            short_description: commonNew?.short_description || "",
           },
         });
       } else {
@@ -41,11 +42,10 @@ export default {
               id: CATEGORY_ENUM.EVENT,
             },
             is_outstanding: commonNew?.is_outstanding || false,
-
+            short_description: commonNew?.short_description || "",
           },
         });
       }
-      debug(updateNew);
       if (updateNew?.id) {
         await strapi.entityService.update("api::event-new.event-new", id, {
           data: {
@@ -82,7 +82,7 @@ export default {
             id: commonNew?.avatar?.id,
           },
           is_outstanding: commonNew?.is_outstanding || false,
-
+          short_description: commonNew?.short_description || "",
         },
       });
     } else {
@@ -91,6 +91,7 @@ export default {
           title: commonNew.title,
           content: commonNew.content,
           is_outstanding: commonNew?.is_outstanding || false,
+          short_description: commonNew?.short_description || "",
         },
       });
     }

@@ -29,6 +29,7 @@ export default {
               id: CATEGORY_ENUM.TRAVEL,
             },
             is_outstanding: commonNew?.is_outstanding || false,
+            short_description: commonNew?.short_description || "",
           },
         });
       } else {
@@ -41,6 +42,7 @@ export default {
               id: CATEGORY_ENUM.TRAVEL,
             },
             is_outstanding: commonNew?.is_outstanding || false,
+            short_description: commonNew?.short_description || "",
           },
         });
       }
@@ -81,6 +83,7 @@ export default {
             id: commonNew?.avatar?.id,
           },
           is_outstanding: commonNew?.is_outstanding || false,
+          short_description: commonNew?.short_description || "",
         },
       });
     } else {
@@ -89,6 +92,7 @@ export default {
           title: commonNew.title,
           content: commonNew.content,
           is_outstanding: commonNew?.is_outstanding || false,
+          short_description: commonNew?.short_description || "",
         },
       });
     }
