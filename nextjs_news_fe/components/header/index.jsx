@@ -39,7 +39,9 @@ const Header = () => (
     <ul className="list-none md:flex md:items-center md:flex-wrap grid grid-cols-2 gap-[8px] md:bg-[#0765ff] text-white p-[10px]">
       {menuList.map((item, index) => (
         <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none" key={index}>
-          {item.icon}
+          <div className='w-[14px] md:w-[18px]'>
+            {item.icon}
+          </div>
           <p className='text-[13px] md:text-[0.9rem] whitespace-nowrap'>
             {item.name}
           </p>

@@ -2,10 +2,21 @@
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
+import { getNewsByCategory } from "@/apis/categories";
+import { getAllNews } from "@/apis/news";
 import { images } from "@/assets/images";
 import NewsCard from "@/components/news-card";
 
-export default function Home() {
+export default async function Home() {
+  const newsData = await getAllNews();
+  const [newsCat1, newsCat2, newsCat3, newsCat4, newsCat5] = await Promise.all([
+    getNewsByCategory(1),
+    getNewsByCategory(2),
+    getNewsByCategory(3),
+    getNewsByCategory(4),
+    getNewsByCategory(5),
+  ]);
+
   return (
     <>
       <section className="pt-[10px] hidden md:block">
@@ -17,23 +28,35 @@ export default function Home() {
                   <NewsCard
                     titleSmall={false}
                     titleLarge
+                    data={newsData?.[0]}
                   />
                   <div className="flex">
-                    <NewsCard hasExcerpt={false} />
-                    <NewsCard hasExcerpt={false} />
-                    <NewsCard hasExcerpt={false} />
+                    {newsData?.slice(1, 4).map((data, index) => (
+                      <NewsCard
+                        key={index}
+                        hasExcerpt={false}
+                        data={data}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
               <div className="basis-1/3 max-w-[33.333333%]">
                 <div className="flex flex-col">
-                  <NewsCard hasExcerpt={false} />
-                  {Array.from({ length: 6 }).map((index => (
+                  <NewsCard
+                    hasExcerpt={false}
+                    data={newsData?.[4]}
+                  />
+                  {newsData?.slice(5, 10).map(((data, index) => (
                     <div key={index}>
                       <div className="px-[10px]">
                         <div className="w-full border-b border-b-[#CCC]" />
                       </div>
-                      <NewsCard hasThumbnail={false} hasExcerpt={false} />
+                      <NewsCard
+                        hasThumbnail={false}
+                        hasExcerpt={false}
+                        data={data}
+                      />
                     </div>
                   )))}
                 </div>
@@ -56,11 +79,14 @@ export default function Home() {
               <div className="px-[10px]">
                 <div className="w-full border-b border-b-[#CCC]" />
               </div>
-              <NewsCard isHorizontal hasExcerpt={false} />
-              <NewsCard isHorizontal hasExcerpt={false} />
-              <NewsCard isHorizontal hasExcerpt={false} />
-              <NewsCard isHorizontal hasExcerpt={false} />
-              <NewsCard isHorizontal hasExcerpt={false} />
+              {newsData?.slice(11, 16)?.map(((data, index) => (
+                <NewsCard
+                  key={index}
+                  isHorizontal
+                  hasExcerpt={false}
+                  data={data}
+                />
+              )))}
             </div>
           </div>
         </div>
@@ -83,17 +109,26 @@ export default function Home() {
         </div>
         <div className="w-full border-b border-b-[#CCC]" />
 
-        <div className="flex items-center my-[10px]">
-          <NewsCard hasDate titleSmall={false} />
-          <NewsCard hasDate titleSmall={false} />
-          <NewsCard hasDate titleSmall={false} />
+        <div className="grid grid-cols-3 my-[10px]">
+          {newsData?.slice(17, 20)?.map(((data, index) => (
+            <NewsCard
+              key={index}
+              hasDate
+              titleSmall={false}
+              data={data}
+            />
+          )))}
         </div>
 
-        <div className="flex items-center">
-          <NewsCard titleSmall={false} hasExcerpt={false} />
-          <NewsCard titleSmall={false} hasExcerpt={false} />
-          <NewsCard titleSmall={false} hasExcerpt={false} />
-          <NewsCard titleSmall={false} hasExcerpt={false} />
+        <div className="grid grid-cols-4">
+          {newsData?.slice(21, 25)?.map(((data, index) => (
+            <NewsCard
+              key={index}
+              titleSmall={false}
+              hasExcerpt={false}
+              data={data}
+            />
+          )))}
         </div>
       </section>
 
@@ -111,16 +146,18 @@ export default function Home() {
 
         <div className="flex items-center">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} />
+            <NewsCard titleSmall={false} data={newsData?.[26]} />
           </div>
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
+              {newsData?.slice(27, 33)?.map(((data, index) => (
+                <NewsCard
+                  key={index}
+                  titleSmall={false}
+                  hasExcerpt={false}
+                  data={data}
+                />
+              )))}
             </div>
           </div>
         </div>
@@ -141,17 +178,19 @@ export default function Home() {
         <div className="flex items-center">
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
+              {newsData?.slice(34, 40)?.map(((data, index) => (
+                <NewsCard
+                  key={index}
+                  titleSmall={false}
+                  hasExcerpt={false}
+                  data={data}
+                />
+              )))}
             </div>
           </div>
 
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} />
+            <NewsCard titleSmall={false} data={newsData?.[41]} />
           </div>
         </div>
       </section>
@@ -170,16 +209,18 @@ export default function Home() {
 
         <div className="flex items-center">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} />
+            <NewsCard titleSmall={false} data={newsData?.[42]} />
           </div>
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
-              <NewsCard titleSmall={false} hasExcerpt={false} />
+              {newsData?.slice(43, 49)?.map(((data, index) => (
+                <NewsCard
+                  key={index}
+                  titleSmall={false}
+                  hasExcerpt={false}
+                  data={data}
+                />
+              )))}
             </div>
           </div>
         </div>
@@ -190,21 +231,35 @@ export default function Home() {
       <section className="hidden md:block">
         <div className="flex items-start">
           <div className="basis-2/3 max-w-[66.666667%] flex flex-col">
-            {Array.from({ length: 6 }).map(index =>
-              <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} key={index} />
-            )}
+            {newsData?.slice(50, 56)?.map(((data, index) =>
+              <NewsCard
+                isHorizontal
+                bigThumbHorizontal
+                hasDate
+                titleSmall={false}
+                key={index}
+                data={data}
+              />
+            ))}
             <Image src={images.xperia} width={595} height={100} alt="" className="w-full" />
-            {Array.from({ length: 15 }).map(index =>
-              <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} key={index} />
-            )}
+            {newsData?.slice(56, 71)?.map(((data, index) =>
+              <NewsCard
+                isHorizontal
+                bigThumbHorizontal
+                hasDate
+                titleSmall={false}
+                key={index}
+                data={data}
+              />
+            ))}
           </div>
 
           <div className="basis-1/3 max-w-[33.333333%]">
-            {Array.from({ length: 5 }).map(index => (
+            {[newsCat1, newsCat2, newsCat3, newsCat4, newsCat5].map((cat, index) => (
               <div className="my-[10px]" key={index}>
                 <div className="flex items-center justify-between">
                   <p className="text-[19px] mb-[10px] text-[#980d17]">
-                    Danh mục
+                    {cat?.attributes?.name}
                   </p>
                   <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">
                     Xem tất cả
@@ -214,12 +269,20 @@ export default function Home() {
                 <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
                 <div className="flex flex-col">
-                  <NewsCard titleSmall={false} hasExcerpt={false} />
-                  <div className="grid grid-cols-2 grid-rows-2">
-                    <NewsCard titleSmall={false} hasExcerpt={false} />
-                    <NewsCard titleSmall={false} hasExcerpt={false} />
-                    <NewsCard titleSmall={false} hasExcerpt={false} />
-                    <NewsCard titleSmall={false} hasExcerpt={false} />
+                  <NewsCard
+                    titleSmall={false}
+                    hasExcerpt={false}
+                    data={cat?.attributes?.news?.data?.[0]}
+                  />
+                  <div className="grid grid-cols-2">
+                    {cat?.attributes?.news?.data?.slice(1, 5).map((news, index) => (
+                      <NewsCard
+                        titleSmall={false}
+                        hasExcerpt={false}
+                        key={index}
+                        data={news}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>

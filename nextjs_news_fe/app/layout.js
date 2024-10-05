@@ -1,11 +1,14 @@
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import clsx from "clsx";
 import localFont from "next/font/local";
+import { Suspense } from 'react';
 
-import "./globals.css";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
+import Loading from './loading';
+
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,18 +29,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={clsx(
-          `${geistSans.variable} ${geistMono.variable} antialiased`,
-          'max-w-[1170px] mx-auto'
-        )}
-      >
-        <AntdRegistry>
-          <Header />
-          {children}
-          <Footer />
-        </AntdRegistry>
-      </body>
+      <Suspense fallback={<Loading />}>
+        <body
+          className={clsx(
+            `${geistSans.variable} ${geistMono.variable} antialiased`,
+            'max-w-[1170px] mx-auto'
+          )}
+        >
+          <AntdRegistry>
+            <Header />
+            {children}
+            <Footer />
+          </AntdRegistry>
+        </body>
+      </Suspense>
     </html>
   );
 }
