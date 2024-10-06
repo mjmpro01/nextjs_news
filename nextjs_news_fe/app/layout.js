@@ -3,8 +3,8 @@ import clsx from "clsx";
 import localFont from "next/font/local";
 import { Suspense } from 'react';
 
-import Footer from "@/components/footer";
-import Header from "@/components/header";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 import Loading from './loading';
 
