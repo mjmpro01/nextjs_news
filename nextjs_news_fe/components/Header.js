@@ -29,13 +29,15 @@ const Header = async () => {
       <DrawerMenu />
 
       <div className="flex justify-center md:justify-between items-center h-[85px] p-[16px]">
-        <Image
-          src={images.logo}
-          width={1020}
-          height={261}
-          alt="logo"
-          className="w-[172px] md:w-[230px] h-[44px] md:h-[60px]"
-        />
+        <Link href={paths.HOME}>
+          <Image
+            src={images.logo}
+            width={1020}
+            height={261}
+            alt="logo"
+            className="w-[172px] md:w-[230px] h-[44px] md:h-[60px]"
+          />
+        </Link>
         <Image
           src={gifs.banner1}
           width={818}
