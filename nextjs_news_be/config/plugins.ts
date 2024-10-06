@@ -4,111 +4,135 @@ export default ({ env }) => ({
     config: {
       contentTypes: {
         category: {
-          field: 'slug',
-          references: 'name',
+          field: "slug",
+          references: "name",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         new: {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         "event-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         "car-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         "shopping-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         "real-estate-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         "dining-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         "technical-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
         },
         "travel-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
-
         },
         "beauty-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
-
         },
         "business-new": {
-          field: 'slug',
-          references: 'title',
+          field: "slug",
+          references: "title",
           options: {
-            locale: 'vi',
+            locale: "vi",
           },
-
         },
       },
     },
   },
-  'users-permissions': {
+  "users-permissions": {
     config: {
       jwt: {
-        expiresIn: '7d',
+        expiresIn: "7d",
       },
       register: {
-        allowedFields:["first_name", "last_name", "username", "gender", "birthday", "phone", "size", "address"],
-      }
+        allowedFields: [
+          "first_name",
+          "last_name",
+          "username",
+          "gender",
+          "birthday",
+          "phone",
+          "size",
+          "address",
+        ],
+      },
     },
   },
   meilisearch: {
     enabled: true,
     config: {
       // Your meili host
-      host: env('MEILISEARCH_HOST','http://localhost:7701'),
+      host: env("MEILISEARCH_HOST", "http://localhost:7701"),
       // Your master key or private key
-      apiKey: env('MEILISEARCH_API_KEY','masterKey'),
+      apiKey: env("MEILISEARCH_API_KEY", "masterKey"),
 
       new: {
         settings: {
-          searchableAttributes: ['title', 'content', 'category']
-        }
-      }
-    }
+          searchableAttributes: ["title", "content", "category"],
+        },
+      },
+    },
+  },
+  "rest-cache": {
+    config: {
+      provider: {
+        name: "memory",
+        options: {
+          max: 32767,
+          maxAge: 3600,
+        },
+      },
+      strategy: {
+        contentTypes: [
+          // list of Content-Types UID to cache
+          "api::category.category",
+          "api::new.new",
+        ],
+      },
+    },
   },
 });
