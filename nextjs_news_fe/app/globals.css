@@ -33,3 +33,7 @@ body {
 .has-hover:hover img {
   transform: scale(1.1)
 }
+
+.prose {
+  max-width: 100%;
+}

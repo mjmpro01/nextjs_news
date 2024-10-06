@@ -1,15 +1,17 @@
 
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getNewsByCategoryId } from "@/apis/categories";
-import { getAllNews } from "@/apis/news";
+import { getAllNews, getOutstandingNews } from "@/apis/news";
 import { images } from "@/assets/images";
 import NewsCard from "@/components/NewsCard";
 
 const Home = async () => {
   const newsData = await getAllNews();
+  const outstandingNews = await getOutstandingNews();
   const [newsCat1, newsCat2, newsCat3, newsCat4, newsCat5] = await Promise.all([
     getNewsByCategoryId(1),
     getNewsByCategoryId(2),
@@ -33,10 +35,10 @@ const Home = async () => {
                   <NewsCard
                     titleSmall={false}
                     titleLarge
-                    data={newsData?.[0]}
+                    data={outstandingNews?.[0]}
                   />
                   <div className="flex">
-                    {newsData?.slice(1, 4)?.map((data, index) => (
+                    {outstandingNews?.slice(1, 4)?.map((data, index) => (
                       <NewsCard
                         key={index}
                         hasExcerpt={false}
@@ -50,9 +52,9 @@ const Home = async () => {
                 <div className="flex flex-col">
                   <NewsCard
                     hasExcerpt={false}
-                    data={newsData?.[4]}
+                    data={outstandingNews?.[4]}
                   />
-                  {newsData?.slice(5, 10)?.map(((data, index) => (
+                  {outstandingNews?.slice(5, 10)?.map(((data, index) => (
                     <div key={index}>
                       <div className="px-[10px]">
                         <div className="w-full border-b border-b-[#CCC]" />
@@ -79,12 +81,12 @@ const Home = async () => {
                 className="w-full h-[100px] mb-[10px] px-[10px]"
               />
               <p className="text-[19px] mb-[10px] text-[#980d17] px-[10px]">
-                Kinh nghiệm - hướng dẫn
+                Tin nổi bật
               </p>
               <div className="px-[10px]">
                 <div className="w-full border-b border-b-[#CCC]" />
               </div>
-              {newsData?.slice(11, 16)?.map(((data, index) => (
+              {outstandingNews?.slice(11, 16)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   isHorizontal
@@ -105,17 +107,20 @@ const Home = async () => {
       <section className="hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
-            Mở khóa tài khoản Google
+            {newsCat1?.attributes?.name}
           </p>
-          <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">
+          <Link
+            className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
+            href={`/${newsCat1?.attributes?.slug}`}
+          >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
-          </p>
+          </Link>
         </div>
         <div className="w-full border-b border-b-[#CCC]" />
 
         <div className="grid grid-cols-3 my-[10px]">
-          {newsData?.slice(17, 20)?.map(((data, index) => (
+          {newsCat1?.attributes?.news?.data?.slice(0, 3)?.map(((data, index) => (
             <NewsCard
               key={index}
               hasDate
@@ -126,7 +131,7 @@ const Home = async () => {
         </div>
 
         <div className="grid grid-cols-4">
-          {newsData?.slice(21, 25)?.map(((data, index) => (
+          {newsCat1?.attributes?.news?.data?.slice(4, 8)?.map(((data, index) => (
             <NewsCard
               key={index}
               titleSmall={false}
@@ -140,22 +145,26 @@ const Home = async () => {
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
-            Danh mục
+            {newsCat2?.attributes?.name}
+
           </p>
-          <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">
+          <Link
+            className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
+            href={`/${newsCat2?.attributes?.slug}`}
+          >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
-          </p>
+          </Link>
         </div>
         <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
         <div className="flex items-center">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} data={newsData?.[26]} />
+            <NewsCard titleSmall={false} data={newsCat2?.attributes?.news?.data?.[0]} />
           </div>
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              {newsData?.slice(27, 33)?.map(((data, index) => (
+              {newsCat2?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   titleSmall={false}
@@ -171,19 +180,22 @@ const Home = async () => {
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
-            Danh mục
+            {newsCat3?.attributes?.name}
           </p>
-          <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">
+          <Link
+            className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
+            href={`/${newsCat3?.attributes?.slug}`}
+          >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
-          </p>
+          </Link>
         </div>
         <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
         <div className="flex items-center">
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              {newsData?.slice(34, 40)?.map(((data, index) => (
+              {newsCat3?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   titleSmall={false}
@@ -195,7 +207,7 @@ const Home = async () => {
           </div>
 
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} data={newsData?.[41]} />
+            <NewsCard titleSmall={false} data={newsCat3?.attributes?.news?.data?.[0]} />
           </div>
         </div>
       </section>
@@ -203,22 +215,25 @@ const Home = async () => {
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className="text-[19px] mb-[10px] text-[#980d17]">
-            Danh mục
+            {newsCat4?.attributes?.name}
           </p>
-          <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">
+          <Link
+            className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
+            href={`/${newsCat4?.attributes?.slug}`}
+          >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
-          </p>
+          </Link>
         </div>
         <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
         <div className="flex items-center">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} data={newsData?.[42]} />
+            <NewsCard titleSmall={false} data={newsCat4?.attributes?.news?.data?.[0]} />
           </div>
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              {newsData?.slice(43, 49)?.map(((data, index) => (
+              {newsCat4?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   titleSmall={false}
@@ -236,7 +251,7 @@ const Home = async () => {
       <section className="hidden md:block">
         <div className="flex items-start">
           <div className="basis-2/3 max-w-[66.666667%] flex flex-col">
-            {newsData?.slice(50, 56)?.map(((data, index) =>
+            {newsData?.slice(0, 6)?.map(((data, index) =>
               <NewsCard
                 isHorizontal
                 bigThumbHorizontal
@@ -247,7 +262,7 @@ const Home = async () => {
               />
             )) || null}
             <Image src={images.xperia} width={595} height={100} alt="" className="w-full" />
-            {newsData?.slice(56, 71)?.map(((data, index) =>
+            {newsData?.slice(7, 20)?.map(((data, index) =>
               <NewsCard
                 isHorizontal
                 bigThumbHorizontal

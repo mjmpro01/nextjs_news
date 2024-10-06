@@ -34,8 +34,12 @@ export const getNewsByCategoryId = async (id) => {
   }
 
   const params = {
-    populate: 'deep,4',
-    'pagination[pageSize]': 100,
+    'fields[0]': 'name',
+    'fields[1]': 'slug',
+    'populate[news][fields][0]': 'title',
+    'populate[news][fields][1]': 'short_description',
+    'populate[news][populate][avatar][fields]': 'url',
+    'pagination[pageSize]': 10,
   }
   const endpoint = `${urls.baseUrl}/api${paths.CATEGORIES}/${id}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {

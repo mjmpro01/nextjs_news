@@ -4,7 +4,8 @@ import Link from 'next/link'
 
 import { urls } from '@/constants/urls'
 
-// import NewsThumbContent from './NewsThumbContent'
+import NewsThumbContent from './NewsThumbContent'
+
 
 const NewsCard = ({
   data,
@@ -12,7 +13,7 @@ const NewsCard = ({
   bigThumbHorizontal = false,
   hasThumbnail = true,
   hasDate = false,
-  // hasExcerpt = true,
+  hasExcerpt = true,
   titleLarge = false,
   titleSmall = true,
 }) => {
@@ -50,9 +51,9 @@ const NewsCard = ({
                 {data?.attributes?.createdAt}
               </p>
             }
-            {/* {hasExcerpt &&
-              <NewsThumbContent html={data?.attributes?.content.slice(0, 1000)} />
-            } */}
+            {hasExcerpt &&
+              <NewsThumbContent html={data?.attributes?.short_description} />
+            }
           </div>
         </div>
       </Link>
@@ -85,9 +86,9 @@ const NewsCard = ({
               {data?.attributes?.createdAt}
             </p>
           }
-          {/* {hasExcerpt &&
-            <NewsThumbContent html={data?.attributes?.content.slice(0, 1000)} />
-          } */}
+          {hasExcerpt &&
+            <NewsThumbContent html={data?.attributes?.short_description} />
+          }
         </div>
       </div>
     </Link>
