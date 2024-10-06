@@ -5,10 +5,11 @@ import Link from 'next/link'
 import { getCategories } from '@/apis/categories'
 import { gifs } from "@/assets/gifs"
 import { images } from "@/assets/images"
+import DrawerMenu from '@/components/DrawerMenu'
 import { menuList } from '@/constants/menuList'
 import { paths } from '@/constants/paths'
 
-import DrawerMenu from '../drawer-menu'
+
 
 const Header = async () => {
   const categories = await getCategories()

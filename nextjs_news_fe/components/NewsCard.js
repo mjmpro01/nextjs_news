@@ -1,8 +1,10 @@
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { urls } from '@/constants/urls'
-import Link from 'next/link'
+
+// import NewsThumbContent from './NewsThumbContent'
 
 const NewsCard = ({
   data,
@@ -10,7 +12,7 @@ const NewsCard = ({
   bigThumbHorizontal = false,
   hasThumbnail = true,
   hasDate = false,
-  hasExcerpt = true,
+  // hasExcerpt = true,
   titleLarge = false,
   titleSmall = true,
 }) => {
@@ -48,11 +50,9 @@ const NewsCard = ({
                 {data?.attributes?.createdAt}
               </p>
             }
-            {hasExcerpt &&
-              <p className='text-[13px] text-[#0A0A0A] pt-[10px] my-[1px] text-ellipsis line-clamp-2'>
-                {data?.attributes?.content?.slice(0, 1000)}
-              </p>
-            }
+            {/* {hasExcerpt &&
+              <NewsThumbContent html={data?.attributes?.content.slice(0, 1000)} />
+            } */}
           </div>
         </div>
       </Link>
@@ -85,11 +85,9 @@ const NewsCard = ({
               {data?.attributes?.createdAt}
             </p>
           }
-          {hasExcerpt &&
-            <p className='text-[13px] text-[#0A0A0A] pt-[10px] my-[1px] text-ellipsis line-clamp-2'>
-              {data?.attributes?.content}
-            </p>
-          }
+          {/* {hasExcerpt &&
+            <NewsThumbContent html={data?.attributes?.content.slice(0, 1000)} />
+          } */}
         </div>
       </div>
     </Link>

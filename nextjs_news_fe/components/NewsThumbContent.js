@@ -1,0 +1,25 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
+const NewsThumbContent = ({ html }) => {
+  const [clientHtml, setClientHtml] = useState('');
+
+  useEffect(() => {
+    setClientHtml(html); // Ensure that HTML is set only after client-side hydration
+  }, [html]);
+
+  if (!clientHtml) {
+    return null; // Avoid rendering during server-side rendering
+  }
+
+  return (
+    <p
+      className='text-[13px] text-[#0A0A0A] pt-[10px] my-[1px] text-ellipsis line-clamp-2 prose prose-img:hidden prose-headings:text-sm prose-headings:font-normal prose-p:text-sm prose-p:font-normal'
+      dangerouslySetInnerHTML={{ __html: clientHtml }}
+    >
+    </p>
+  );
+}
+
+export default NewsThumbContent

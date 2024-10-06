@@ -17,6 +17,10 @@ export const getAllNews = async () => {
     cache: 'no-store'
   })
 
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+
   const body = await res.json();
 
   if (body?.errors) {
@@ -27,6 +31,11 @@ export const getAllNews = async () => {
 }
 
 export const getNewsBySlug = async (slug) => {
+  console.log("🚀 ~ file: news.js:34 ~ getNewsBySlug ~ slug:", slug)
+  if (!slug) {
+    return null
+  }
+
   const params = {
     populate: 'deep,2',
   }
@@ -37,6 +46,10 @@ export const getNewsBySlug = async (slug) => {
       'Content-Type': 'application/json',
     },
   })
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch news by slug: ${res.status} ${JSON.stringify(res)}`);
+  }
 
   const body = await res.json();
 

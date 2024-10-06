@@ -1,14 +1,26 @@
 import { ChatBubbleBottomCenterIcon, ShareIcon } from '@heroicons/react/24/outline'
+import { notFound } from 'next/navigation'
 
-import { images } from '@/assets/images'
-import NewsCard from '@/components/news-card'
+import { getCategories, getCategoryBySlug } from '@/apis/categories'
 import { getAllNews, getNewsBySlug } from '@/apis/news'
-import { getCategoryBySlug } from '@/apis/categories'
-import ClientImageSection from '@/components/client-image-section'
+import { images } from '@/assets/images'
+import ClientImageSection from '@/components/ClientImageSection'
+import NewsCard from '@/components/NewsCard'
 
 
 const News = async ({ params: { category, news } }) => {
+  const categories = await getCategories();
+
+  const categoryIndex = categories.findIndex(cat => cat?.attributes?.slug === category)
+  if (categoryIndex === -1) {
+    return notFound();
+  }
+
   const newsData = await getNewsBySlug(news);
+
+  if (!newsData?.id) {
+    return notFound();
+  }
 
   const allNews = await getAllNews();
   const categoryData = await getCategoryBySlug(category)
@@ -57,7 +69,7 @@ const News = async ({ params: { category, news } }) => {
               hasExcerpt={false}
               data={news}
             />
-          ))}
+          )) || null}
 
           <p className="text-[19px] text-[#000] font-semibold px-[10px]">
             Bài nổi bật
@@ -70,9 +82,9 @@ const News = async ({ params: { category, news } }) => {
               hasExcerpt={false}
               data={news}
             />
-          ))}
+          )) || null}
 
-          {Array.from({ length: 3 }).map(index => (
+          {Array.from({ length: 3 })?.map(index => (
             <ClientImageSection
               key={index}
               src={images.icloudThumb}
@@ -80,7 +92,7 @@ const News = async ({ params: { category, news } }) => {
               height={209}
               className=' aspect-square w-full h-auto object-cover'
             />
-          ))}
+          )) || null}
         </div>
       </div>
 
@@ -116,14 +128,14 @@ const News = async ({ params: { category, news } }) => {
           Cùng danh mục
         </p>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mx-[-10px]'>
-          {categoryData?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+          {categoryData?.attributes?.news?.data?.slice(0, 6)?.map((news, index) => (
             <NewsCard
               key={index}
               titleSmall={false}
               hasExcerpt={false}
               data={news}
             />
-          ))}
+          )) || null}
         </div>
       </div>
     </>

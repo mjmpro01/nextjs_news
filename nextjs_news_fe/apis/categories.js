@@ -15,6 +15,10 @@ export const getCategories = async () => {
     },
   })
 
+  if (!res.ok) {
+    throw new Error(`Failed to fetch news by slug: ${res.status}`);
+  }
+
   const body = await res.json();
 
   if (body?.errors) {
@@ -25,6 +29,10 @@ export const getCategories = async () => {
 }
 
 export const getNewsByCategoryId = async (id) => {
+  if (!id) {
+    return null
+  }
+
   const params = {
     populate: 'deep,4',
     'pagination[pageSize]': 100,
@@ -38,6 +46,10 @@ export const getNewsByCategoryId = async (id) => {
     cache: 'no-store'
   })
 
+  if (!res.ok) {
+    throw new Error(`Failed to getNewsByCategoryId: ${res.status}`);
+  }
+
   const body = await res.json();
 
   if (body?.errors) {
@@ -48,6 +60,10 @@ export const getNewsByCategoryId = async (id) => {
 }
 
 export const getCategoryBySlug = async (slug) => {
+  if (!slug) {
+    return null
+  }
+
   const params = {
     populate: 'deep,4',
   }
@@ -59,6 +75,10 @@ export const getCategoryBySlug = async (slug) => {
     },
     cache: 'no-store'
   })
+
+  if (!res.ok) {
+    throw new Error(`Failed to getCategoryBySlug: ${res.status} ${res.messages}`);
+  }
 
   const body = await res.json();
 

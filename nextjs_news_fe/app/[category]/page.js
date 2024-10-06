@@ -1,9 +1,10 @@
-import { images } from "@/assets/images"
-import NewsCard from "@/components/news-card"
-import { getCategories, getCategoryBySlug } from "@/apis/categories"
 import { notFound } from "next/navigation"
+
+import { getCategories, getCategoryBySlug } from "@/apis/categories"
 import { getAllNews } from "@/apis/news"
-import ClientImageSection from "@/components/client-image-section"
+import { images } from "@/assets/images"
+import ClientImageSection from "@/components/ClientImageSection"
+import NewsCard from "@/components/NewsCard"
 
 const page = async ({ params: { category } }) => {
   const categories = await getCategories();
@@ -28,34 +29,34 @@ const page = async ({ params: { category } }) => {
 
       <div className='flex flex-col bg-[#f8f8f8] py-[10px]'>
         <div className='grid grid-cols-1 md:grid-cols-2'>
-          {categoryNewsList?.slice(0, 2).map((news, index) => (
+          {categoryNewsList?.slice(0, 2)?.map((news, index) => (
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
-          ))}
+          )) || null}
         </div>
 
         <div className="hidden md:grid grid-cols-3">
-          {categoryNewsList?.slice(3, 6).map((news, index) => (
+          {categoryNewsList?.slice(3, 6)?.map((news, index) => (
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
-          ))}
+          )) || null}
         </div>
 
         <div className="grid md:hidden grid-cols-2">
-          {categoryNewsList?.slice(3, 7).map((news, index) => (
+          {categoryNewsList?.slice(3, 7)?.map((news, index) => (
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
-          ))}
+          )) || null}
         </div>
       </div>
 
       <section className="hidden md:block">
         <div className="flex items-start">
           <div className="basis-2/3 max-w-[66.666667%] flex flex-col">
-            {categoryNewsList?.slice(7, 13).map((news, index) => (
+            {categoryNewsList?.slice(7, 13)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} data={news} key={index} />
-            ))}
+            )) || null}
             <ClientImageSection src={images.xperia} width={595} height={100} />
-            {categoryNewsList?.slice(14, 25).map((news, index) => (
+            {categoryNewsList?.slice(14, 25)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} data={news} key={index} />
-            ))}
+            )) || null}
           </div>
 
           <div className='basis-1/3 w-full flex flex-col gap-[20px]'>
@@ -70,7 +71,7 @@ const page = async ({ params: { category } }) => {
                 hasExcerpt={false}
                 data={news}
               />
-            ))}
+            )) || null}
 
             <p className="text-[19px] text-[#000] font-semibold px-[10px]">
               Bài nổi bật
@@ -83,9 +84,9 @@ const page = async ({ params: { category } }) => {
                 hasExcerpt={false}
                 data={news}
               />
-            ))}
+            )) || null}
 
-            {Array.from({ length: 3 }).map(index => (
+            {Array.from({ length: 3 })?.map(index => (
               <ClientImageSection
                 key={index}
                 src={images.icloudThumb}
@@ -93,7 +94,7 @@ const page = async ({ params: { category } }) => {
                 height={209}
                 className=' aspect-square w-full h-auto object-cover px-[10px]'
               />
-            ))}
+            )) || null}
           </div>
         </div>
       </section>
@@ -103,9 +104,9 @@ const page = async ({ params: { category } }) => {
           Tin mới
         </p>
         <div className="grid grid-cols-2">
-          {newsData?.slice(0, 6).map((news, index) =>
+          {newsData?.slice(0, 6)?.map((news, index) =>
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
-          )}
+          ) || null}
         </div>
       </section>
     </>

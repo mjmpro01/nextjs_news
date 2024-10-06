@@ -1,13 +1,14 @@
 
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 import { getNewsByCategoryId } from "@/apis/categories";
 import { getAllNews } from "@/apis/news";
 import { images } from "@/assets/images";
-import NewsCard from "@/components/news-card";
+import NewsCard from "@/components/NewsCard";
 
-export default async function Home() {
+const Home = async () => {
   const newsData = await getAllNews();
   const [newsCat1, newsCat2, newsCat3, newsCat4, newsCat5] = await Promise.all([
     getNewsByCategoryId(1),
@@ -15,7 +16,11 @@ export default async function Home() {
     getNewsByCategoryId(3),
     getNewsByCategoryId(4),
     getNewsByCategoryId(5),
-  ]);
+  ]).catch(() => notFound());
+
+  if (!newsData?.length) {
+    return notFound();
+  }
 
   return (
     <>
@@ -31,13 +36,13 @@ export default async function Home() {
                     data={newsData?.[0]}
                   />
                   <div className="flex">
-                    {newsData?.slice(1, 4).map((data, index) => (
+                    {newsData?.slice(1, 4)?.map((data, index) => (
                       <NewsCard
                         key={index}
                         hasExcerpt={false}
                         data={data}
                       />
-                    ))}
+                    )) || null}
                   </div>
                 </div>
               </div>
@@ -47,7 +52,7 @@ export default async function Home() {
                     hasExcerpt={false}
                     data={newsData?.[4]}
                   />
-                  {newsData?.slice(5, 10).map(((data, index) => (
+                  {newsData?.slice(5, 10)?.map(((data, index) => (
                     <div key={index}>
                       <div className="px-[10px]">
                         <div className="w-full border-b border-b-[#CCC]" />
@@ -58,7 +63,7 @@ export default async function Home() {
                         data={data}
                       />
                     </div>
-                  )))}
+                  ))) || null}
                 </div>
               </div>
             </div>
@@ -86,7 +91,7 @@ export default async function Home() {
                   hasExcerpt={false}
                   data={data}
                 />
-              )))}
+              ))) || null}
             </div>
           </div>
         </div>
@@ -117,7 +122,7 @@ export default async function Home() {
               titleSmall={false}
               data={data}
             />
-          )))}
+          ))) || null}
         </div>
 
         <div className="grid grid-cols-4">
@@ -128,7 +133,7 @@ export default async function Home() {
               hasExcerpt={false}
               data={data}
             />
-          )))}
+          ))) || null}
         </div>
       </section>
 
@@ -157,7 +162,7 @@ export default async function Home() {
                   hasExcerpt={false}
                   data={data}
                 />
-              )))}
+              ))) || null}
             </div>
           </div>
         </div>
@@ -185,7 +190,7 @@ export default async function Home() {
                   hasExcerpt={false}
                   data={data}
                 />
-              )))}
+              ))) || null}
             </div>
           </div>
 
@@ -220,7 +225,7 @@ export default async function Home() {
                   hasExcerpt={false}
                   data={data}
                 />
-              )))}
+              ))) || null}
             </div>
           </div>
         </div>
@@ -240,7 +245,7 @@ export default async function Home() {
                 key={index}
                 data={data}
               />
-            ))}
+            )) || null}
             <Image src={images.xperia} width={595} height={100} alt="" className="w-full" />
             {newsData?.slice(56, 71)?.map(((data, index) =>
               <NewsCard
@@ -251,7 +256,7 @@ export default async function Home() {
                 key={index}
                 data={data}
               />
-            ))}
+            )) || null}
           </div>
 
           <div className="basis-1/3 max-w-[33.333333%]">
@@ -275,14 +280,14 @@ export default async function Home() {
                     data={cat?.attributes?.news?.data?.[0]}
                   />
                   <div className="grid grid-cols-2">
-                    {cat?.attributes?.news?.data?.slice(1, 5).map((news, index) => (
+                    {cat?.attributes?.news?.data?.slice(1, 5)?.map((news, index) => (
                       <NewsCard
                         titleSmall={false}
                         hasExcerpt={false}
                         key={index}
                         data={news}
                       />
-                    ))}
+                    )) || null}
                   </div>
                 </div>
               </div>
@@ -302,7 +307,7 @@ export default async function Home() {
         <div className="grid grid-cols-2">
           {newsData?.slice(0, 6)?.map((news, index) =>
             <NewsCard key={index} hasExcerpt={false} data={news} />
-          )}
+          ) || null}
         </div>
       </section>
 
@@ -311,9 +316,9 @@ export default async function Home() {
           {newsCat1?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {newsCat1?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+          {newsCat1?.attributes?.news?.data?.slice(0, 6)?.map((news, index) => (
             <NewsCard key={index} hasExcerpt={false} data={news} />
-          ))}
+          )) || null}
         </div>
       </section>
 
@@ -322,9 +327,9 @@ export default async function Home() {
           {newsCat2?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {newsCat2?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+          {newsCat2?.attributes?.news?.data?.slice(0, 6)?.map((news, index) => (
             <NewsCard key={index} hasExcerpt={false} data={news} />
-          ))}
+          )) || null}
         </div>
       </section>
 
@@ -333,9 +338,9 @@ export default async function Home() {
           {newsCat3?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {newsCat3?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+          {newsCat3?.attributes?.news?.data?.slice(0, 6)?.map((news, index) => (
             <NewsCard key={index} hasExcerpt={false} data={news} />
-          ))}
+          )) || null}
         </div>
       </section>
 
@@ -344,11 +349,13 @@ export default async function Home() {
           {newsCat4?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
-          {newsCat4?.attributes?.news?.data?.slice(0, 6).map((news, index) => (
+          {newsCat4?.attributes?.news?.data?.slice(0, 6)?.map((news, index) => (
             <NewsCard key={index} hasExcerpt={false} data={news} />
-          ))}
+          )) || null}
         </div>
       </section>
     </>
   );
 }
+
+export default Home

@@ -35,13 +35,13 @@ export default function RootLayout({ children }) {
           'max-w-[1170px] mx-auto'
         )}
       >
-        <Suspense fallback={<Loading />}>
-          <AntdRegistry>
+        <AntdRegistry>
+          <Suspense fallback={<Loading />}>
             <Header />
             {children}
             <Footer />
-          </AntdRegistry>
-        </Suspense>
+          </Suspense>
+        </AntdRegistry>
       </body>
     </html>
   );
