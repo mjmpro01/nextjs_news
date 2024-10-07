@@ -1038,7 +1038,8 @@ export interface ApiCategoryBannerCategoryBanner extends Schema.SingleType {
   info: {
     singularName: 'category-banner';
     pluralName: 'category-banners';
-    displayName: 'category_banner';
+    displayName: 'Banner qu\u1EA3ng c\u00E1o cho danh m\u1EE5c';
+    description: '';
   };
   options: {
     draftAndPublish: true;

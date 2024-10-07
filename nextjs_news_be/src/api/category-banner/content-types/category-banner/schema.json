@@ -4,7 +4,8 @@
   "info": {
     "singularName": "category-banner",
     "pluralName": "category-banners",
-    "displayName": "category_banner"
+    "displayName": "Banner quảng cáo cho danh mục",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
