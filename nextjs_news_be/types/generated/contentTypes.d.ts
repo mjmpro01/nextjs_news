@@ -1156,6 +1156,27 @@ export interface ApiHeaderBannerHeaderBanner extends Schema.SingleType {
   };
 }
 
+export interface ApiLogoLogo extends Schema.SingleType {
+  collectionName: 'logos';
+  info: {
+    singularName: 'logo';
+    pluralName: 'logos';
+    displayName: 'logo';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    home_logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNewNew extends Schema.CollectionType {
   collectionName: 'news';
   info: {
@@ -1405,6 +1426,7 @@ declare module '@strapi/types' {
       'api::dining-new.dining-new': ApiDiningNewDiningNew;
       'api::event-new.event-new': ApiEventNewEventNew;
       'api::header-banner.header-banner': ApiHeaderBannerHeaderBanner;
+      'api::logo.logo': ApiLogoLogo;
       'api::new.new': ApiNewNew;
       'api::real-estate-new.real-estate-new': ApiRealEstateNewRealEstateNew;
       'api::shopping-new.shopping-new': ApiShoppingNewShoppingNew;
