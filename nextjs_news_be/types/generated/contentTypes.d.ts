@@ -832,7 +832,7 @@ export interface ApiBannerBanner extends Schema.SingleType {
   info: {
     singularName: 'banner';
     pluralName: 'banners';
-    displayName: 'Banner cho qu\u1EA3ng c\u00E1o';
+    displayName: 'Banner qu\u1EA3ng c\u00E1o cho trang ch\u1EE7';
     description: '';
   };
   options: {
@@ -842,7 +842,9 @@ export interface ApiBannerBanner extends Schema.SingleType {
     banner_1: Attribute.Component<'banner.banner'>;
     banner_2: Attribute.Component<'banner.banner'>;
     banner_3: Attribute.Component<'banner.banner'>;
-    banner_4: Attribute.Component<'banner.banner', true>;
+    banner_4: Attribute.Component<'banner.banner'>;
+    banner_5: Attribute.Component<'banner.banner'>;
+    banner_6: Attribute.Component<'banner.banner'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1024,6 +1026,39 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryBannerCategoryBanner extends Schema.SingleType {
+  collectionName: 'category_banners';
+  info: {
+    singularName: 'category-banner';
+    pluralName: 'category-banners';
+    displayName: 'category_banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_1: Attribute.Component<'banner.banner'>;
+    banner_2: Attribute.Component<'banner.banner'>;
+    banner_3: Attribute.Component<'banner.banner', true>;
+    banner_4: Attribute.Component<'banner.banner'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category-banner.category-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category-banner.category-banner',
       'oneToOne',
       'admin::user'
     > &
@@ -1423,6 +1458,7 @@ declare module '@strapi/types' {
       'api::business-new.business-new': ApiBusinessNewBusinessNew;
       'api::car-new.car-new': ApiCarNewCarNew;
       'api::category.category': ApiCategoryCategory;
+      'api::category-banner.category-banner': ApiCategoryBannerCategoryBanner;
       'api::dining-new.dining-new': ApiDiningNewDiningNew;
       'api::event-new.event-new': ApiEventNewEventNew;
       'api::header-banner.header-banner': ApiHeaderBannerHeaderBanner;

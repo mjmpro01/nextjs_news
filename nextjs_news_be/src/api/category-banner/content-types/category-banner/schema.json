@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "banners",
+  "collectionName": "category_banners",
   "info": {
-    "singularName": "banner",
-    "pluralName": "banners",
-    "displayName": "Banner quảng cáo cho trang chủ",
-    "description": ""
+    "singularName": "category-banner",
+    "pluralName": "category-banners",
+    "displayName": "category_banner"
   },
   "options": {
     "draftAndPublish": true
@@ -13,7 +12,6 @@
   "pluginOptions": {},
   "attributes": {
     "banner_1": {
-      "displayName": "banner",
       "type": "component",
       "repeatable": false,
       "component": "banner.banner"
@@ -25,20 +23,10 @@
     },
     "banner_3": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "banner.banner"
     },
     "banner_4": {
-      "type": "component",
-      "repeatable": false,
-      "component": "banner.banner"
-    },
-    "banner_5": {
-      "type": "component",
-      "repeatable": false,
-      "component": "banner.banner"
-    },
-    "banner_6": {
       "type": "component",
       "repeatable": false,
       "component": "banner.banner"
