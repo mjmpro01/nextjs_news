@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "new_detail_banners",
+  "info": {
+    "singularName": "new-detail-banner",
+    "pluralName": "new-detail-banners",
+    "displayName": "new detail banner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "banner.banner"
+    },
+    "banner_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "banner.banner"
+    },
+    "banner_3": {
+      "type": "component",
+      "repeatable": true,
+      "component": "banner.banner"
+    },
+    "banner_4": {
+      "type": "component",
+      "repeatable": false,
+      "component": "banner.banner"
+    }
+  }
+}

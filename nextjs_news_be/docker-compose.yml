@@ -3,7 +3,7 @@ services:
   strapi:
     container_name: strapi
     build: .
-    image: strapi:latest
+    image: 18521102/nextjs_news_be:latest
     restart: unless-stopped
     env_file: .env
     environment:

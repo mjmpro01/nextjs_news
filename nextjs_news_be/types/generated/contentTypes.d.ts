@@ -1251,6 +1251,39 @@ export interface ApiNewNew extends Schema.CollectionType {
   };
 }
 
+export interface ApiNewDetailBannerNewDetailBanner extends Schema.SingleType {
+  collectionName: 'new_detail_banners';
+  info: {
+    singularName: 'new-detail-banner';
+    pluralName: 'new-detail-banners';
+    displayName: 'new detail banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_1: Attribute.Component<'banner.banner'>;
+    banner_2: Attribute.Component<'banner.banner'>;
+    banner_3: Attribute.Component<'banner.banner', true>;
+    banner_4: Attribute.Component<'banner.banner'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::new-detail-banner.new-detail-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::new-detail-banner.new-detail-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRealEstateNewRealEstateNew extends Schema.CollectionType {
   collectionName: 'real_estate_news';
   info: {
@@ -1465,6 +1498,7 @@ declare module '@strapi/types' {
       'api::header-banner.header-banner': ApiHeaderBannerHeaderBanner;
       'api::logo.logo': ApiLogoLogo;
       'api::new.new': ApiNewNew;
+      'api::new-detail-banner.new-detail-banner': ApiNewDetailBannerNewDetailBanner;
       'api::real-estate-new.real-estate-new': ApiRealEstateNewRealEstateNew;
       'api::shopping-new.shopping-new': ApiShoppingNewShoppingNew;
       'api::technical-new.technical-new': ApiTechnicalNewTechnicalNew;
