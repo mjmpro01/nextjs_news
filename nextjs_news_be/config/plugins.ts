@@ -106,7 +106,7 @@ export default ({ env }) => ({
     enabled: true,
     config: {
       // Your meili host
-      host: env("MEILISEARCH_HOST", "http://localhost:7701"),
+      host: env("MEILISEARCH_HOST", "http://localhost:7700"),
       // Your master key or private key
       apiKey: env("MEILISEARCH_API_KEY", "masterKey"),
 
