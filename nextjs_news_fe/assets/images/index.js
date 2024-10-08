@@ -4,7 +4,7 @@ import galaxy from './galaxy.png'
 import icloudThumb from './icloud-va-apple-id-2.png'
 import mail from './mail.png'
 import phone from './phone-call.png'
-import logo from './PikPng.com_gente-png_5024437-1024x262.png';
+import logo from './xomnhau.png'
 import xperia from './xperia.png'
 import youtube from './youtube.png'
 
@@ -17,5 +17,5 @@ export const images = {
   facebook,
   mail,
   phone,
-  youtube
+  youtube,
 }

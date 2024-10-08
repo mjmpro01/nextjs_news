@@ -4,14 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { getBanner } from "@/apis/banner";
 import { getNewsByCategoryId } from "@/apis/categories";
 import { getAllNews, getOutstandingNews } from "@/apis/news";
-import { images } from "@/assets/images";
 import NewsCard from "@/components/NewsCard";
+import { paths } from "@/constants/paths";
+import { urls } from "@/constants/urls";
 
 const Home = async () => {
   const newsData = await getAllNews();
   const outstandingNews = await getOutstandingNews();
+  const { banner1, banner2, banner3, banner4, banner5, banner6 } = await getBanner();
   const [newsCat1, newsCat2, newsCat3, newsCat4, newsCat5] = await Promise.all([
     getNewsByCategoryId(1),
     getNewsByCategoryId(2),
@@ -73,13 +76,15 @@ const Home = async () => {
           </div>
           <div className="basis-1/4 max-w-[25%]">
             <div className="flex flex-col">
-              <Image
-                src={images.galaxy}
-                width={300}
-                height={168}
-                alt="galaxy"
-                className="w-full h-[100px] mb-[10px] px-[10px]"
-              />
+              <Link href={banner1?.link || paths.HOME}>
+                <Image
+                  src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
+                  width={300}
+                  height={168}
+                  alt="galaxy"
+                  className="w-full h-[100px] mb-[10px] px-[10px]"
+                />
+              </Link>
               <p className="text-[19px] mb-[10px] text-[#980d17] px-[10px]">
                 Tin nổi bật
               </p>
@@ -100,8 +105,12 @@ const Home = async () => {
       </section>
 
       <section className="hidden md:flex flex-col md:flex-row items-center gap-[10px] my-[20px]">
-        <Image src={images.xperia} width={595} height={100} alt="" />
-        <Image src={images.xperia} width={595} height={100} alt="" />
+        <Link href={banner2?.link || paths.HOME}>
+          <Image src={`${urls.baseUrl}${banner2?.image?.data?.attributes?.url}`} width={595} height={100} alt="" />
+        </Link>
+        <Link href={banner3?.link || paths.HOME}>
+          <Image src={`${urls.baseUrl}${banner3?.image?.data?.attributes?.url}`} width={595} height={100} alt="" />
+        </Link>
       </section>
 
       <section className="hidden md:block">
@@ -246,7 +255,9 @@ const Home = async () => {
         </div>
       </section>
 
-      <Image src={images.xperia} width={595} height={100} alt="" className="w-full hidden md:block" />
+      <Link href={banner4?.link || paths.HOME}>
+        <Image src={`${urls.baseUrl}${banner4?.image?.data?.attributes?.url}`} width={595} height={100} alt="" className="w-full hidden md:block" />
+      </Link>
 
       <section className="hidden md:block">
         <div className="flex items-start">
@@ -261,7 +272,9 @@ const Home = async () => {
                 data={data}
               />
             )) || null}
-            <Image src={images.xperia} width={595} height={100} alt="" className="w-full" />
+            <Link href={banner5?.link || paths.HOME}>
+              <Image src={`${urls.baseUrl}${banner5?.image?.data?.attributes?.url}`} width={595} height={100} alt="" className="w-full" />
+            </Link>
             {newsData?.slice(7, 20)?.map(((data, index) =>
               <NewsCard
                 isHorizontal
@@ -311,8 +324,9 @@ const Home = async () => {
         </div>
       </section>
 
-      <Image src={images.xperia} width={595} height={100} alt="" className="w-full hidden md:block" />
-
+      <Link href={banner6?.link || paths.HOME}>
+        <Image src={`${urls.baseUrl}${banner6?.image?.data?.attributes?.url}`} width={595} height={100} alt="" className="w-full hidden md:block" />
+      </Link>
 
       {/* Mobile */}
       <section className="my-[20px] md:hidden">

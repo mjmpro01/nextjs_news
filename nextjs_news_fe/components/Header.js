@@ -3,16 +3,17 @@ import Image from "next/image"
 import Link from 'next/link'
 
 import { getCategories } from '@/apis/categories'
-import { gifs } from "@/assets/gifs"
+import { getHeaderBanner } from '@/apis/headerBanner'
+import { getLogo } from '@/apis/logo'
 import { images } from "@/assets/images"
 import DrawerMenu from '@/components/DrawerMenu'
 import { menuList } from '@/constants/menuList'
 import { paths } from '@/constants/paths'
 
-
-
 const Header = async () => {
-  const categories = await getCategories()
+  const categories = await getCategories();
+  const logo = await getLogo();
+  const headerBanner = await getHeaderBanner();
 
   const mappedMenuList = categories.map((category) => {
     const menuItem = menuList.find(item => item?.id?.toString() === category?.id?.toString());
@@ -31,7 +32,7 @@ const Header = async () => {
       <div className="flex justify-center md:justify-between items-center h-[85px] p-[16px]">
         <Link href={paths.HOME}>
           <Image
-            src={images.logo}
+            src={logo || images}
             width={1020}
             height={261}
             alt="logo"
@@ -39,7 +40,7 @@ const Header = async () => {
           />
         </Link>
         <Image
-          src={gifs.banner1}
+          src={headerBanner}
           width={818}
           height={75}
           alt="banner1"
