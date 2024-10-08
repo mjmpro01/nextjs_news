@@ -4,7 +4,7 @@
   "info": {
     "singularName": "new-detail-banner",
     "pluralName": "new-detail-banners",
-    "displayName": "new detail banner"
+    "displayName": "Banner cho trang chi tiết tin tức"
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +23,7 @@
     },
     "banner_3": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "banner.banner"
     },
     "banner_4": {

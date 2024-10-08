@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-08T14:27:55.658Z"
+    "x-generation-date": "2024-10-08T14:51:35.666Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9664,10 +9664,7 @@
                 "$ref": "#/components/schemas/BannerBannerComponent"
               },
               "banner_3": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/BannerBannerComponent"
-                }
+                "$ref": "#/components/schemas/BannerBannerComponent"
               },
               "banner_4": {
                 "$ref": "#/components/schemas/BannerBannerComponent"
@@ -9732,10 +9729,7 @@
             "$ref": "#/components/schemas/BannerBannerComponent"
           },
           "banner_3": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BannerBannerComponent"
-            }
+            "$ref": "#/components/schemas/BannerBannerComponent"
           },
           "banner_4": {
             "$ref": "#/components/schemas/BannerBannerComponent"

@@ -1264,7 +1264,7 @@ export interface ApiNewDetailBannerNewDetailBanner extends Schema.SingleType {
   attributes: {
     banner_1: Attribute.Component<'banner.banner'>;
     banner_2: Attribute.Component<'banner.banner'>;
-    banner_3: Attribute.Component<'banner.banner', true>;
+    banner_3: Attribute.Component<'banner.banner'>;
     banner_4: Attribute.Component<'banner.banner'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
