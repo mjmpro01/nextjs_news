@@ -24,7 +24,7 @@
     },
     "banner_3": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "banner.banner"
     },
     "banner_4": {
