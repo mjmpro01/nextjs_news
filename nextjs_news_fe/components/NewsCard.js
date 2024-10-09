@@ -41,7 +41,7 @@ const NewsCard = ({
           </div>
           <div className='pl-[10px]'>
             <h5 className={clsx(
-              'my-[2px]',
+              'my-[2px] font-semibold',
               titleSmall ? 'text-[15px]' : titleLarge ? 'text-[21px]' : 'text-[18px]'
             )}>
               {data?.attributes?.title}
@@ -76,7 +76,7 @@ const NewsCard = ({
         }
         <div className='py-[7px]'>
           <h5 className={clsx(
-            'my-[2px]',
+            'my-[2px] font-semibold',
             titleSmall ? 'text-[15px]' : titleLarge ? 'text-[21px]' : 'text-[18px]'
           )}>
             {data?.attributes?.title}

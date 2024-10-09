@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { siteMetadata } from '@/constants/siteMetadata';
 
 import Loading from './loading';
 
@@ -22,7 +23,10 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Xóm nhậu - Tổng hợp sự kiện trong bàn nhậu",
+  title: {
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.title}`
+  },
   description: "Xóm nhậu - Tổng hợp sự kiện trong bàn nhậu",
 };
 

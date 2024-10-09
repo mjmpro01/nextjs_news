@@ -29,7 +29,7 @@ const Header = async () => {
     <header className='relative'>
       <DrawerMenu />
 
-      <div className="flex justify-center md:justify-between items-center h-[85px] p-[16px]">
+      <div className="flex justify-center md:justify-between items-center h-[85px] px-[16px] md:px-0 py-[16px]">
         <Link href={paths.HOME}>
           <Image
             src={logo || images}

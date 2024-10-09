@@ -85,7 +85,7 @@ const Home = async () => {
                   className="w-full h-[100px] mb-[10px] px-[10px]"
                 />
               </Link>
-              <p className="text-[19px] mb-[10px] text-[#980d17] px-[10px]">
+              <p className="text-[19px] mb-[10px] text-[#980d17] px-[10px] font-bold">
                 Tin nổi bật
               </p>
               <div className="px-[10px]">
@@ -115,7 +115,7 @@ const Home = async () => {
 
       <section className="hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17]">
+          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
             {newsCat1?.attributes?.name}
           </p>
           <Link
@@ -153,7 +153,7 @@ const Home = async () => {
 
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17]">
+          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
             {newsCat2?.attributes?.name}
 
           </p>
@@ -188,7 +188,7 @@ const Home = async () => {
 
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17]">
+          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
             {newsCat3?.attributes?.name}
           </p>
           <Link
@@ -223,7 +223,7 @@ const Home = async () => {
 
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17]">
+          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
             {newsCat4?.attributes?.name}
           </p>
           <Link
@@ -291,7 +291,7 @@ const Home = async () => {
             {[newsCat1, newsCat2, newsCat3, newsCat4, newsCat5].map((cat, index) => (
               <div className="my-[10px]" key={index}>
                 <div className="flex items-center justify-between">
-                  <p className="text-[19px] mb-[10px] text-[#980d17]">
+                  <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
                     {cat?.attributes?.name}
                   </p>
                   <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">

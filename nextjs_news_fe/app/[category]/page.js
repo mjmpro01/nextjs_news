@@ -1,13 +1,17 @@
+import Image from "next/image"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { getCategories, getCategoryBySlug } from "@/apis/categories"
+import { getCategoryBanner } from "@/apis/categoryBanner"
 import { getAllNews } from "@/apis/news"
-import { images } from "@/assets/images"
-import ClientImageSection from "@/components/ClientImageSection"
 import NewsCard from "@/components/NewsCard"
+import { paths } from "@/constants/paths"
+import { urls } from "@/constants/urls"
 
 const page = async ({ params: { category } }) => {
   const categories = await getCategories();
+  const { banner1, banner2, banner3, banner4 } = await getCategoryBanner();
 
   const categoryIndex = categories.findIndex(cat => cat?.attributes?.slug === category)
   if (categoryIndex === -1) {
@@ -53,7 +57,15 @@ const page = async ({ params: { category } }) => {
             {categoryNewsList?.slice(7, 13)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} data={news} key={index} />
             )) || null}
-            <ClientImageSection src={images.xperia} width={595} height={100} />
+            <Link href={banner1?.link || paths.HOME}>
+              <Image
+                src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
+                width={595}
+                height={100}
+                alt=""
+                className={`w-full`}
+              />
+            </Link>
             {categoryNewsList?.slice(14, 25)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} data={news} key={index} />
             )) || null}
@@ -86,14 +98,19 @@ const page = async ({ params: { category } }) => {
               />
             )) || null}
 
-            {Array.from({ length: 3 })?.map(index => (
-              <ClientImageSection
+            {[banner2, banner3, banner4]?.map((banner, index) => (
+              <Link
                 key={index}
-                src={images.icloudThumb}
-                width={300}
-                height={209}
-                className=' aspect-square w-full h-auto object-cover px-[10px]'
-              />
+                href={banner?.link || paths.HOME}
+              >
+                <Image
+                  src={`${urls.baseUrl}${banner?.image?.data?.attributes?.url}` || paths.HOME}
+                  width={300}
+                  height={209}
+                  alt=""
+                  className={`w-full aspect-square h-auto object-cover px-[10px]`}
+                />
+              </Link>
             )) || null}
           </div>
         </div>

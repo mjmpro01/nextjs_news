@@ -3,6 +3,7 @@ const allOutStandingNewsParams = {
   "fields[0]": "title",
   "fields[1]": "slug",
   "fields[2]": "short_description",
+  "fields[3]": "is_outstanding",
   "sort": "createdAt:desc",
   "filters[is_outstanding]": true,
 }
@@ -12,6 +13,7 @@ const newsCardParams = {
   "fields[0]": "title",
   "fields[1]": "slug",
   "fields[2]": "short_description",
+  "fields[3]": "is_outstanding",
   "sort": "createdAt:desc",
 }
 

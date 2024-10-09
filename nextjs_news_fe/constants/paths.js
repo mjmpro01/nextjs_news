@@ -7,4 +7,6 @@ export const paths = {
   LOGO: '/logo',
   HEADER_BANNER: '/header-banner',
   BANNER: '/banner',
+  CATEGORY_BANNER: '/category-banner',
+  NEW_DETAIL_BANNER: '/new-detail-banner',
 }
