@@ -2,22 +2,19 @@
 FROM node:20-alpine
 
 # Set working directory in the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json (or yarn.lock) into the container
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
+WORKDIR /opt/
+COPY package.json yarn.lock ./
+RUN yarn global add node-gyp
+RUN yarn config set network-timeout 600000 -g && yarn install
+ENV PATH=/opt/node_modules/.bin:$PATH
+WORKDIR /opt/app
 
 # Copy the rest of the application code into the container
 COPY . .
 
-# Build the Next.js application
-RUN npm run build
+RUN chown -R node:node /opt/app
 
-# Expose the port the app will run on
+# Build the Next.js applicationUSER node
+RUN ["yarn", "build"]
 EXPOSE 3000
-
-# Start the Next.js app
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
