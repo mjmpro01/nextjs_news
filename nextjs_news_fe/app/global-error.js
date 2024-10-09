@@ -2,8 +2,7 @@
 
 import Link from "next/link"
 
-import paths from "@/utils/constants/paths"
-
+import { paths } from "@/constants/paths"
 
 export default function GlobalError({
   error,
