@@ -1,13 +1,13 @@
 import queryString from "query-string";
 
-import { paths } from "@/constants/paths";
+import { apiPaths } from "@/constants/paths";
 import { urls } from "@/constants/urls";
 
 export const getHeaderBanner = async () => {
   const params = {
     populate: 'deep,2'
   }
-  const endpoint = `${urls.baseUrl}/api${paths.HEADER_BANNER}?${queryString.stringify(params)}`
+  const endpoint = `${urls.baseUrl}/api${apiPaths.HEADER_BANNER}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {

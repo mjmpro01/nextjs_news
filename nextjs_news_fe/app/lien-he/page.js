@@ -1,3 +1,7 @@
+import { genPageMetadata } from "../seo"
+
+export const metadata = genPageMetadata({ title: 'Liên hệ' })
+
 const Contact = () => (
   <div className="border border-[#CCC] my-[20px]">
     <div className="border-b border-b-[#CCC] p-[10px] bg-[#e9ecee]">

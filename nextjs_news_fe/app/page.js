@@ -1,26 +1,28 @@
 
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getBanner } from "@/apis/banner";
-import { getNewsByCategoryId } from "@/apis/categories";
-import { getAllNews, getOutstandingNews } from "@/apis/news";
+import categoriesApi from "@/apis/categories";
+import newsApi from "@/apis/news";
 import NewsCard from "@/components/NewsCard";
 import { paths } from "@/constants/paths";
 import { urls } from "@/constants/urls";
+import { merriweather } from "@/utils/fonts";
 
 const Home = async () => {
-  const newsData = await getAllNews();
-  const outstandingNews = await getOutstandingNews();
+  const newsData = await newsApi.getAllNews();
+  const outstandingNews = await newsApi.getOutstandingNews();
   const { banner1, banner2, banner3, banner4, banner5, banner6 } = await getBanner();
   const [newsCat1, newsCat2, newsCat3, newsCat4, newsCat5] = await Promise.all([
-    getNewsByCategoryId(1),
-    getNewsByCategoryId(2),
-    getNewsByCategoryId(3),
-    getNewsByCategoryId(4),
-    getNewsByCategoryId(5),
+    categoriesApi.getNewsByCategoryId(1),
+    categoriesApi.getNewsByCategoryId(2),
+    categoriesApi.getNewsByCategoryId(3),
+    categoriesApi.getNewsByCategoryId(4),
+    categoriesApi.getNewsByCategoryId(5),
   ]).catch(() => notFound());
 
   if (!newsData?.length) {
@@ -39,6 +41,7 @@ const Home = async () => {
                     titleSmall={false}
                     titleLarge
                     data={outstandingNews?.[0]}
+                    hasDate
                   />
                   <div className="flex">
                     {outstandingNews?.slice(1, 4)?.map((data, index) => (
@@ -46,6 +49,7 @@ const Home = async () => {
                         key={index}
                         hasExcerpt={false}
                         data={data}
+                        hasDate
                       />
                     )) || null}
                   </div>
@@ -53,21 +57,32 @@ const Home = async () => {
               </div>
               <div className="basis-1/3 max-w-[33.333333%]">
                 <div className="flex flex-col">
-                  <NewsCard
-                    hasExcerpt={false}
-                    data={outstandingNews?.[4]}
-                  />
-                  {outstandingNews?.slice(5, 10)?.map(((data, index) => (
-                    <div key={index}>
-                      <div className="px-[10px]">
-                        <div className="w-full border-b border-b-[#CCC]" />
-                      </div>
-                      <NewsCard
-                        hasThumbnail={false}
-                        hasExcerpt={false}
-                        data={data}
-                      />
-                    </div>
+                  <Link href={banner1?.link || paths.HOME}>
+                    <Image
+                      src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
+                      width={300}
+                      height={168}
+                      alt="galaxy"
+                      className="w-full h-[100px] mb-[10px] px-[10px]"
+                    />
+                  </Link>
+                  <p className={clsx(
+                    "text-[19px] mb-[10px] text-[#980d17] px-[10px] font-bold",
+                    merriweather.className
+                  )}>
+                    Tin nổi bật
+                  </p>
+                  <div className="px-[10px]">
+                    <div className="w-full border-b border-b-[#CCC]" />
+                  </div>
+                  {outstandingNews?.slice(11, 16)?.map(((data, index) => (
+                    <NewsCard
+                      key={index}
+                      isHorizontal
+                      hasExcerpt={false}
+                      data={data}
+                      hasDate
+                    />
                   ))) || null}
                 </div>
               </div>
@@ -76,28 +91,21 @@ const Home = async () => {
           </div>
           <div className="basis-1/4 max-w-[25%]">
             <div className="flex flex-col">
-              <Link href={banner1?.link || paths.HOME}>
-                <Image
-                  src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
-                  width={300}
-                  height={168}
-                  alt="galaxy"
-                  className="w-full h-[100px] mb-[10px] px-[10px]"
-                />
-              </Link>
-              <p className="text-[19px] mb-[10px] text-[#980d17] px-[10px] font-bold">
-                Tin nổi bật
-              </p>
-              <div className="px-[10px]">
-                <div className="w-full border-b border-b-[#CCC]" />
-              </div>
-              {outstandingNews?.slice(11, 16)?.map(((data, index) => (
-                <NewsCard
-                  key={index}
-                  isHorizontal
-                  hasExcerpt={false}
-                  data={data}
-                />
+              <NewsCard
+                hasExcerpt={false}
+                data={outstandingNews?.[4]}
+              />
+              {outstandingNews?.slice(5, 10)?.map(((data, index) => (
+                <div key={index}>
+                  <div className="px-[10px]">
+                    <div className="w-full border-b border-b-[#CCC]" />
+                  </div>
+                  <NewsCard
+                    hasThumbnail={false}
+                    hasExcerpt={false}
+                    data={data}
+                  />
+                </div>
               ))) || null}
             </div>
           </div>
@@ -115,7 +123,10 @@ const Home = async () => {
 
       <section className="hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
+          <p className={clsx(
+            "text-[19px] mb-[10px] text-[#980d17] font-bold",
+            merriweather.className
+          )}>
             {newsCat1?.attributes?.name}
           </p>
           <Link
@@ -143,9 +154,9 @@ const Home = async () => {
           {newsCat1?.attributes?.news?.data?.slice(4, 8)?.map(((data, index) => (
             <NewsCard
               key={index}
-              titleSmall={false}
               hasExcerpt={false}
               data={data}
+              hasDate
             />
           ))) || null}
         </div>
@@ -153,7 +164,10 @@ const Home = async () => {
 
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
+          <p className={clsx(
+            "text-[19px] mb-[10px] text-[#980d17] font-bold",
+            merriweather.className
+          )}>
             {newsCat2?.attributes?.name}
 
           </p>
@@ -167,18 +181,22 @@ const Home = async () => {
         </div>
         <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
-        <div className="flex items-center">
+        <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} data={newsCat2?.attributes?.news?.data?.[0]} />
+            <NewsCard
+              titleSmall={false}
+              data={newsCat2?.attributes?.news?.data?.[0]}
+              hasDate
+            />
           </div>
           <div className="basis-1/2 max-w-[50%]">
-            <div className="grid grid-cols-3 grid-rows-2">
+            <div className="grid grid-cols-3 grid-rows-2 gap-[10px]">
               {newsCat2?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
-                  titleSmall={false}
                   hasExcerpt={false}
                   data={data}
+                  hasDate
                 />
               ))) || null}
             </div>
@@ -188,7 +206,10 @@ const Home = async () => {
 
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
+          <p className={clsx(
+            "text-[19px] mb-[10px] text-[#980d17] font-bold",
+            merriweather.className
+          )}>
             {newsCat3?.attributes?.name}
           </p>
           <Link
@@ -207,23 +228,30 @@ const Home = async () => {
               {newsCat3?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
-                  titleSmall={false}
                   hasExcerpt={false}
                   data={data}
+                  hasDate
                 />
               ))) || null}
             </div>
           </div>
 
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} data={newsCat3?.attributes?.news?.data?.[0]} />
+            <NewsCard
+              titleSmall={false}
+              data={newsCat3?.attributes?.news?.data?.[0]}
+              hasDate
+            />
           </div>
         </div>
       </section>
 
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
-          <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
+          <p className={clsx(
+            "text-[19px] mb-[10px] text-[#980d17] font-bold",
+            merriweather.className
+          )}>
             {newsCat4?.attributes?.name}
           </p>
           <Link
@@ -238,16 +266,19 @@ const Home = async () => {
 
         <div className="flex items-center">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard titleSmall={false} data={newsCat4?.attributes?.news?.data?.[0]} />
+            <NewsCard
+              titleSmall={false}
+              data={newsCat4?.attributes?.news?.data?.[0]}
+            />
           </div>
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
               {newsCat4?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
-                  titleSmall={false}
                   hasExcerpt={false}
                   data={data}
+                  hasDate
                 />
               ))) || null}
             </div>
@@ -291,7 +322,10 @@ const Home = async () => {
             {[newsCat1, newsCat2, newsCat3, newsCat4, newsCat5].map((cat, index) => (
               <div className="my-[10px]" key={index}>
                 <div className="flex items-center justify-between">
-                  <p className="text-[19px] mb-[10px] text-[#980d17] font-bold">
+                  <p className={clsx(
+                    "text-[19px] mb-[10px] text-[#980d17] font-bold",
+                    merriweather.className
+                  )}>
                     {cat?.attributes?.name}
                   </p>
                   <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">
@@ -301,19 +335,19 @@ const Home = async () => {
                 </div>
                 <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-[10px]">
                   <NewsCard
                     titleSmall={false}
                     hasExcerpt={false}
                     data={cat?.attributes?.news?.data?.[0]}
                   />
-                  <div className="grid grid-cols-2">
+                  <div className="grid grid-cols-2 gap-[10px]">
                     {cat?.attributes?.news?.data?.slice(1, 5)?.map((news, index) => (
                       <NewsCard
-                        titleSmall={false}
                         hasExcerpt={false}
                         key={index}
                         data={news}
+                        hasDate
                       />
                     )) || null}
                   </div>

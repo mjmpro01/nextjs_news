@@ -1,15 +1,15 @@
 import queryString from "query-string";
 
-import { paths } from "@/constants/paths";
+import { apiPaths } from "@/constants/paths";
 import { newsUrlParams } from "@/constants/urlParams/news";
 import { urls } from "@/constants/urls";
 
-export const getAllNews = async () => {
+const getAllNews = async () => {
   const params = {
     ...newsUrlParams.newsCardParams,
     'pagination[pageSize]': 20,
   }
-  const endpoint = `${urls.baseUrl}/api${paths.NEWS}?${queryString.stringify(params)}`
+  const endpoint = `${urls.baseUrl}/api${apiPaths.NEWS}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -31,15 +31,16 @@ export const getAllNews = async () => {
   return body?.data
 }
 
-export const getNewsBySlug = async (slug) => {
+const getNewsBySlug = async (slug, queryParams) => {
   if (!slug) {
     return null
   }
 
   const params = {
+    ...queryParams,
     populate: 'deep,2',
   }
-  const endpoint = `${urls.baseUrl}/api/slugify/slugs${paths.NEW}/${slug}?${queryString.stringify(params)}`
+  const endpoint = `${urls.baseUrl}/api/slugify/slugs${apiPaths.NEW}/${slug}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -60,12 +61,12 @@ export const getNewsBySlug = async (slug) => {
   return body?.data
 }
 
-export const getOutstandingNews = async () => {
+const getOutstandingNews = async () => {
   const params = {
     ...newsUrlParams.allOutStandingNewsParams,
     'pagination[pageSize]': 20,
   }
-  const endpoint = `${urls.baseUrl}/api${paths.NEWS}?${queryString.stringify(params)}`
+  const endpoint = `${urls.baseUrl}/api${apiPaths.NEWS}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -86,16 +87,18 @@ export const getOutstandingNews = async () => {
   return body?.data
 }
 
-export const getNewsByCategorySlug = async (slug) => {
+const getNewsByCategorySlug = async (slug, searchParams) => {
   if (!slug) {
     return null
   }
 
   const params = {
     ...newsUrlParams.newsCardParams,
-    "filters[category][slug]": slug
+    "filters[category][slug]": slug,
+    'pagination[page]': Number(searchParams?.page) || 1,
+    'pagination[pageSize]': Number(searchParams?.pageSize) || 25,
   }
-  const endpoint = `${urls.baseUrl}/api${paths.NEWS}?${queryString.stringify(params)}`
+  const endpoint = `${urls.baseUrl}/api${apiPaths.NEWS}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -113,5 +116,17 @@ export const getNewsByCategorySlug = async (slug) => {
     throw body?.errors?.message
   }
 
-  return body?.data
+  return {
+    data: body?.data || [],
+    pagination: body?.meta?.pagination,
+  }
 }
+
+const newsApi = {
+  getAllNews,
+  getNewsBySlug,
+  getOutstandingNews,
+  getNewsByCategorySlug
+}
+
+export default newsApi

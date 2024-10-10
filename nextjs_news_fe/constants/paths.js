@@ -1,5 +1,9 @@
 export const paths = {
   HOME: '/',
+  CONTACT: '/lien-he',
+}
+
+export const apiPaths = {
   NEW: '/new',
   NEWS: '/news',
   CATEGORY: '/category',

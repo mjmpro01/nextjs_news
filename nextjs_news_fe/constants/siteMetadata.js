@@ -4,6 +4,7 @@ export const siteMetadata = {
   description: "Xóm nhậu - Tổng hợp sự kiện trong bàn nhậu",
   language: 'vi-vn',
   theme: 'system',
+  siteUrl: 'https://xomnhau.com',
   github: 'https://github.com',
   x: 'https://twitter.com/x',
   facebook: 'https://facebook.com',

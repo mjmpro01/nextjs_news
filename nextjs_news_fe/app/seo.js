@@ -1,4 +1,4 @@
-import siteMetadata from '@/data/siteMetadata'
+import { siteMetadata } from '@/constants/siteMetadata'
 
 export function genPageMetadata({ title, description, image, ...rest }) {
   return {

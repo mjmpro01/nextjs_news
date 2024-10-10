@@ -1,13 +1,13 @@
 import queryString from "query-string";
 
-import { paths } from "@/constants/paths";
+import { apiPaths } from "@/constants/paths";
 import { urls } from "@/constants/urls";
 
 export const getNewDetailBanner = async () => {
   const params = {
     populate: 'deep,4'
   }
-  const endpoint = `${urls.baseUrl}/api${paths.NEW_DETAIL_BANNER}?${queryString.stringify(params)}`
+  const endpoint = `${urls.baseUrl}/api${apiPaths.NEW_DETAIL_BANNER}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {

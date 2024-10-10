@@ -1,18 +1,25 @@
 import { ChatBubbleBottomCenterIcon, ShareIcon } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getCategories, getCategoryBySlug } from '@/apis/categories'
+import categoriesApi from '@/apis/categories'
 import { getNewDetailBanner } from '@/apis/newDetailBanner'
-import { getAllNews, getNewsBySlug } from '@/apis/news'
+import newsApi from '@/apis/news'
+import { genPageMetadata } from '@/app/seo'
 import NewsCard from '@/components/NewsCard'
 import { paths } from '@/constants/paths'
 import { urls } from '@/constants/urls'
+import { merriweather } from "@/utils/fonts"
 
+export async function generateMetadata({ params: { news } }) {
+  const newsData = await newsApi.getNewsBySlug(news);
+  return genPageMetadata({ title: newsData?.attributes?.title })
+}
 
 const News = async ({ params: { category, news } }) => {
-  const categories = await getCategories();
+  const categories = await categoriesApi.getCategories();
   const { banner1, banner2, banner3, banner4 } = await getNewDetailBanner();
 
   const categoryIndex = categories.findIndex(cat => cat?.attributes?.slug === category)
@@ -20,14 +27,14 @@ const News = async ({ params: { category, news } }) => {
     return notFound();
   }
 
-  const newsData = await getNewsBySlug(news);
+  const newsData = await newsApi.getNewsBySlug(news);
 
   if (!newsData?.id) {
     return notFound();
   }
 
-  const allNews = await getAllNews();
-  const categoryData = await getCategoryBySlug(category)
+  const allNews = await newsApi.getAllNews();
+  const categoryData = await categoriesApi.getCategoryBySlug(category)
 
   return (
     <>
@@ -43,11 +50,11 @@ const News = async ({ params: { category, news } }) => {
 
       <div className='hidden md:flex items-start gap-[10px] py-[10px]'>
         <article className='basis-3/4'>
-          <div className='flex items-center gap-[10px] text-[10px] py-[10px]'>
-            <p>Trang chủ</p>
-            <p>{">"}</p>
-            <p>{categoryData?.attributes?.name}</p>
-            <p>{">"}</p>
+          <div className='flex items-center gap-[10px] text-[14px] py-[10px]'>
+            <Link href={paths.HOME} className="hover:underline hover:text-[#CCC]">Trang chủ</Link>
+            <p>{"/"}</p>
+            <Link href={`${paths.HOME}/${category}`} className="hover:underline hover:text-[#CCC]">{categoryData?.attributes?.name}</Link>
+            <p>{"/"}</p>
             <p>{newsData?.attributes?.title}</p>
           </div>
 
@@ -70,7 +77,10 @@ const News = async ({ params: { category, news } }) => {
         </article>
 
         <div className=' basis-1/4 w-full flex flex-col gap-[20px]'>
-          <p className="text-[19px] text-[#000] font-semibold px-[10px]">
+          <p className={clsx(
+            "text-[19px] text-[#980d17] font-semibold px-[10px]",
+            merriweather.className
+          )}>
             Bài mới
           </p>
           {allNews?.slice(0, 5)?.map((news, index) => (
@@ -83,7 +93,10 @@ const News = async ({ params: { category, news } }) => {
             />
           )) || null}
 
-          <p className="text-[19px] text-[#000] font-semibold px-[10px]">
+          <p className={clsx(
+            "text-[19px] text-[#980d17] font-semibold px-[10px]",
+            merriweather.className
+          )}>
             Bài nổi bật
           </p>
           {allNews?.filter(news => news?.attributes?.is_outstanding)?.slice(0, 5)?.map((news, index) => (

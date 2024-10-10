@@ -2,7 +2,7 @@ import { HomeIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import Image from "next/image"
 import Link from 'next/link'
 
-import { getCategories } from '@/apis/categories'
+import categoriesApi from '@/apis/categories'
 import { getHeaderBanner } from '@/apis/headerBanner'
 import { getLogo } from '@/apis/logo'
 import { images } from "@/assets/images"
@@ -11,7 +11,7 @@ import { menuList } from '@/constants/menuList'
 import { paths } from '@/constants/paths'
 
 const Header = async () => {
-  const categories = await getCategories();
+  const categories = await categoriesApi.getCategories();
   const logo = await getLogo();
   const headerBanner = await getHeaderBanner();
 
@@ -26,10 +26,10 @@ const Header = async () => {
   });
 
   return (
-    <header className='relative'>
+    <header className='inline'>
       <DrawerMenu />
 
-      <div className="flex justify-center md:justify-between items-center h-[85px] px-[16px] md:px-0 py-[16px]">
+      <div className="flex justify-center md:justify-between items-center h-[85px] px-[16px] md:px-0 py-[16px] gap-[20px]">
         <Link href={paths.HOME}>
           <Image
             src={logo || images}
@@ -44,7 +44,7 @@ const Header = async () => {
           width={818}
           height={75}
           alt="banner1"
-          className='w-auto md:block hidden'
+          className='md:block hidden p-[10px]'
         />
       </div>
 
@@ -55,31 +55,34 @@ const Header = async () => {
         </div>
       </div>
 
-      <ul className="list-none md:flex md:items-center md:flex-wrap grid grid-cols-2 gap-[8px] md:bg-[#0765ff] text-white p-[10px]">
-        <Link href={paths.HOME}>
-          <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none">
-            <div className='w-[14px] md:w-[18px]'>
-              <HomeIcon className='w-[14px] md:w-[18px]' />
-            </div>
-            <p className='text-[13px] md:text-[0.9rem] whitespace-nowrap'>
-              {"Trang chủ"}
-            </p>
-          </li>
-        </Link>
-
-        {mappedMenuList.map((item, index) => (
-          <Link href={`/${item?.slug}`} key={index} >
-            <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none" >
+      <div className="sticky top-0 z-10">
+        <ul className="list-none md:flex md:items-center md:flex-wrap grid grid-cols-2 gap-[8px] md:bg-[#0765ff] text-white px-[10px] py-[10px] md:py-0">
+          <Link href={paths.HOME}>
+            <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none hover:bg-[#1b3a6b]">
               <div className='w-[14px] md:w-[18px]'>
-                {item.icon}
+                <HomeIcon className='w-[14px] md:w-[18px]' />
               </div>
               <p className='text-[13px] md:text-[0.9rem] whitespace-nowrap'>
-                {item.name}
+                {"Trang chủ"}
               </p>
             </li>
           </Link>
-        ))}
-      </ul>
+
+          {mappedMenuList.map((item, index) => (
+            <Link href={`/${item?.slug}`} key={index} >
+              <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none hover:bg-[#1b3a6b]" >
+                {/* <div className='w-[14px] md:w-[18px]'>
+                {item.icon}
+              </div> */}
+                <p className='text-[13px] md:text-[0.9rem] whitespace-nowrap'>
+                  {item.name}
+                </p>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </div>
+
     </header>
   )
 }

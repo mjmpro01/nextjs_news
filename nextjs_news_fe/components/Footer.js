@@ -1,6 +1,8 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import { images } from "@/assets/images"
+import { paths } from "@/constants/paths"
 
 const Footer = () => (
   <footer>
@@ -97,7 +99,9 @@ const Footer = () => (
             Chính sách hỗ trợ khách hàng
           </li>
           <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
-            Liên hệ
+            <Link href={paths.CONTACT}>
+              Liên hệ
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,8 +1,12 @@
 'use client'
 
+import clsx from 'clsx';
 import { useEffect, useState } from 'react'
 
-const NewsThumbContent = ({ html }) => {
+import { lato } from '@/utils/fonts';
+
+
+const NewsThumbContent = ({ html, className }) => {
   const [clientHtml, setClientHtml] = useState('');
 
   useEffect(() => {
@@ -15,7 +19,11 @@ const NewsThumbContent = ({ html }) => {
 
   return (
     <p
-      className='text-[13px] text-[#0A0A0A] pt-[10px] my-[1px] text-ellipsis line-clamp-2 prose prose-img:hidden prose-headings:text-sm prose-headings:font-normal prose-p:text-sm prose-p:font-normal'
+      className={clsx(
+        'text-[14px] text-[#0A0A0A] pt-[10px] my-[1px] text-ellipsis prose prose-img:hidden prose-headings:text-sm prose-headings:font-normal prose-p:text-sm prose-p:font-normal',
+        lato.className,
+        className
+      )}
       dangerouslySetInnerHTML={{ __html: clientHtml }}
     >
     </p>
