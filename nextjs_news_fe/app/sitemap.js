@@ -10,12 +10,12 @@ export default async function sitemap() {
     lastModified: new Date().toISOString(),
   }));
 
-  const categoriesRoutesMap = await categoriesApi.getCategories.then(
+  const categoriesRoutesMap = await categoriesApi.getCategories().then(
     res =>
       res?.map(category => ({
         url: `${baseUrl}${category?.attributes?.slug}`,
         lastModified: new Date().toISOString(),
-      })) || []
+      }))
   );
 
   const newsRoutesMap = await categoriesApi.getAllNewsCategorySlugs().then(

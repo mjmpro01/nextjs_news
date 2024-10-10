@@ -16,7 +16,7 @@ export const getHeaderBanner = async () => {
   })
 
   if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
+    throw new Error(`Failed to getHeaderBanner: ${res.status} ${JSON.stringify(res)}`);
   }
 
   const body = await res.json();

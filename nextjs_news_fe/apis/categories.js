@@ -16,7 +16,7 @@ const getCategories = async () => {
   })
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch news by slug: ${res.status}`);
+    throw new Error(`Failed to getCategories: ${res.status}`);
   }
 
   const body = await res.json();

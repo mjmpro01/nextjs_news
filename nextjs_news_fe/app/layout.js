@@ -1,6 +1,7 @@
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import clsx from "clsx";
 import localFont from "next/font/local";
+import Script from 'next/script';
 import { Suspense } from 'react';
 
 import Footer from "@/components/Footer";
@@ -33,6 +34,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Script
+        async
+        id="google-tag-manager"
+        src="https://www.googletagmanager.com/gtag/js?id=G-82DHS8KM1Q"
+      >
+      </Script>
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-82DHS8KM1Q');
+          `}
+      </Script>
       <body
         className={clsx(
           `${geistSans.variable} ${geistMono.variable} antialiased`,
