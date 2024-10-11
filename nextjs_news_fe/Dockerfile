@@ -14,7 +14,8 @@ COPY . .
 
 RUN chown -R node:node /opt/app
 
-# Build the Next.js applicationUSER node
+# Build the Next.js application
+USER node
 RUN ["yarn", "build"]
-EXPOSE 3000
+EXPOSE 9000
 CMD ["yarn", "start"]
