@@ -287,7 +287,7 @@ const Home = async () => {
       </section>
 
       <Link href={banner4?.link || paths.HOME}>
-        <Image src={`${urls.baseUrl}${banner4?.image?.data?.attributes?.url}`} width={595} height={100} alt="" className="w-full hidden md:block" />
+        <Image src={`${urls.baseUrl}${banner4?.image?.data?.attributes?.url}`} width={1170} height={234} alt="" className="w-full hidden md:block" />
       </Link>
 
       <section className="hidden md:block">
@@ -304,7 +304,7 @@ const Home = async () => {
               />
             )) || null}
             <Link href={banner5?.link || paths.HOME}>
-              <Image src={`${urls.baseUrl}${banner5?.image?.data?.attributes?.url}`} width={595} height={100} alt="" className="w-full" />
+              <Image src={`${urls.baseUrl}${banner5?.image?.data?.attributes?.url}`} width={780} height={130} alt="" className="w-full" />
             </Link>
             {newsData?.slice(7, 20)?.map(((data, index) =>
               <NewsCard
@@ -359,12 +359,15 @@ const Home = async () => {
       </section>
 
       <Link href={banner6?.link || paths.HOME}>
-        <Image src={`${urls.baseUrl}${banner6?.image?.data?.attributes?.url}`} width={595} height={100} alt="" className="w-full hidden md:block" />
+        <Image src={`${urls.baseUrl}${banner6?.image?.data?.attributes?.url}`} width={1170} height={234} alt="" className="w-full hidden md:block" />
       </Link>
 
       {/* Mobile */}
       <section className="my-[20px] md:hidden">
-        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+        <p className={clsx(
+          "text-[18px] leading-[22px] text-[#980d17] font-bold p-[10px]",
+          merriweather.className
+        )}>
           Bài viết mới nhất
         </p>
         <div className="grid grid-cols-2">
@@ -375,7 +378,10 @@ const Home = async () => {
       </section>
 
       <section className="my-[20px] md:hidden">
-        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+        <p className={clsx(
+          "text-[18px] leading-[22px] text-[#980d17] font-bold p-[10px]",
+          merriweather.className
+        )}>
           {newsCat1?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
@@ -386,7 +392,10 @@ const Home = async () => {
       </section>
 
       <section className="my-[20px] md:hidden">
-        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+        <p className={clsx(
+          "text-[18px] leading-[22px] text-[#980d17] font-bold p-[10px]",
+          merriweather.className
+        )}>
           {newsCat2?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
@@ -397,7 +406,10 @@ const Home = async () => {
       </section>
 
       <section className="my-[20px] md:hidden">
-        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+        <p className={clsx(
+          "text-[18px] leading-[22px] text-[#980d17] font-bold p-[10px]",
+          merriweather.className
+        )}>
           {newsCat3?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">
@@ -408,7 +420,10 @@ const Home = async () => {
       </section>
 
       <section className="my-[20px] md:hidden">
-        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+        <p className={clsx(
+          "text-[18px] leading-[22px] text-[#980d17] font-bold p-[10px]",
+          merriweather.className
+        )}>
           {newsCat4?.attributes?.name}
         </p>
         <div className="grid grid-cols-2">

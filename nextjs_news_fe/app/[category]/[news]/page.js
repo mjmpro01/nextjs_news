@@ -40,8 +40,8 @@ const News = async ({ params: { category, news } }) => {
       <Link href={banner1?.link || paths.HOME}>
         <Image
           src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
-          width={595}
-          height={100}
+          width={1170}
+          height={234}
           alt=""
           className="w-full"
         />

@@ -29,7 +29,7 @@ const Header = async () => {
 
   return (
     <header className='inline'>
-      <DrawerMenu />
+      <DrawerMenu mappedMenuList={mappedMenuList} />
 
       <div className="flex justify-center md:justify-between items-center h-[85px] px-[16px] md:px-0 py-[16px] gap-[20px] shadow-[1px_1px_10px_rgba(0,0,0,.15)] md:shadow-none">
         <Link href={paths.HOME}>

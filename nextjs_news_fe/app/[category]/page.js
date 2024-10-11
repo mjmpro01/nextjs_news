@@ -89,8 +89,8 @@ const page = async ({ params: { category }, searchParams }) => {
             <Link href={banner1?.link || paths.HOME}>
               <Image
                 src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
-                width={595}
-                height={100}
+                width={767}
+                height={130}
                 alt=""
                 className={`w-full`}
               />

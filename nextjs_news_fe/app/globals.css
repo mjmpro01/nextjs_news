@@ -44,6 +44,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  color: inherit !important;
+}
+
 .has-hover img {
   transition: filter .6s, opacity .6s, transform .6s, box-shadow .3s;
 }

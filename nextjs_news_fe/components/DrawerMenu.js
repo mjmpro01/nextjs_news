@@ -2,11 +2,10 @@
 
 import { Bars4Icon } from "@heroicons/react/24/outline";
 import { Drawer } from 'antd'
+import Link from "next/link";
 import { useState } from "react";
 
-import { menuList } from "@/constants/menuList";
-
-const DrawerMenu = () => {
+const DrawerMenu = ({ mappedMenuList }) => {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -30,7 +29,6 @@ const DrawerMenu = () => {
         onClose={onClose}
         open={open}
         width={'70%'}
-        className="bg-[#0765ff]"
         styles={{
           header: {
             padding: '15px'
@@ -40,8 +38,8 @@ const DrawerMenu = () => {
           }
         }}
       >
-        {menuList.map((item, index) => (
-          <div key={index}>
+        {mappedMenuList.map((item, index) => (
+          <Link href={`/${item?.slug}`} key={index}>
             <p className="flex items-center justify-start gap-[4px] p-[15px]" key={index}>
               {/* {item.icon} */}
               <p className='text-[0.9rem] whitespace-nowrap'>
@@ -50,7 +48,7 @@ const DrawerMenu = () => {
             </p>
 
             <div className="border-b border-[#CCC]"></div>
-          </div>
+          </Link>
         ))}
       </Drawer>
     </>
