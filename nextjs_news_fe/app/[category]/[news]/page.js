@@ -48,7 +48,7 @@ const News = async ({ params: { category, news } }) => {
       </Link>
 
       <div className='hidden md:flex items-start gap-[10px] py-[10px]'>
-        <article className='basis-3/4'>
+        <article className='flex-1'>
           <div className='flex items-center gap-[10px] text-[14px] py-[10px]'>
             <Link href={paths.HOME} className="hover:underline hover:text-[#CCC]">Trang chủ</Link>
             <p>{"/"}</p>
@@ -75,7 +75,7 @@ const News = async ({ params: { category, news } }) => {
           </div> */}
         </article>
 
-        <div className=' basis-1/4 w-full flex flex-col gap-[20px]'>
+        <div className=' w-[310px] flex flex-col gap-[20px]'>
           <p className={clsx(
             "text-[19px] text-[#980d17] font-semibold px-[10px]",
             merriweather.className
@@ -112,8 +112,8 @@ const News = async ({ params: { category, news } }) => {
             <Image
               key={index}
               src={`${urls.baseUrl}${banner?.image?.data?.attributes?.url}`}
-              width={300}
-              height={209}
+              width={310}
+              height={310}
               className='aspect-square w-full h-auto object-cover'
               alt=''
             />

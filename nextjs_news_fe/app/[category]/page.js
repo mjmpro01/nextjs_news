@@ -62,7 +62,7 @@ const page = async ({ params: { category }, searchParams }) => {
 
       <section className="hidden md:block">
         <div className="flex items-start gap-[20px]">
-          <div className="basis-2/3 max-w-[66.666667%] flex flex-col gap-[10px]">
+          <div className="flex-1 flex flex-col gap-[10px]">
             <div className='flex flex-col bg-[#f8f8f8] py-[10px] gap-[10px] rounded-[8px]'>
               <div className='grid grid-cols-1 md:grid-cols-2'>
                 {newsList?.slice(0, 2)?.map((news, index) => (
@@ -89,7 +89,7 @@ const page = async ({ params: { category }, searchParams }) => {
             <Link href={banner1?.link || paths.HOME}>
               <Image
                 src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
-                width={767}
+                width={840}
                 height={130}
                 alt=""
                 className={`w-full`}
@@ -103,7 +103,7 @@ const page = async ({ params: { category }, searchParams }) => {
             </div>
           </div>
 
-          <div className='basis-1/3 w-full flex flex-col gap-[20px]'>
+          <div className='w-[310px] flex flex-col gap-[20px]'>
             <p className={clsx(
               "text-[19px] text-[#980d17] font-semibold px-[10px]",
               merriweather.className
@@ -145,10 +145,10 @@ const page = async ({ params: { category }, searchParams }) => {
               >
                 <Image
                   src={`${urls.baseUrl}${banner?.image?.data?.attributes?.url}` || paths.HOME}
-                  width={300}
-                  height={209}
+                  width={310}
+                  height={310}
                   alt=""
-                  className={`w-full aspect-square h-auto object-cover px-[10px]`}
+                  className={`w-full aspect-square h-auto object-cover`}
                 />
               </Link>
             )) || null}

@@ -23,7 +23,7 @@ const HeaderMenu = ({ mappedMenuList }) => {
         "md:sticky md:top-0 z-10",
         pathname === paths.HOME ? "block" : "hidden md:block"
       )}>
-        <ul className="list-none md:flex md:items-center md:flex-wrap grid grid-cols-2 gap-[8px] md:bg-[#0765ff] text-white px-[10px] py-[10px] md:py-0">
+        <ul className="list-none md:flex md:items-center md:flex-wrap grid grid-cols-2 justify-around md:bg-[#0765ff] text-white px-[10px] py-[10px] md:py-0">
           <Link href={paths.HOME}>
             <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none hover:bg-[#1b3a6b]">
               <div className='w-[14px] md:w-[18px]'>
