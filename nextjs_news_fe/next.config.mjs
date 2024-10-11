@@ -7,6 +7,12 @@ const nextConfig = {
         hostname: 'news.mjadev.xyz', // Replace with your actual domain(s)
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.xomnhau.com', // Replace with your actual domain(s)
+        port: '',
+        pathname: '/**',
       }
     ],
   },
