@@ -1,4 +1,3 @@
-import { ChatBubbleBottomCenterIcon, ShareIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -123,20 +122,20 @@ const News = async ({ params: { category, news } }) => {
       </div>
 
       <article className='md:hidden px-[10px]'>
-        <div className='flex items-center gap-[10px] text-[10px] py-[10px]'>
+        {/* <div className='flex items-center gap-[10px] text-[14px] py-[10px]'>
           <p>Trang chủ</p>
-          <p>{">"}</p>
+          <p>{"/"}</p>
           <p>{categoryData?.attributes?.name}</p>
-          <p>{">"}</p>
+          <p>{"/"}</p>
           <p>{newsData?.attributes?.title}</p>
-        </div>
+        </div> */}
 
         <div
           className='prose max-w-full prose-img:w-full'
           dangerouslySetInnerHTML={{ __html: newsData?.attributes?.content }}
         ></div>
 
-        <div className='flex justify-end gap-[10px] py-[10px] w-full'>
+        {/* <div className='flex justify-end gap-[10px] py-[10px] w-full'>
           <div className='text-[14px] flex items-center gap-[5px]'>
             <ChatBubbleBottomCenterIcon width={24} />
             <p>Bình luận</p>
@@ -146,7 +145,7 @@ const News = async ({ params: { category, news } }) => {
             <ShareIcon width={24} />
             <p>Chia sẻ</p>
           </div>
-        </div>
+        </div> */}
       </article>
 
       <div className='px-[10px] md:px-0'>

@@ -1,4 +1,3 @@
-import { HomeIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import Image from "next/image"
 import Link from 'next/link'
 
@@ -10,10 +9,13 @@ import DrawerMenu from '@/components/DrawerMenu'
 import { menuList } from '@/constants/menuList'
 import { paths } from '@/constants/paths'
 
+import HeaderMenu from './HeaderMenu'
+
 const Header = async () => {
   const categories = await categoriesApi.getCategories();
   const logo = await getLogo();
   const headerBanner = await getHeaderBanner();
+
 
   const mappedMenuList = categories.map((category) => {
     const menuItem = menuList.find(item => item?.id?.toString() === category?.id?.toString());
@@ -29,7 +31,7 @@ const Header = async () => {
     <header className='inline'>
       <DrawerMenu />
 
-      <div className="flex justify-center md:justify-between items-center h-[85px] px-[16px] md:px-0 py-[16px] gap-[20px]">
+      <div className="flex justify-center md:justify-between items-center h-[85px] px-[16px] md:px-0 py-[16px] gap-[20px] shadow-[1px_1px_10px_rgba(0,0,0,.15)] md:shadow-none">
         <Link href={paths.HOME}>
           <Image
             src={logo || images}
@@ -48,41 +50,7 @@ const Header = async () => {
         />
       </div>
 
-      <div className='p-[10px] md:hidden flex items-center bg-[#0765ff]'>
-        <input className='text-[16px] p-[2px_10px] flex-1 outline-none' />
-        <div className='flex justify-center items-center size-[28px] bg-red-500'>
-          <MagnifyingGlassIcon className='w-[18px] text-white' />
-        </div>
-      </div>
-
-      <div className="sticky top-0 z-10">
-        <ul className="list-none md:flex md:items-center md:flex-wrap grid grid-cols-2 gap-[8px] md:bg-[#0765ff] text-white px-[10px] py-[10px] md:py-0">
-          <Link href={paths.HOME}>
-            <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none hover:bg-[#1b3a6b]">
-              <div className='w-[14px] md:w-[18px]'>
-                <HomeIcon className='w-[14px] md:w-[18px]' />
-              </div>
-              <p className='text-[13px] md:text-[0.9rem] whitespace-nowrap'>
-                {"Trang chủ"}
-              </p>
-            </li>
-          </Link>
-
-          {mappedMenuList.map((item, index) => (
-            <Link href={`/${item?.slug}`} key={index} >
-              <li className="flex items-center justify-center md:justify-start gap-[4px] p-[10px] bg-[#0765ff] md:bg-none hover:bg-[#1b3a6b]" >
-                {/* <div className='w-[14px] md:w-[18px]'>
-                {item.icon}
-              </div> */}
-                <p className='text-[13px] md:text-[0.9rem] whitespace-nowrap'>
-                  {item.name}
-                </p>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-
+      <HeaderMenu mappedMenuList={mappedMenuList} />
     </header>
   )
 }
