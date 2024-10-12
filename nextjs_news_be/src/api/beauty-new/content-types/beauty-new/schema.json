@@ -14,7 +14,8 @@
   "attributes": {
     "title": {
       "type": "string",
-      "unique": true
+      "unique": true,
+      "required": true
     },
     "slug": {
       "type": "string",

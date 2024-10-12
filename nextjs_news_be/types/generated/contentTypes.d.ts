@@ -875,7 +875,7 @@ export interface ApiBeautyNewBeautyNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Unique;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String & Attribute.Unique;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -922,7 +922,7 @@ export interface ApiBusinessNewBusinessNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -969,7 +969,7 @@ export interface ApiCarNewCarNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -1082,7 +1082,7 @@ export interface ApiDiningNewDiningNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -1129,7 +1129,7 @@ export interface ApiEventNewEventNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -1229,7 +1229,7 @@ export interface ApiNewNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -1301,7 +1301,7 @@ export interface ApiRealEstateNewRealEstateNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -1348,7 +1348,7 @@ export interface ApiShoppingNewShoppingNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -1395,7 +1395,7 @@ export interface ApiTechnicalNewTechnicalNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
@@ -1442,7 +1442,7 @@ export interface ApiTravelNewTravelNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText &
