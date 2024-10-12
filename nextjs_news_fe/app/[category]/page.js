@@ -66,13 +66,13 @@ const page = async ({ params: { category }, searchParams }) => {
             <div className='flex flex-col bg-[#f8f8f8] py-[10px] gap-[10px] rounded-[8px]'>
               <div className='grid grid-cols-1 md:grid-cols-2'>
                 {newsList?.slice(0, 2)?.map((news, index) => (
-                  <NewsCard titleSmall={false} hasExcerpt={true} key={index} data={news} hasDate />
+                  <NewsCard titleSmall={false} hasExcerpt={true} key={index} data={news} />
                 )) || null}
               </div>
 
               <div className="hidden md:grid grid-cols-3">
                 {newsList?.slice(3, 6)?.map((news, index) => (
-                  <NewsCard titleSmall={false} hasExcerpt={true} key={index} data={news} hasDate />
+                  <NewsCard titleSmall={false} hasExcerpt={true} key={index} data={news} />
                 )) || null}
               </div>
 
@@ -84,7 +84,7 @@ const page = async ({ params: { category }, searchParams }) => {
             </div>
 
             {newsList?.slice(7, 13)?.map((news, index) => (
-              <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} data={news} key={index} />
+              <NewsCard isHorizontal bigThumbHorizontal titleSmall={false} data={news} key={index} />
             )) || null}
             <Link href={banner1?.link || paths.HOME}>
               <Image
@@ -96,7 +96,7 @@ const page = async ({ params: { category }, searchParams }) => {
               />
             </Link>
             {newsList?.slice(14, 25)?.map((news, index) => (
-              <NewsCard isHorizontal bigThumbHorizontal hasDate titleSmall={false} data={news} key={index} />
+              <NewsCard isHorizontal bigThumbHorizontal titleSmall={false} data={news} key={index} />
             )) || null}
             <div className="flex items-center justify-center my-[20px]">
               <PaginationComponent pagination={pagination} />
@@ -117,7 +117,6 @@ const page = async ({ params: { category }, searchParams }) => {
                 bigThumbHorizontal
                 hasExcerpt={false}
                 data={news}
-                hasDate
               />
             )) || null}
 
@@ -134,7 +133,6 @@ const page = async ({ params: { category }, searchParams }) => {
                 bigThumbHorizontal
                 hasExcerpt={false}
                 data={news}
-                hasDate
               />
             )) || null}
 

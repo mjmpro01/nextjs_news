@@ -26,10 +26,13 @@ const NewsCard = ({
   if (isHorizontal) {
     return (
       <Link href={newsUrl} >
-        <div className='table px-[10px] py-[7px] has-hover relative'>
+        <div className={clsx(
+          'grid px-[10px] has-hover relative',
+          bigThumbHorizontal ? 'grid-cols-[40%_1fr]' : 'grid-cols-[80px_1fr]'
+        )}>
           <div className={clsx(
-            'table-cell h-auto align-middle overflow-hidden rounded-[8px]',
-            bigThumbHorizontal ? 'w-[30%]' : 'w-[20%] py-[10px]'
+            'h-auto align-middle overflow-hidden rounded-[8px] py-0 w-full',
+            // bigThumbHorizontal ? 'w-[30%]' : 'w-[30%] py-[10px]'
           )}>
             <Image
               src={`${urls.baseUrl}${data?.attributes?.avatar?.data?.attributes?.url || ''}`}
@@ -44,9 +47,13 @@ const NewsCard = ({
           </div>
           <div className='pl-[10px]'>
             <h3 className={clsx(
-              'my-[2px] font-semibold hover:text-[#0765ff]',
+              'font-semibold hover:text-[#0765ff] text-ellipsis line-clamp-3',
               merriweather.className,
-              titleSmall ? 'text-[15px]' : titleLarge ? 'text-[20px]' : 'text-[18px]'
+              titleSmall
+                ? 'text-[15px] leading-[26px]'
+                : titleLarge
+                  ? 'text-[20px] my-[2px]'
+                  : 'text-[18px] my-[2px]'
             )}>
               {data?.attributes?.title}
             </h3>

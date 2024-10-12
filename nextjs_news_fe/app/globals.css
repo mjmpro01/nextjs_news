@@ -54,7 +54,7 @@ a {
 
 .has-hover:hover img {
   transform: scale(1.1);
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 
 .prose {

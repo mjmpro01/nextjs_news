@@ -41,7 +41,6 @@ const Home = async () => {
                     titleSmall={false}
                     titleLarge
                     data={outstandingNews?.[0]}
-                    hasDate
                   />
                   <div className="flex">
                     {outstandingNews?.slice(1, 4)?.map((data, index) => (
@@ -49,7 +48,6 @@ const Home = async () => {
                         key={index}
                         hasExcerpt={false}
                         data={data}
-                        hasDate
                       />
                     )) || null}
                   </div>
@@ -75,15 +73,16 @@ const Home = async () => {
                   <div className="px-[10px]">
                     <div className="w-full border-b border-b-[#CCC]" />
                   </div>
-                  {outstandingNews?.slice(11, 16)?.map(((data, index) => (
-                    <NewsCard
-                      key={index}
-                      isHorizontal
-                      hasExcerpt={false}
-                      data={data}
-                      hasDate
-                    />
-                  ))) || null}
+                  <div className="flex flex-col gap-[10px] py-[10px]">
+                    {outstandingNews?.slice(11, 16)?.map(((data, index) => (
+                      <NewsCard
+                        key={index}
+                        isHorizontal
+                        hasExcerpt={false}
+                        data={data}
+                      />
+                    ))) || null}
+                  </div>
                 </div>
               </div>
             </div>
@@ -143,7 +142,6 @@ const Home = async () => {
           {newsCat1?.attributes?.news?.data?.slice(0, 3)?.map(((data, index) => (
             <NewsCard
               key={index}
-              hasDate
               titleSmall={false}
               data={data}
             />
@@ -156,7 +154,6 @@ const Home = async () => {
               key={index}
               hasExcerpt={false}
               data={data}
-              hasDate
             />
           ))) || null}
         </div>
@@ -186,7 +183,6 @@ const Home = async () => {
             <NewsCard
               titleSmall={false}
               data={newsCat2?.attributes?.news?.data?.[0]}
-              hasDate
             />
           </div>
           <div className="basis-1/2 max-w-[50%]">
@@ -196,7 +192,6 @@ const Home = async () => {
                   key={index}
                   hasExcerpt={false}
                   data={data}
-                  hasDate
                 />
               ))) || null}
             </div>
@@ -222,7 +217,7 @@ const Home = async () => {
         </div>
         <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
-        <div className="flex items-center">
+        <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
               {newsCat3?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
@@ -230,7 +225,6 @@ const Home = async () => {
                   key={index}
                   hasExcerpt={false}
                   data={data}
-                  hasDate
                 />
               ))) || null}
             </div>
@@ -240,7 +234,6 @@ const Home = async () => {
             <NewsCard
               titleSmall={false}
               data={newsCat3?.attributes?.news?.data?.[0]}
-              hasDate
             />
           </div>
         </div>
@@ -264,7 +257,7 @@ const Home = async () => {
         </div>
         <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
-        <div className="flex items-center">
+        <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
             <NewsCard
               titleSmall={false}
@@ -278,7 +271,6 @@ const Home = async () => {
                   key={index}
                   hasExcerpt={false}
                   data={data}
-                  hasDate
                 />
               ))) || null}
             </div>
@@ -292,12 +284,11 @@ const Home = async () => {
 
       <section className="hidden md:block">
         <div className="flex items-start">
-          <div className="basis-2/3 max-w-[66.666667%] flex flex-col">
+          <div className="basis-2/3 max-w-[66.666667%] flex flex-col gap-[10px] py-[10px]">
             {newsData?.slice(0, 6)?.map(((data, index) =>
               <NewsCard
                 isHorizontal
                 bigThumbHorizontal
-                hasDate
                 titleSmall={false}
                 key={index}
                 data={data}
@@ -310,7 +301,6 @@ const Home = async () => {
               <NewsCard
                 isHorizontal
                 bigThumbHorizontal
-                hasDate
                 titleSmall={false}
                 key={index}
                 data={data}
@@ -347,7 +337,6 @@ const Home = async () => {
                         hasExcerpt={false}
                         key={index}
                         data={news}
-                        hasDate
                       />
                     )) || null}
                   </div>

@@ -52,10 +52,14 @@ const News = async ({ params: { category, news } }) => {
           <div className='flex items-center gap-[10px] text-[14px] py-[10px]'>
             <Link href={paths.HOME} className="hover:underline hover:text-[#CCC]">Trang chủ</Link>
             <p>{"/"}</p>
-            <Link href={`${paths.HOME}/${category}`} className="hover:underline hover:text-[#CCC]">{categoryData?.attributes?.name}</Link>
+            <Link href={`${paths.HOME}${category}`} className="hover:underline hover:text-[#CCC]">{categoryData?.attributes?.name}</Link>
             <p>{"/"}</p>
             <p>{newsData?.attributes?.title}</p>
           </div>
+
+          <h1 className='mb-[16px] text-[32px] font-bold'>
+            {newsData?.attributes?.title}
+          </h1>
 
           <div
             className='prose max-w-full prose-img:w-full'
