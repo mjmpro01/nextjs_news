@@ -84,6 +84,7 @@ export default {
           },
           is_outstanding: commonNew?.is_outstanding || false,
           short_description: commonNew?.short_description || "",
+          publishedAt: commonNew?.publishedAt,
         },
       });
     } else {
@@ -93,6 +94,7 @@ export default {
           content: commonNew.content,
           is_outstanding: commonNew?.is_outstanding || false,
           short_description: commonNew?.short_description || "",
+          publishedAt: commonNew?.publishedAt,
         },
       });
     }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-08T14:51:35.666Z"
+    "x-generation-date": "2024-10-12T00:47:31.805Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1394,6 +1394,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -1445,6 +1449,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -2496,6 +2504,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -2547,6 +2559,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -3598,6 +3614,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -3649,6 +3669,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -4540,6 +4564,10 @@
                           "format": "date-time"
                         },
                         "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "publishedAt": {
                           "type": "string",
                           "format": "date-time"
                         },
@@ -5796,6 +5824,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -5847,6 +5879,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -6895,6 +6931,10 @@
                         "format": "date-time"
                       },
                       "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "publishedAt": {
                         "type": "string",
                         "format": "date-time"
                       },
@@ -9487,6 +9527,10 @@
                                       "type": "string",
                                       "format": "date-time"
                                     },
+                                    "publishedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
                                     "createdBy": {
                                       "type": "object",
                                       "properties": {
@@ -9587,6 +9631,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -10794,6 +10842,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -10845,6 +10897,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -11896,6 +11952,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -11947,6 +12007,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -12998,6 +13062,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -13049,6 +13117,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -14100,6 +14172,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -14151,6 +14227,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },

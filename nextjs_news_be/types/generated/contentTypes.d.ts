@@ -872,7 +872,7 @@ export interface ApiBeautyNewBeautyNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String & Attribute.Unique;
@@ -894,6 +894,7 @@ export interface ApiBeautyNewBeautyNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::beauty-new.beauty-new',
       'oneToOne',
@@ -918,7 +919,7 @@ export interface ApiBusinessNewBusinessNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -940,6 +941,7 @@ export interface ApiBusinessNewBusinessNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::business-new.business-new',
       'oneToOne',
@@ -964,7 +966,7 @@ export interface ApiCarNewCarNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -982,6 +984,7 @@ export interface ApiCarNewCarNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::car-new.car-new',
       'oneToOne',
@@ -1076,7 +1079,7 @@ export interface ApiDiningNewDiningNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -1098,6 +1101,7 @@ export interface ApiDiningNewDiningNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::dining-new.dining-new',
       'oneToOne',
@@ -1222,7 +1226,7 @@ export interface ApiNewNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -1244,6 +1248,7 @@ export interface ApiNewNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
@@ -1256,7 +1261,7 @@ export interface ApiNewDetailBannerNewDetailBanner extends Schema.SingleType {
   info: {
     singularName: 'new-detail-banner';
     pluralName: 'new-detail-banners';
-    displayName: 'new detail banner';
+    displayName: 'Banner cho trang chi ti\u1EBFt tin t\u1EE9c';
   };
   options: {
     draftAndPublish: true;
@@ -1293,7 +1298,7 @@ export interface ApiRealEstateNewRealEstateNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -1315,6 +1320,7 @@ export interface ApiRealEstateNewRealEstateNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::real-estate-new.real-estate-new',
       'oneToOne',
@@ -1339,7 +1345,7 @@ export interface ApiShoppingNewShoppingNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -1361,6 +1367,7 @@ export interface ApiShoppingNewShoppingNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::shopping-new.shopping-new',
       'oneToOne',
@@ -1385,7 +1392,7 @@ export interface ApiTechnicalNewTechnicalNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -1407,6 +1414,7 @@ export interface ApiTechnicalNewTechnicalNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::technical-new.technical-new',
       'oneToOne',
@@ -1431,7 +1439,7 @@ export interface ApiTravelNewTravelNew extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
@@ -1453,6 +1461,7 @@ export interface ApiTravelNewTravelNew extends Schema.CollectionType {
     short_description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::travel-new.travel-new',
       'oneToOne',
