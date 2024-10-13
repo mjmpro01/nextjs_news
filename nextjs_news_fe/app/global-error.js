@@ -20,16 +20,19 @@ export default function GlobalError({
               <p className="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl">
                 {'Có lỗi xảy ra'}
               </p>
-              <p className="mb-4 text-xl font-light text-gray-500">
+              {/* <p className="mb-4 text-xl font-light text-gray-500">
                 {error?.message}
-              </p>
-              <button onClick={() => resetErrorBoundary()}>Thử lại</button>
-              <Link
-                href={paths.HOME}
-                className="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center my-4"
-              >
-                {'Quay lại trang chủ'}
-              </Link>
+              </p> */}
+              <div className="flex flex-col gap-4 items-center justify-center">
+                <button onClick={() => resetErrorBoundary()}>Thử lại</button>
+                <p>hoặc</p>
+                <Link
+                  href={paths.HOME}
+                  className="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center my-4"
+                >
+                  {'Quay lại trang chủ'}
+                </Link>
+              </div>
             </div>
           </div>
         </section>

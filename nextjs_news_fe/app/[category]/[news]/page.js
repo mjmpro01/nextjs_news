@@ -32,20 +32,23 @@ const News = async ({ params: { category, news } }) => {
     return notFound();
   }
 
-  const allNews = await newsApi.getAllNews();
+  const outstandingNews = await newsApi.getOutstandingNews();
+  const { data: notOutstandingNews } = await newsApi.getNotOutstandingNews();
   const categoryData = await categoriesApi.getCategoryBySlug(category)
 
   return (
     <>
-      <Link href={banner1?.link || paths.HOME}>
-        <Image
-          src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
-          width={1170}
-          height={234}
-          alt=""
-          className="w-full"
-        />
-      </Link>
+      {banner1?.image?.data?.attributes?.url && (
+        <Link href={banner1?.link || paths.HOME}>
+          <Image
+            src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
+            width={1170}
+            height={234}
+            alt=""
+            className="w-full mt-4"
+          />
+        </Link>
+      )}
 
       <div className='hidden md:flex items-start gap-[10px] py-[10px]'>
         <article className='flex-1'>
@@ -53,8 +56,6 @@ const News = async ({ params: { category, news } }) => {
             <Link href={paths.HOME} className="hover:underline hover:text-[#CCC]">Trang chủ</Link>
             <p>{"/"}</p>
             <Link href={`${paths.HOME}${category}`} className="hover:underline hover:text-[#CCC]">{categoryData?.attributes?.name}</Link>
-            <p>{"/"}</p>
-            <p>{newsData?.attributes?.title}</p>
           </div>
 
           <h1 className='mb-[16px] text-[32px] font-bold'>
@@ -86,7 +87,7 @@ const News = async ({ params: { category, news } }) => {
           )}>
             Bài mới
           </p>
-          {allNews?.slice(0, 5)?.map((news, index) => (
+          {notOutstandingNews?.slice(0, 5)?.map((news, index) => (
             <NewsCard
               key={index}
               isHorizontal
@@ -102,7 +103,7 @@ const News = async ({ params: { category, news } }) => {
           )}>
             Bài nổi bật
           </p>
-          {allNews?.filter(news => news?.attributes?.is_outstanding)?.slice(0, 5)?.map((news, index) => (
+          {outstandingNews?.filter(news => news?.attributes?.is_outstanding)?.slice(0, 5)?.map((news, index) => (
             <NewsCard
               key={index}
               isHorizontal
@@ -112,16 +113,19 @@ const News = async ({ params: { category, news } }) => {
             />
           )) || null}
 
-          {[banner2, banner3, banner4]?.map((banner, index) => (
-            <Image
-              key={index}
-              src={`${urls.baseUrl}${banner?.image?.data?.attributes?.url}`}
-              width={310}
-              height={310}
-              className='aspect-square w-full h-auto object-cover'
-              alt=''
-            />
-          )) || null}
+          {[banner2, banner3, banner4]?.map((banner, index) => {
+            if (!banner?.image?.data?.attributes?.url) return null
+            return (
+              <Image
+                key={index}
+                src={`${urls.baseUrl}${banner?.image?.data?.attributes?.url}`}
+                width={310}
+                height={310}
+                className='aspect-square w-full h-auto object-cover'
+                alt=''
+              />
+            )
+          })}
         </div>
       </div>
 

@@ -28,7 +28,8 @@ const page = async ({ params: { category }, searchParams }) => {
     return notFound();
   }
 
-  const newsData = await newsApi.getAllNews();
+  const outstandingNews = await newsApi.getOutstandingNews();
+  const { data: notOutstandingNews } = await newsApi.getNotOutstandingNews();
 
   const { data: newsList, pagination } = await newsApi.getNewsByCategorySlug(category, searchParams)
 
@@ -86,15 +87,17 @@ const page = async ({ params: { category }, searchParams }) => {
             {newsList?.slice(7, 13)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal titleSmall={false} data={news} key={index} />
             )) || null}
-            <Link href={banner1?.link || paths.HOME}>
-              <Image
-                src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
-                width={840}
-                height={130}
-                alt=""
-                className={`w-full`}
-              />
-            </Link>
+            {banner1?.image?.data?.attributes?.url && (
+              <Link href={banner1?.link || paths.HOME}>
+                <Image
+                  src={`${urls.baseUrl}${banner1?.image?.data?.attributes?.url}`}
+                  width={840}
+                  height={130}
+                  alt=""
+                  className={`w-full`}
+                />
+              </Link>
+            )}
             {newsList?.slice(14, 25)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal titleSmall={false} data={news} key={index} />
             )) || null}
@@ -110,7 +113,7 @@ const page = async ({ params: { category }, searchParams }) => {
             )}>
               Bài mới
             </p>
-            {newsData?.slice(0, 5)?.map((news, index) => (
+            {notOutstandingNews?.slice(0, 5)?.map((news, index) => (
               <NewsCard
                 key={index}
                 isHorizontal
@@ -126,7 +129,7 @@ const page = async ({ params: { category }, searchParams }) => {
             )}>
               Bài nổi bật
             </p>
-            {newsData?.filter(news => news?.attributes?.is_outstanding).slice(0, 5)?.map((news, index) => (
+            {outstandingNews?.filter(news => news?.attributes?.is_outstanding).slice(0, 5)?.map((news, index) => (
               <NewsCard
                 key={index}
                 isHorizontal
@@ -136,32 +139,42 @@ const page = async ({ params: { category }, searchParams }) => {
               />
             )) || null}
 
-            {[banner2, banner3, banner4]?.map((banner, index) => (
-              <Link
-                key={index}
-                href={banner?.link || paths.HOME}
-              >
-                <Image
-                  src={`${urls.baseUrl}${banner?.image?.data?.attributes?.url}` || paths.HOME}
-                  width={310}
-                  height={310}
-                  alt=""
-                  className={`w-full aspect-square h-auto object-cover`}
-                />
-              </Link>
-            )) || null}
+            {[banner2, banner3, banner4]?.map((banner, index) => {
+              if (!banner?.image?.data?.attributes?.url) return null;
+
+              return (
+                <Link
+                  key={index}
+                  href={banner?.link || paths.HOME}
+                >
+                  <Image
+                    src={`${urls.baseUrl}${banner?.image?.data?.attributes?.url}` || paths.HOME}
+                    width={310}
+                    height={310}
+                    alt=""
+                    className={`w-full aspect-square h-auto object-cover`}
+                  />
+                </Link>
+              )
+            }) || null}
           </div>
         </div>
       </section>
 
       <section className="md:hidden py-[10px]">
-        <p className="text-[18px] leading-[22px] text-[#0A0103] p-[10px]">
+        <p className={clsx(
+          "text-[19px] p-[10px] text-[#980d17] font-bold",
+          merriweather.className
+        )}>
           Tin mới
         </p>
         <div className="grid grid-cols-2">
-          {newsData?.slice(0, 6)?.map((news, index) =>
+          {newsList?.slice(7, 25)?.map((news, index) =>
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
           ) || null}
+        </div>
+        <div className="flex items-center justify-center my-[20px]">
+          <PaginationComponent pagination={pagination} />
         </div>
       </section>
     </>

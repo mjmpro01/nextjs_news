@@ -30,21 +30,23 @@ const NewsCard = ({
           'grid px-[10px] has-hover relative',
           bigThumbHorizontal ? 'grid-cols-[40%_1fr]' : 'grid-cols-[80px_1fr]'
         )}>
-          <div className={clsx(
-            'h-auto align-middle overflow-hidden rounded-[8px] py-0 w-full',
-            // bigThumbHorizontal ? 'w-[30%]' : 'w-[30%] py-[10px]'
-          )}>
-            <Image
-              src={`${urls.baseUrl}${data?.attributes?.avatar?.data?.attributes?.url || ''}`}
-              width={300}
-              height={168}
-              alt=''
-              className={clsx(
-                'w-full object-cover object-center',
-                !bigThumbHorizontal ? "aspect-square" : "aspect-[740/493]"
-              )}
-            />
-          </div>
+          {data?.attributes?.avatar?.data?.attributes?.url && (
+            <div className={clsx(
+              'h-auto align-middle overflow-hidden rounded-[8px] py-0 w-full',
+              // bigThumbHorizontal ? 'w-[30%]' : 'w-[30%] py-[10px]'
+            )}>
+              <Image
+                src={`${urls.baseUrl}${data?.attributes?.avatar?.data?.attributes?.url || ''}`}
+                width={300}
+                height={168}
+                alt=''
+                className={clsx(
+                  'w-full object-cover object-center',
+                  !bigThumbHorizontal ? "aspect-square" : "aspect-[740/493]"
+                )}
+              />
+            </div>
+          )}
           <div className='pl-[10px]'>
             <h3 className={clsx(
               'font-semibold hover:text-[#0765ff] text-ellipsis line-clamp-3',
@@ -77,7 +79,7 @@ const NewsCard = ({
   return (
     <Link href={newsUrl} >
       <div className='px-[10px] has-hover'>
-        {hasThumbnail &&
+        {hasThumbnail && data?.attributes?.avatar?.data?.attributes?.url &&
           <div className='overflow-hidden rounded-[8px]'>
             <Image
               src={`${urls.baseUrl}${data?.attributes?.avatar?.data?.attributes?.url || ''}`}

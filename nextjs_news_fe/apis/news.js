@@ -73,6 +73,7 @@ const getOutstandingNews = async () => {
     headers: {
       'Content-Type': 'application/json',
     },
+    cache: 'no-store'
   })
 
   if (!res.ok) {
@@ -86,6 +87,38 @@ const getOutstandingNews = async () => {
   }
 
   return body?.data
+}
+
+const getNotOutstandingNews = async (page) => {
+  const params = {
+    ...newsUrlParams.newsCardParams,
+    "filters[is_outstanding]": false,
+    'pagination[pageSize]': 16,
+    'pagination[page]': page || 1,
+  }
+  const endpoint = `${urls.baseUrl}/api${apiPaths.NEWS}?${queryString.stringify(params)}`
+  const res = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store'
+  })
+
+  if (!res.ok) {
+    throw new Error(`Failed to getOutstandingNews: ${res.status} ${JSON.stringify(res)}`);
+  }
+
+  const body = await res.json();
+
+  if (body?.errors) {
+    throw body?.errors?.message
+  }
+
+  return {
+    data: body?.data || [],
+    pagination: body?.meta?.pagination,
+  }
 }
 
 const getNewsByCategorySlug = async (slug, searchParams) => {
@@ -105,6 +138,7 @@ const getNewsByCategorySlug = async (slug, searchParams) => {
     headers: {
       'Content-Type': 'application/json',
     },
+    cache: 'no-store'
   })
 
   if (!res.ok) {
@@ -127,6 +161,7 @@ const newsApi = {
   getAllNews,
   getNewsBySlug,
   getOutstandingNews,
+  getNotOutstandingNews,
   getNewsByCategorySlug
 }
 

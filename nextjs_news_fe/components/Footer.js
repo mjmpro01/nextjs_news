@@ -2,12 +2,13 @@ import Image from "next/image"
 import Link from "next/link"
 
 import categoriesApi from "@/apis/categories"
+import { getLogo } from "@/apis/logo"
 import { images } from "@/assets/images"
 import { paths } from "@/constants/paths"
 
 const Footer = async () => {
   const categories = await categoriesApi.getCategories();
-
+  const logo = await getLogo();
 
   return (
     <footer>
@@ -15,7 +16,7 @@ const Footer = async () => {
       <div className="flex flex-col md:grid md:grid-cols-[1fr_250px_250px_250px] md:mx-[-16px]">
         <div className="p-[16px] w-full">
           <Image
-            src={images.logo}
+            src={logo || images.logo}
             alt="logo"
             width={230}
             height={60}
