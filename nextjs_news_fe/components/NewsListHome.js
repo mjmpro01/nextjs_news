@@ -15,14 +15,15 @@ const NewsListHome = ({ banner5 }) => {
   const [initList, setInitList] = useState([])
   const [newsList, setNewsList] = useState([])
   const [page, setPage] = useState(3)
-  const [isShowLoadMore, setIsShowLoadMore] = useState(false);
-
+  const [isShowLoadMore, setIsShowLoadMore] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const { data: notOutstandingNews, pagination } = await newsApi.getNotOutstandingNews(2);
 
-      if (pagination?.page !== pagination?.pageCount) setIsShowLoadMore(true)
+      if (pagination?.page === pagination?.pageCount || pagination?.page > pagination?.pageCount) {
+        setIsShowLoadMore(false)
+      }
 
       setInitList(notOutstandingNews)
     }
@@ -32,7 +33,9 @@ const NewsListHome = ({ banner5 }) => {
 
   const loadMoreNews = async (nextPage) => {
     const { data: notOutstandingNews, pagination } = await newsApi.getNotOutstandingNews(nextPage);
-    if (pagination?.page !== pagination?.pageCount) setIsShowLoadMore(true)
+    if (pagination?.page === pagination?.pageCount || pagination?.page > pagination?.pageCount) {
+      setIsShowLoadMore(false)
+    }
 
     setNewsList([...newsList, ...notOutstandingNews])
     setPage(nextPage + 1)

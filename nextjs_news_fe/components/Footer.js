@@ -54,7 +54,7 @@ const Footer = async () => {
               </li>
             </Link>
             {categories?.map((category, index) => (
-              <Link href={`/${category?.slug}`} key={index} >
+              <Link href={`/${category?.attributes?.slug}`} key={index} >
                 <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
                   {category?.attributes?.name}
                 </li>
