@@ -14,8 +14,7 @@ import HeaderMenu from './HeaderMenu'
 const Header = async () => {
   const categories = await categoriesApi.getCategories();
   const logo = await getLogo();
-  const headerBanner = await getHeaderBanner();
-
+  const { url, link } = await getHeaderBanner();
 
   const mappedMenuList = categories.map((category) => {
     const menuItem = menuList.find(item => item?.id?.toString() === category?.id?.toString());
@@ -41,13 +40,15 @@ const Header = async () => {
             className="w-[172px] md:w-[230px] h-[44px] md:h-[60px]"
           />
         </Link>
-        <Image
-          src={headerBanner}
-          width={818}
-          height={75}
-          alt="banner1"
-          className='md:block hidden p-[10px]'
-        />
+        <Link href={link} target="_blank">
+          <Image
+            src={url}
+            width={818}
+            height={75}
+            alt="banner1"
+            className='md:block hidden p-[10px]'
+          />
+        </Link>
       </div>
 
       <HeaderMenu mappedMenuList={mappedMenuList} />

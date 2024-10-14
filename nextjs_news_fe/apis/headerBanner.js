@@ -26,5 +26,8 @@ export const getHeaderBanner = async () => {
     throw body?.errors?.message
   }
 
-  return `${urls.baseUrl}${body?.data?.attributes?.image?.data?.attributes?.url}`
+  return {
+    url: `${urls.baseUrl}${body?.data?.attributes?.image?.data?.attributes?.url}`,
+    link: body?.data?.attributes?.link
+  }
 }

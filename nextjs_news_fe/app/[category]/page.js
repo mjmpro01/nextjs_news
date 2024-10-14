@@ -49,13 +49,14 @@ const page = async ({ params: { category }, searchParams }) => {
         </div>
 
         <div className="hidden md:grid grid-cols-3">
-          {newsList?.slice(3, 6)?.map((news, index) => (
+          {newsList?.slice(2, 5)?.map((news, index) => (
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
           )) || null}
         </div>
 
+        {/* Mobile */}
         <div className="grid md:hidden grid-cols-2">
-          {newsList?.slice(3, 7)?.map((news, index) => (
+          {newsList?.slice(2, 6)?.map((news, index) => (
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
           )) || null}
         </div>
@@ -72,19 +73,19 @@ const page = async ({ params: { category }, searchParams }) => {
               </div>
 
               <div className="hidden md:grid grid-cols-3">
-                {newsList?.slice(3, 6)?.map((news, index) => (
+                {newsList?.slice(2, 5)?.map((news, index) => (
                   <NewsCard titleSmall={false} hasExcerpt={true} key={index} data={news} />
                 )) || null}
               </div>
 
               <div className="grid md:hidden grid-cols-2">
-                {newsList?.slice(3, 7)?.map((news, index) => (
+                {newsList?.slice(2, 6)?.map((news, index) => (
                   <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
                 )) || null}
               </div>
             </div>
 
-            {newsList?.slice(7, 13)?.map((news, index) => (
+            {newsList?.slice(5, 13)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal titleSmall={false} data={news} key={index} />
             )) || null}
             {banner1?.image?.data?.attributes?.url && (
@@ -98,7 +99,7 @@ const page = async ({ params: { category }, searchParams }) => {
                 />
               </Link>
             )}
-            {newsList?.slice(14, 25)?.map((news, index) => (
+            {newsList?.slice(13, 25)?.map((news, index) => (
               <NewsCard isHorizontal bigThumbHorizontal titleSmall={false} data={news} key={index} />
             )) || null}
             <div className="flex items-center justify-center my-[20px]">
@@ -161,6 +162,7 @@ const page = async ({ params: { category }, searchParams }) => {
         </div>
       </section>
 
+      {/* Mobile */}
       <section className="md:hidden py-[10px]">
         <p className={clsx(
           "text-[19px] p-[10px] text-[#980d17] font-bold",
@@ -169,7 +171,7 @@ const page = async ({ params: { category }, searchParams }) => {
           Tin mới
         </p>
         <div className="grid grid-cols-2">
-          {newsList?.slice(7, 25)?.map((news, index) =>
+          {newsList?.slice(6, 25)?.map((news, index) =>
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
           ) || null}
         </div>
