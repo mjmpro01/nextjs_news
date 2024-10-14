@@ -150,13 +150,14 @@ const Home = async () => {
         </div>
       </section>
 
-      <section className="hidden md:block py-[10px]">
+      <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className={clsx(
             "text-[19px] mb-[10px] text-[#980d17] font-bold",
             merriweather.className
           )}>
             {newsCat?.[0]?.attributes?.name}
+
           </p>
           <Link
             className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
@@ -166,26 +167,26 @@ const Home = async () => {
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
           </Link>
         </div>
-        <div className="w-full border-b border-b-[#CCC]" />
+        <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
-        <div className="grid grid-cols-3 my-[10px]">
-          {newsCat?.[0]?.attributes?.news?.data?.slice(0, 3)?.map(((data, index) => (
+        <div className="flex items-start">
+          <div className="basis-1/2 max-w-[50%]">
             <NewsCard
-              key={index}
               titleSmall={false}
-              data={data}
+              data={newsCat?.[0]?.attributes?.news?.data?.[0]}
             />
-          ))) || null}
-        </div>
-
-        <div className="grid grid-cols-4">
-          {newsCat?.[0]?.attributes?.news?.data?.slice(3, 7)?.map(((data, index) => (
-            <NewsCard
-              key={index}
-              hasExcerpt={false}
-              data={data}
-            />
-          ))) || null}
+          </div>
+          <div className="basis-1/2 max-w-[50%]">
+            <div className="grid grid-cols-3 grid-rows-2 gap-[10px]">
+              {newsCat?.[0]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
+                <NewsCard
+                  key={index}
+                  hasExcerpt={false}
+                  data={data}
+                />
+              ))) || null}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -196,7 +197,6 @@ const Home = async () => {
             merriweather.className
           )}>
             {newsCat?.[1]?.attributes?.name}
-
           </p>
           <Link
             className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
@@ -210,13 +210,7 @@ const Home = async () => {
 
         <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard
-              titleSmall={false}
-              data={newsCat?.[1]?.attributes?.news?.data?.[0]}
-            />
-          </div>
-          <div className="basis-1/2 max-w-[50%]">
-            <div className="grid grid-cols-3 grid-rows-2 gap-[10px]">
+            <div className="grid grid-cols-3 grid-rows-2">
               {newsCat?.[1]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
@@ -225,6 +219,13 @@ const Home = async () => {
                 />
               ))) || null}
             </div>
+          </div>
+
+          <div className="basis-1/2 max-w-[50%]">
+            <NewsCard
+              titleSmall={false}
+              data={newsCat?.[1]?.attributes?.news?.data?.[0]}
+            />
           </div>
         </div>
       </section>
@@ -249,6 +250,12 @@ const Home = async () => {
 
         <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
+            <NewsCard
+              titleSmall={false}
+              data={newsCat?.[2]?.attributes?.news?.data?.[0]}
+            />
+          </div>
+          <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
               {newsCat?.[2]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
@@ -258,13 +265,6 @@ const Home = async () => {
                 />
               ))) || null}
             </div>
-          </div>
-
-          <div className="basis-1/2 max-w-[50%]">
-            <NewsCard
-              titleSmall={false}
-              data={newsCat?.[2]?.attributes?.news?.data?.[0]}
-            />
           </div>
         </div>
       </section>
@@ -289,12 +289,6 @@ const Home = async () => {
 
         <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
-            <NewsCard
-              titleSmall={false}
-              data={newsCat?.[3]?.attributes?.news?.data?.[0]}
-            />
-          </div>
-          <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
               {newsCat?.[3]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
@@ -304,6 +298,13 @@ const Home = async () => {
                 />
               ))) || null}
             </div>
+          </div>
+
+          <div className="basis-1/2 max-w-[50%]">
+            <NewsCard
+              titleSmall={false}
+              data={newsCat?.[3]?.attributes?.news?.data?.[0]}
+            />
           </div>
         </div>
       </section>

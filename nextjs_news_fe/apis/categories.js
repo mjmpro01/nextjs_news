@@ -105,7 +105,7 @@ const getAllNewsCategorySlugs = async () => {
     "populate[news][fields][0]": "slug"
   }
 
-  const endpoint = `${urls.baseUrl}/api/${apiPaths.CATEGORIES}?${queryString.stringify(params)}`
+  const endpoint = `${urls.baseUrl}/api${apiPaths.CATEGORIES}?${queryString.stringify(params)}`
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {

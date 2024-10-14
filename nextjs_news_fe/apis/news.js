@@ -121,6 +121,67 @@ const getNotOutstandingNews = async (page) => {
   }
 }
 
+const getOutstandingNewsCategory = async (categorySlug) => {
+  const params = {
+    ...newsUrlParams.allOutStandingNewsParams,
+    'filters[category][slug]': categorySlug,
+    'pagination[pageSize]': 20,
+  }
+  const endpoint = `${urls.baseUrl}/api${apiPaths.NEWS}?${queryString.stringify(params)}`
+  const res = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store'
+  })
+
+  if (!res.ok) {
+    throw new Error(`Failed to getOutstandingNewsCategory: ${res.status} ${JSON.stringify(res)}`);
+  }
+
+  const body = await res.json();
+
+  if (body?.errors) {
+    throw body?.errors?.message
+  }
+
+  return body?.data
+}
+
+const getNotOutstandingNewsCategory = async (page, categorySlug) => {
+  const params = {
+    ...newsUrlParams.newsCardParams,
+    "filters[is_outstanding]": false,
+    'filters[category][slug]': categorySlug,
+    'pagination[pageSize]': 16,
+    'pagination[page]': page || 1,
+  }
+  const endpoint = `${urls.baseUrl}/api${apiPaths.NEWS}?${queryString.stringify(params)}`
+  const res = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store'
+  })
+
+  if (!res.ok) {
+    throw new Error(`Failed to getNotOutstandingNewsCategory: ${res.status} ${JSON.stringify(res)}`);
+  }
+
+  const body = await res.json();
+
+  if (body?.errors) {
+    throw body?.errors?.message
+  }
+
+  return {
+    data: body?.data || [],
+    pagination: body?.meta?.pagination,
+  }
+}
+
 const getNewsByCategorySlug = async (slug, searchParams) => {
   if (!slug) {
     return null
@@ -162,7 +223,9 @@ const newsApi = {
   getNewsBySlug,
   getOutstandingNews,
   getNotOutstandingNews,
-  getNewsByCategorySlug
+  getOutstandingNewsCategory,
+  getNotOutstandingNewsCategory,
+  getNewsByCategorySlug,
 }
 
 export default newsApi
