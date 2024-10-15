@@ -10,7 +10,7 @@ import { genPageMetadata } from '@/app/seo'
 import NewsCard from '@/components/NewsCard'
 import { paths } from '@/constants/paths'
 import { urls } from '@/constants/urls'
-import { lato } from "@/utils/fonts"
+import { LatoFonts } from "@/utils/fonts"
 
 export async function generateMetadata({ params: { news } }) {
   const newsData = await newsApi.getNewsBySlug(news);
@@ -63,13 +63,16 @@ const News = async ({ params: { category, news } }) => {
 
           <h1 className={clsx(
             'mb-[16px] text-[32px] font-bold',
-            lato.className
+            LatoFonts.className
           )}>
             {newsData?.attributes?.title}
           </h1>
 
           <div
-            className='prose max-w-full prose-img:w-full'
+            className={clsx(
+              'prose max-w-full prose-img:w-full',
+              LatoFonts.className
+            )}
             dangerouslySetInnerHTML={{ __html: newsData?.attributes?.content }}
           ></div>
 
@@ -89,7 +92,7 @@ const News = async ({ params: { category, news } }) => {
         <div className=' w-[310px] flex flex-col gap-[20px]'>
           <p className={clsx(
             "text-[19px] text-orange-500 font-semibold px-[10px]",
-            lato.className
+            LatoFonts.className
           )}>
             Bài mới
           </p>
@@ -105,7 +108,7 @@ const News = async ({ params: { category, news } }) => {
 
           <p className={clsx(
             "text-[19px] text-orange-500 font-semibold px-[10px]",
-            lato.className
+            LatoFonts.className
           )}>
             Bài nổi bật
           </p>
@@ -146,7 +149,7 @@ const News = async ({ params: { category, news } }) => {
 
         <h1 className={clsx(
           'mb-[16px] text-[25px] font-bold',
-          lato.className
+          LatoFonts.className
         )}>
           {newsData?.attributes?.title}
         </h1>

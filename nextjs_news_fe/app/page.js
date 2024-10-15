@@ -12,7 +12,7 @@ import NewsListHome from "@/components/NewsListHome";
 import { paths } from "@/constants/paths";
 import { siteMetadata } from "@/constants/siteMetadata";
 import { urls } from "@/constants/urls";
-import { lato } from "@/utils/fonts";
+import { LatoFonts } from "@/utils/fonts";
 
 import { genPageMetadata } from "./seo";
 
@@ -142,7 +142,7 @@ const Home = async () => {
         <div className="flex items-center justify-between">
           <p className={clsx(
             "text-[19px] mb-[10px] text-orange-500 font-bold",
-            lato.className
+            LatoFonts.className
           )}>
             Tin nổi bật
           </p>
@@ -174,7 +174,7 @@ const Home = async () => {
         <div className="flex items-center justify-between">
           <p className={clsx(
             "text-[19px] mb-[10px] text-orange-500 font-bold",
-            lato.className
+            LatoFonts.className
           )}>
             {highLightCategories?.[0]?.attributes?.name}
 
@@ -214,7 +214,7 @@ const Home = async () => {
         <div className="flex items-center justify-between">
           <p className={clsx(
             "text-[19px] mb-[10px] text-orange-500 font-bold",
-            lato.className
+            LatoFonts.className
           )}>
             {highLightCategories?.[1]?.attributes?.name}
           </p>
@@ -254,7 +254,7 @@ const Home = async () => {
         <div className="flex items-center justify-between">
           <p className={clsx(
             "text-[19px] mb-[10px] text-orange-500 font-bold",
-            lato.className
+            LatoFonts.className
           )}>
             {highLightCategories?.[2]?.attributes?.name}
           </p>
@@ -293,7 +293,7 @@ const Home = async () => {
         <div className="flex items-center justify-between">
           <p className={clsx(
             "text-[19px] mb-[10px] text-orange-500 font-bold",
-            lato.className
+            LatoFonts.className
           )}>
             {highLightCategories?.[3]?.attributes?.name}
           </p>
@@ -348,7 +348,7 @@ const Home = async () => {
                     <div className="flex items-center justify-between mb-[10px]">
                       <p className={clsx(
                         "text-[19px] text-orange-500 font-bold",
-                        lato.className
+                        LatoFonts.className
                       )}>
                         {cat?.attributes?.name}
                       </p>
@@ -395,7 +395,7 @@ const Home = async () => {
       <section className="my-[20px] md:hidden">
         <p className={clsx(
           "text-[18px] leading-[22px] text-orange-500 font-bold p-[10px]",
-          lato.className
+          LatoFonts.className
         )}>
           Bài viết mới nhất
         </p>
@@ -420,7 +420,7 @@ const Home = async () => {
                 <p
                   className={clsx(
                     "text-[18px] leading-[22px] text-orange-500 font-bold p-[10px]",
-                    lato.className
+                    LatoFonts.className
                   )}
                 >
                   {cat?.attributes?.name}

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { urls } from '@/constants/urls'
-import { lato } from '@/utils/fonts'
+import { LatoFonts } from '@/utils/fonts'
 
 import NewsThumbContent from './NewsThumbContent'
 
@@ -49,8 +49,8 @@ const NewsCard = ({
           )}
           <div className='pl-[10px]'>
             <h3 className={clsx(
-              'font-semibold hover:text-[#0765ff] text-ellipsis line-clamp-3',
-              lato.className,
+              'font-bold hover:text-[#0765ff] text-ellipsis line-clamp-3',
+              LatoFonts.className,
               titleSmall
                 ? 'text-[14px] leading-[26px]'
                 : titleLarge
@@ -62,7 +62,7 @@ const NewsCard = ({
             {hasDate &&
               <p className={clsx(
                 'text-[12px] text-[#0A0A0A]',
-                lato.className
+                LatoFonts.className
               )}>
                 {formattedDate}
               </p>
@@ -92,8 +92,8 @@ const NewsCard = ({
         }
         <div className='py-[7px]'>
           <h3 className={clsx(
-            'my-[2px] font-semibold hover:text-[#0765ff] text-ellipsis line-clamp-3',
-            lato.className,
+            'my-[2px] font-bold hover:text-[#0765ff] text-ellipsis line-clamp-3',
+            LatoFonts.className,
             titleSmall ? 'text-[14px]' : titleLarge ? 'text-[16px]' : 'text-[16px]'
           )}>
             {data?.attributes?.title}
@@ -101,7 +101,7 @@ const NewsCard = ({
           {hasDate &&
             <p className={clsx(
               'text-[12px] text-[#0A0A0A]',
-              lato.className
+              LatoFonts.className
             )}>
               {formattedDate}
             </p>

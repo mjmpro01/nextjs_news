@@ -11,7 +11,7 @@ import PaginationComponent from "@/components/Pagination"
 import { paths } from "@/constants/paths"
 import { siteMetadata } from "@/constants/siteMetadata"
 import { urls } from "@/constants/urls"
-import { lato } from "@/utils/fonts"
+import { LatoFonts } from "@/utils/fonts"
 
 import { genPageMetadata } from "../seo"
 
@@ -113,7 +113,7 @@ const page = async ({ params: { category }, searchParams }) => {
           <div className='w-[310px] flex flex-col gap-[20px]'>
             <p className={clsx(
               "text-[19px] text-orange-500 font-semibold px-[10px]",
-              lato.className
+              LatoFonts.className
             )}>
               Bài mới
             </p>
@@ -129,7 +129,7 @@ const page = async ({ params: { category }, searchParams }) => {
 
             <p className={clsx(
               "text-[19px] text-orange-500 font-semibold px-[10px]",
-              lato.className
+              LatoFonts.className
             )}>
               Bài nổi bật
             </p>
@@ -169,7 +169,7 @@ const page = async ({ params: { category }, searchParams }) => {
       <section className="md:hidden py-[10px]">
         <p className={clsx(
           "text-[19px] p-[10px] text-orange-500 font-bold",
-          lato.className
+          LatoFonts.className
         )}>
           Tin mới
         </p>
