@@ -107,7 +107,7 @@ const NewsCard = ({
             </p>
           }
           {hasExcerpt &&
-            <NewsThumbContent html={data?.attributes?.short_description} className={"line-clamp-2 text-[15px]"} />
+            <NewsThumbContent html={data?.attributes?.short_description} className={"line-clamp-3 text-[15px]"} />
           }
         </div>
       </div>
