@@ -9,6 +9,7 @@ import newsApi from "@/apis/news"
 import NewsCard from "@/components/NewsCard"
 import PaginationComponent from "@/components/Pagination"
 import { paths } from "@/constants/paths"
+import { siteMetadata } from "@/constants/siteMetadata"
 import { urls } from "@/constants/urls"
 import { lato } from "@/utils/fonts"
 
@@ -16,7 +17,9 @@ import { genPageMetadata } from "../seo"
 
 export async function generateMetadata({ params: { category } }) {
   const categoryData = await categoriesApi.getCategoryBySlug(category)
-  return genPageMetadata({ title: categoryData?.attributes?.name })
+  const siteName = `${categoryData?.attributes?.name} | ${siteMetadata.title}`
+
+  return await genPageMetadata({ title: siteName, siteName: siteMetadata.title })
 }
 
 const page = async ({ params: { category }, searchParams }) => {

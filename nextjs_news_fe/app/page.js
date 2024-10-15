@@ -10,8 +10,15 @@ import newsApi from "@/apis/news";
 import NewsCard from "@/components/NewsCard";
 import NewsListHome from "@/components/NewsListHome";
 import { paths } from "@/constants/paths";
+import { siteMetadata } from "@/constants/siteMetadata";
 import { urls } from "@/constants/urls";
 import { lato } from "@/utils/fonts";
+
+import { genPageMetadata } from "./seo";
+
+export async function generateMetadata() {
+  return await genPageMetadata({ title: siteMetadata.title })
+}
 
 const Home = async () => {
   const newsData = await newsApi.getAllNews();
