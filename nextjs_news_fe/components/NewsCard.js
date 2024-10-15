@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { urls } from '@/constants/urls'
-import { lato, merriweather } from '@/utils/fonts'
+import { lato } from '@/utils/fonts'
 
 import NewsThumbContent from './NewsThumbContent'
 
@@ -28,7 +28,7 @@ const NewsCard = ({
       <Link href={newsUrl} >
         <div className={clsx(
           'grid px-[10px] has-hover relative',
-          bigThumbHorizontal ? 'grid-cols-[40%_1fr]' : 'grid-cols-[80px_1fr]'
+          bigThumbHorizontal ? 'grid-cols-[30%_1fr] md:grid-cols-[40%_1fr]' : 'grid-cols-[80px_1fr]'
         )}>
           {data?.attributes?.avatar?.data?.attributes?.url && (
             <div className={clsx(
@@ -50,12 +50,12 @@ const NewsCard = ({
           <div className='pl-[10px]'>
             <h3 className={clsx(
               'font-semibold hover:text-[#0765ff] text-ellipsis line-clamp-3',
-              merriweather.className,
+              lato.className,
               titleSmall
-                ? 'text-[15px] leading-[26px]'
+                ? 'text-[14px] leading-[26px]'
                 : titleLarge
-                  ? 'text-[20px] my-[2px]'
-                  : 'text-[18px] my-[2px]'
+                  ? 'text-[16px] my-[2px]'
+                  : 'text-[16px] my-[2px]'
             )}>
               {data?.attributes?.title}
             </h3>
@@ -93,8 +93,8 @@ const NewsCard = ({
         <div className='py-[7px]'>
           <h3 className={clsx(
             'my-[2px] font-semibold hover:text-[#0765ff] text-ellipsis line-clamp-3',
-            merriweather.className,
-            titleSmall ? 'text-[15px]' : titleLarge ? 'text-[20px]' : 'text-[18px]'
+            lato.className,
+            titleSmall ? 'text-[14px]' : titleLarge ? 'text-[16px]' : 'text-[16px]'
           )}>
             {data?.attributes?.title}
           </h3>
@@ -107,7 +107,7 @@ const NewsCard = ({
             </p>
           }
           {hasExcerpt &&
-            <NewsThumbContent html={data?.attributes?.short_description} className={"line-clamp-2"} />
+            <NewsThumbContent html={data?.attributes?.short_description} className={"line-clamp-2 text-[15px]"} />
           }
         </div>
       </div>

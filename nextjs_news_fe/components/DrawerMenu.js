@@ -19,7 +19,7 @@ const DrawerMenu = ({ mappedMenuList }) => {
   return (
     <>
       <div
-        className='cursor-pointer absolute left-[10px] top-[30px] bg-[#0765ff] size-[30px] md:hidden flex items-center justify-center'
+        className='cursor-pointer absolute left-[10px] top-[30px] bg-orange-500 size-[30px] md:hidden flex items-center justify-center'
         onClick={showDrawer}
       >
         <Bars4Icon className='w-[18px] text-white' />

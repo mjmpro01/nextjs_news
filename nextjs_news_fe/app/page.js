@@ -3,7 +3,6 @@ import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import { getBanner } from "@/apis/banner";
 import categoriesApi from "@/apis/categories";
@@ -12,7 +11,7 @@ import NewsCard from "@/components/NewsCard";
 import NewsListHome from "@/components/NewsListHome";
 import { paths } from "@/constants/paths";
 import { urls } from "@/constants/urls";
-import { merriweather } from "@/utils/fonts";
+import { lato } from "@/utils/fonts";
 
 const Home = async () => {
   const newsData = await newsApi.getAllNews();
@@ -21,11 +20,25 @@ const Home = async () => {
   const { banner1, banner2, banner3, banner4, banner5, banner6 } = await getBanner();
   const categories = await categoriesApi.getCategories();
 
-  const categoriesIds = categories.map(cat => cat.id)
+  // Công nghệ, Xe cộ, Bất động sản, Du lịch
+  const highlightCategoryIds = [1, 5, 7, 2]
 
-  const newsCat = await Promise.all(
-    categoriesIds.map(id => categoriesApi.getNewsByCategoryId(id))
-  ).catch(() => notFound());
+  const highLightCategories = await Promise.all(
+    highlightCategoryIds.map(id => categoriesApi.getNewsByCategoryId(id))
+  )
+
+  const nonHighLightCategoryIds = categories
+    .map(cat => cat.id)
+    .filter(id => !highlightCategoryIds.includes(id))
+
+  const nonHighLightCategories = await Promise.all(
+    nonHighLightCategoryIds.map(id => categoriesApi.getNewsByCategoryId(id))
+  )
+
+
+  // const newsCat = await Promise.all(
+  //   categoriesIds.map(id => categoriesApi.getNewsByCategoryId(id))
+  // ).catch(() => notFound());
 
   return (
     <>
@@ -121,8 +134,8 @@ const Home = async () => {
       <section className="hidden md:block py-[10px]">
         <div className="flex items-center justify-between">
           <p className={clsx(
-            "text-[19px] mb-[10px] text-[#980d17] font-bold",
-            merriweather.className
+            "text-[19px] mb-[10px] text-orange-500 font-bold",
+            lato.className
           )}>
             Tin nổi bật
           </p>
@@ -153,15 +166,15 @@ const Home = async () => {
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className={clsx(
-            "text-[19px] mb-[10px] text-[#980d17] font-bold",
-            merriweather.className
+            "text-[19px] mb-[10px] text-orange-500 font-bold",
+            lato.className
           )}>
-            {newsCat?.[0]?.attributes?.name}
+            {highLightCategories?.[0]?.attributes?.name}
 
           </p>
           <Link
             className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
-            href={`/${newsCat?.[0]?.attributes?.slug}`}
+            href={`/${highLightCategories?.[0]?.attributes?.slug}`}
           >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
@@ -173,12 +186,12 @@ const Home = async () => {
           <div className="basis-1/2 max-w-[50%]">
             <NewsCard
               titleSmall={false}
-              data={newsCat?.[0]?.attributes?.news?.data?.[0]}
+              data={highLightCategories?.[0]?.attributes?.news?.data?.[0]}
             />
           </div>
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2 gap-[10px]">
-              {newsCat?.[0]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
+              {highLightCategories?.[0]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   hasExcerpt={false}
@@ -193,14 +206,14 @@ const Home = async () => {
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className={clsx(
-            "text-[19px] mb-[10px] text-[#980d17] font-bold",
-            merriweather.className
+            "text-[19px] mb-[10px] text-orange-500 font-bold",
+            lato.className
           )}>
-            {newsCat?.[1]?.attributes?.name}
+            {highLightCategories?.[1]?.attributes?.name}
           </p>
           <Link
             className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
-            href={`/${newsCat?.[1]?.attributes?.slug}`}
+            href={`/${highLightCategories?.[1]?.attributes?.slug}`}
           >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
@@ -211,7 +224,7 @@ const Home = async () => {
         <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              {newsCat?.[1]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
+              {highLightCategories?.[1]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   hasExcerpt={false}
@@ -224,7 +237,7 @@ const Home = async () => {
           <div className="basis-1/2 max-w-[50%]">
             <NewsCard
               titleSmall={false}
-              data={newsCat?.[1]?.attributes?.news?.data?.[0]}
+              data={highLightCategories?.[1]?.attributes?.news?.data?.[0]}
             />
           </div>
         </div>
@@ -233,14 +246,14 @@ const Home = async () => {
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className={clsx(
-            "text-[19px] mb-[10px] text-[#980d17] font-bold",
-            merriweather.className
+            "text-[19px] mb-[10px] text-orange-500 font-bold",
+            lato.className
           )}>
-            {newsCat?.[2]?.attributes?.name}
+            {highLightCategories?.[2]?.attributes?.name}
           </p>
           <Link
             className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
-            href={`/${newsCat?.[2]?.attributes?.slug}`}
+            href={`/${highLightCategories?.[2]?.attributes?.slug}`}
           >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
@@ -252,12 +265,12 @@ const Home = async () => {
           <div className="basis-1/2 max-w-[50%]">
             <NewsCard
               titleSmall={false}
-              data={newsCat?.[2]?.attributes?.news?.data?.[0]}
+              data={highLightCategories?.[2]?.attributes?.news?.data?.[0]}
             />
           </div>
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              {newsCat?.[2]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
+              {highLightCategories?.[2]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   hasExcerpt={false}
@@ -272,14 +285,14 @@ const Home = async () => {
       <section className="py-[10px] hidden md:block">
         <div className="flex items-center justify-between">
           <p className={clsx(
-            "text-[19px] mb-[10px] text-[#980d17] font-bold",
-            merriweather.className
+            "text-[19px] mb-[10px] text-orange-500 font-bold",
+            lato.className
           )}>
-            {newsCat?.[3]?.attributes?.name}
+            {highLightCategories?.[3]?.attributes?.name}
           </p>
           <Link
             className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
-            href={`/${newsCat?.[3]?.attributes?.slug}`}
+            href={`/${highLightCategories?.[3]?.attributes?.slug}`}
           >
             Xem tất cả
             <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
@@ -290,7 +303,7 @@ const Home = async () => {
         <div className="flex items-start">
           <div className="basis-1/2 max-w-[50%]">
             <div className="grid grid-cols-3 grid-rows-2">
-              {newsCat?.[3]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
+              {highLightCategories?.[3]?.attributes?.news?.data?.slice(1, 7)?.map(((data, index) => (
                 <NewsCard
                   key={index}
                   hasExcerpt={false}
@@ -303,7 +316,7 @@ const Home = async () => {
           <div className="basis-1/2 max-w-[50%]">
             <NewsCard
               titleSmall={false}
-              data={newsCat?.[3]?.attributes?.news?.data?.[0]}
+              data={highLightCategories?.[3]?.attributes?.news?.data?.[0]}
             />
           </div>
         </div>
@@ -320,43 +333,47 @@ const Home = async () => {
           <NewsListHome banner5={banner5} />
 
           <div className="basis-1/3 max-w-[33.333333%]">
-            {[newsCat?.[4], newsCat?.[5], newsCat?.[6], newsCat?.[7], newsCat?.[8]].map((cat, index) => {
-              if (!cat?.id) return null
-              return (
-                <div className="my-[10px]" key={index}>
-                  <div className="flex items-center justify-between">
-                    <p className={clsx(
-                      "text-[19px] mb-[10px] text-[#980d17] font-bold",
-                      merriweather.className
-                    )}>
-                      {cat?.attributes?.name}
-                    </p>
-                    <p className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap">
-                      Xem tất cả
-                      <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
-                    </p>
-                  </div>
-                  <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
+            {[nonHighLightCategories?.[0], nonHighLightCategories?.[1], nonHighLightCategories?.[2], nonHighLightCategories?.[3], nonHighLightCategories?.[4]]
+              .map((cat, index) => {
+                if (!cat?.id) return null
+                return (
+                  <div className="my-[10px]" key={index}>
+                    <div className="flex items-center justify-between mb-[10px]">
+                      <p className={clsx(
+                        "text-[19px] text-orange-500 font-bold",
+                        lato.className
+                      )}>
+                        {cat?.attributes?.name}
+                      </p>
+                      <Link
+                        className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
+                        href={`/${highLightCategories?.[0]?.attributes?.slug}`}
+                      >
+                        Xem tất cả
+                        <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
+                      </Link>
+                    </div>
+                    <div className="w-full border-b border-b-[#CCC] mb-[10px]" />
 
-                  <div className="flex flex-col gap-[10px]">
-                    <NewsCard
-                      titleSmall={false}
-                      hasExcerpt={false}
-                      data={cat?.attributes?.news?.data?.[0]}
-                    />
-                    <div className="grid grid-cols-2 gap-[10px]">
-                      {cat?.attributes?.news?.data?.slice(1, 5)?.map((news, index) => (
-                        <NewsCard
-                          hasExcerpt={false}
-                          key={index}
-                          data={news}
-                        />
-                      )) || null}
+                    <div className="flex flex-col gap-[10px]">
+                      <NewsCard
+                        titleSmall={false}
+                        hasExcerpt={false}
+                        data={cat?.attributes?.news?.data?.[0]}
+                      />
+                      <div className="grid grid-cols-2 gap-[10px]">
+                        {cat?.attributes?.news?.data?.slice(1, 5)?.map((news, index) => (
+                          <NewsCard
+                            hasExcerpt={false}
+                            key={index}
+                            data={news}
+                          />
+                        )) || null}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
           </div>
         </div>
       </section>
@@ -370,37 +387,46 @@ const Home = async () => {
       {/* Mobile */}
       <section className="my-[20px] md:hidden">
         <p className={clsx(
-          "text-[18px] leading-[22px] text-[#980d17] font-bold p-[10px]",
-          merriweather.className
+          "text-[18px] leading-[22px] text-orange-500 font-bold p-[10px]",
+          lato.className
         )}>
           Bài viết mới nhất
         </p>
+        <NewsCard data={newsData[0]} />
+
         <div className="grid grid-cols-2">
-          {newsData?.slice(0, 6)?.map((news, index) =>
+          {newsData?.slice(1, 11)?.map((news, index) =>
             <NewsCard key={index} hasExcerpt={false} data={news} />
           ) || null}
         </div>
       </section>
 
-      {[newsCat?.[0], newsCat?.[1], newsCat?.[2], newsCat?.[3], newsCat?.[4]].map((cat, index) => {
-        if (!cat?.id) return null
+      {[highLightCategories?.[0], highLightCategories?.[1], highLightCategories?.[2], highLightCategories?.[3]]
+        .map((cat, index) => {
+          if (!cat?.id) return null
 
-        return (
-          <section className="my-[20px] md:hidden" key={index}>
-            <p className={clsx(
-              "text-[18px] leading-[22px] text-[#980d17] font-bold p-[10px]",
-              merriweather.className
-            )}>
-              {cat?.attributes?.name}
-            </p>
-            <div className="grid grid-cols-2">
-              {cat?.attributes?.news?.data?.slice(0, 6)?.map((news, index) => (
-                <NewsCard key={index} hasExcerpt={false} data={news} />
-              )) || null}
-            </div>
-          </section>
-        )
-      })}
+          return (
+            <section className="my-[20px] md:hidden" key={index}>
+              <Link
+                href={`/${cat?.attributes?.slug}`}
+              >
+                <p
+                  className={clsx(
+                    "text-[18px] leading-[22px] text-orange-500 font-bold p-[10px]",
+                    lato.className
+                  )}
+                >
+                  {cat?.attributes?.name}
+                </p>
+              </Link>
+              <div className="grid grid-cols-1">
+                {cat?.attributes?.news?.data?.slice(0, 5)?.map((news, index) => (
+                  <NewsCard key={index} hasExcerpt={false} data={news} isHorizontal bigThumbHorizontal />
+                )) || null}
+              </div>
+            </section>
+          )
+        })}
 
     </>
   );

@@ -51,6 +51,16 @@ const Header = async () => {
         </Link>
       </div>
 
+      <Link href={link} target="_blank">
+        <Image
+          src={url}
+          width={818}
+          height={75}
+          alt="banner1"
+          className="md:hidden"
+        />
+      </Link>
+
       <HeaderMenu mappedMenuList={mappedMenuList} />
     </header>
   )

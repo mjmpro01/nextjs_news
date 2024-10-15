@@ -22,7 +22,7 @@ const Footer = async () => {
             height={60}
             className="w-[230px] h-auto aspect-[23/6] mb-2"
           />
-          <p className="text-[18px] leading-[32px] text-[#c11a2b] mb-[10px]">
+          <p className="text-[18px] leading-[32px] text-orange-500 mb-[10px]">
             Nơi chia sẻ thông tin công nghệ & đời sống
           </p>
           <ul className="list-none">
@@ -44,75 +44,75 @@ const Footer = async () => {
         </div>
 
         <div className="p-[16px] w-full">
-          <p className="text-[20px] leading-[32px] text-[#c11a2b] mb-[10px]">
+          <p className="text-[20px] leading-[32px] text-orange-500 mb-[10px]">
             Xomnhau.com
           </p>
           <ul className="list-none">
-            <Link href={paths.HOME}>
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={paths.HOME}>
                 Trang chủ
-              </li>
-            </Link>
-            {categories?.map((category, index) => (
-              <Link href={`/${category?.attributes?.slug}`} key={index} >
-                <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
-                  {category?.attributes?.name}
-                </li>
               </Link>
+            </li>
+            {categories?.map((category, index) => (
+              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]" key={index}>
+                <Link href={`/${category?.attributes?.slug}`} >
+                  {category?.attributes?.name}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
 
         <div className="p-[16px] w-full">
-          <p className="text-[20px] leading-[32px] text-[#c11a2b] mb-[10px]">
+          <p className="text-[20px] leading-[32px] text-orange-500 mb-[10px]">
             Thành viên
           </p>
           <ul className="list-none">
-            <Link href={'https://www.timcaigi.com'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.timcaigi.com'} passHref target="_blank">
                 Timcaigi.com
-              </li>
-            </Link>
-            <Link href={'https://www.gober.vn'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              </Link>
+            </li>
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.gober.vn'} passHref target="_blank">
                 Gober.vn
-              </li>
-            </Link>
-            <Link href={'https://www.chothongminh.com'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              </Link>
+            </li>
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.chothongminh.vn'} passHref target="_blank">
                 Chothongminh.vn
-              </li>
-            </Link>
-            <Link href={'https://www.detmayvietnam.com'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              </Link>
+            </li>
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.detmayvietnam.vn'} passHref target="_blank">
                 Detmayvietnam.vn
-              </li>
-            </Link>
-            <Link href={'https://www.aimuanhadat.com'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              </Link>
+            </li>
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.aimuanhadat.vn'} passHref target="_blank">
                 Aimuanhadat.vn
-              </li>
-            </Link>
-            <Link href={'https://www.xuongmaysaigon.com'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              </Link>
+            </li>
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.xuongmaysaigon.com'} passHref target="_blank">
                 Xuongmaysaigon.com
-              </li>
-            </Link>
-            <Link href={'https://www.xomnhau.com'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              </Link>
+            </li>
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.xomnhau.com'} passHref target="_blank">
                 Xomnhau.com
-              </li>
-            </Link>
-            <Link href={'https://www.bigcode.com'} passHref target="_blank">
-              <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              </Link>
+            </li>
+            <li className="text-[13px] leading-[20px] text-[#333] py-[7px]">
+              <Link href={'https://www.bigcode.vn'} passHref target="_blank">
                 Bigcode.vn
-              </li>
-            </Link>
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div className="p-[16px] w-full">
-          <p className="text-[20px] leading-[32px] text-[#c11a2b] mb-[10px]">
+          <p className="text-[20px] leading-[32px] text-orange-500 mb-[10px]">
             Thông tin
           </p>
           <ul className="list-none">

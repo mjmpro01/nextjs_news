@@ -20,9 +20,9 @@ const NewsThumbContent = ({ html, className }) => {
   return (
     <p
       className={clsx(
-        'text-[14px] text-[#0A0A0A] pt-[10px] my-[1px] text-ellipsis prose prose-img:hidden prose-headings:text-sm prose-headings:font-normal prose-p:text-sm prose-p:font-normal',
+        'text-[#0A0A0A] pt-[10px] my-[1px] text-ellipsis prose prose-img:hidden prose-headings:text-sm prose-headings:font-normal prose-p:text-sm prose-p:font-normal',
         lato.className,
-        className
+        className ? className : "text-[14px]"
       )}
       dangerouslySetInnerHTML={{ __html: clientHtml }}
     >

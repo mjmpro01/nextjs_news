@@ -10,7 +10,7 @@ import { genPageMetadata } from '@/app/seo'
 import NewsCard from '@/components/NewsCard'
 import { paths } from '@/constants/paths'
 import { urls } from '@/constants/urls'
-import { merriweather } from "@/utils/fonts"
+import { lato } from "@/utils/fonts"
 
 export async function generateMetadata({ params: { news } }) {
   const newsData = await newsApi.getNewsBySlug(news);
@@ -58,7 +58,10 @@ const News = async ({ params: { category, news } }) => {
             <Link href={`${paths.HOME}${category}`} className="hover:underline hover:text-[#CCC]">{categoryData?.attributes?.name}</Link>
           </div>
 
-          <h1 className='mb-[16px] text-[32px] font-bold'>
+          <h1 className={clsx(
+            'mb-[16px] text-[32px] font-bold',
+            lato.className
+          )}>
             {newsData?.attributes?.title}
           </h1>
 
@@ -82,8 +85,8 @@ const News = async ({ params: { category, news } }) => {
 
         <div className=' w-[310px] flex flex-col gap-[20px]'>
           <p className={clsx(
-            "text-[19px] text-[#980d17] font-semibold px-[10px]",
-            merriweather.className
+            "text-[19px] text-orange-500 font-semibold px-[10px]",
+            lato.className
           )}>
             Bài mới
           </p>
@@ -98,8 +101,8 @@ const News = async ({ params: { category, news } }) => {
           )) || null}
 
           <p className={clsx(
-            "text-[19px] text-[#980d17] font-semibold px-[10px]",
-            merriweather.className
+            "text-[19px] text-orange-500 font-semibold px-[10px]",
+            lato.className
           )}>
             Bài nổi bật
           </p>
@@ -138,6 +141,13 @@ const News = async ({ params: { category, news } }) => {
           <p>{newsData?.attributes?.title}</p>
         </div> */}
 
+        <h1 className={clsx(
+          'mb-[16px] text-[25px] font-bold',
+          lato.className
+        )}>
+          {newsData?.attributes?.title}
+        </h1>
+
         <div
           className='prose max-w-full prose-img:w-full'
           dangerouslySetInnerHTML={{ __html: newsData?.attributes?.content }}
@@ -157,7 +167,7 @@ const News = async ({ params: { category, news } }) => {
       </article>
 
       <div className='px-[10px] md:px-0'>
-        <p className="text-[19px] mb-[10px] text-[#980d17]">
+        <p className="text-[19px] mb-[10px] text-orange-500">
           Cùng danh mục
         </p>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mx-[-10px]'>

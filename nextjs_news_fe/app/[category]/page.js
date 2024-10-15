@@ -10,7 +10,7 @@ import NewsCard from "@/components/NewsCard"
 import PaginationComponent from "@/components/Pagination"
 import { paths } from "@/constants/paths"
 import { urls } from "@/constants/urls"
-import { merriweather } from "@/utils/fonts"
+import { lato } from "@/utils/fonts"
 
 import { genPageMetadata } from "../seo"
 
@@ -103,14 +103,14 @@ const page = async ({ params: { category }, searchParams }) => {
               <NewsCard isHorizontal bigThumbHorizontal titleSmall={false} data={news} key={index} />
             )) || null}
             <div className="flex items-center justify-center my-[20px]">
-              <PaginationComponent pagination={pagination} />
+              <PaginationComponent pagination={{ ...pagination, pageSize: 25 }} />
             </div>
           </div>
 
           <div className='w-[310px] flex flex-col gap-[20px]'>
             <p className={clsx(
-              "text-[19px] text-[#980d17] font-semibold px-[10px]",
-              merriweather.className
+              "text-[19px] text-orange-500 font-semibold px-[10px]",
+              lato.className
             )}>
               Bài mới
             </p>
@@ -125,8 +125,8 @@ const page = async ({ params: { category }, searchParams }) => {
             )) || null}
 
             <p className={clsx(
-              "text-[19px] text-[#980d17] font-semibold px-[10px]",
-              merriweather.className
+              "text-[19px] text-orange-500 font-semibold px-[10px]",
+              lato.className
             )}>
               Bài nổi bật
             </p>
@@ -165,8 +165,8 @@ const page = async ({ params: { category }, searchParams }) => {
       {/* Mobile */}
       <section className="md:hidden py-[10px]">
         <p className={clsx(
-          "text-[19px] p-[10px] text-[#980d17] font-bold",
-          merriweather.className
+          "text-[19px] p-[10px] text-orange-500 font-bold",
+          lato.className
         )}>
           Tin mới
         </p>
@@ -176,7 +176,7 @@ const page = async ({ params: { category }, searchParams }) => {
           ) || null}
         </div>
         <div className="flex items-center justify-center my-[20px]">
-          <PaginationComponent pagination={pagination} />
+          <PaginationComponent pagination={{ ...pagination, pageSize: 25 }} />
         </div>
       </section>
     </>
