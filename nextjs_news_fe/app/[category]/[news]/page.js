@@ -14,7 +14,10 @@ import { lato } from "@/utils/fonts"
 
 export async function generateMetadata({ params: { news } }) {
   const newsData = await newsApi.getNewsBySlug(news);
-  return await genPageMetadata({ title: newsData?.attributes?.title })
+  return await genPageMetadata({
+    title: newsData?.attributes?.title,
+    image: `${urls.baseUrl}${newsData?.attributes?.avatar?.data?.attributes?.url}`
+  })
 }
 
 const News = async ({ params: { category, news } }) => {
