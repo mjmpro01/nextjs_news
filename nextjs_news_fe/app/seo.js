@@ -12,7 +12,14 @@ export async function genPageMetadata({ title, description, siteName, image, ...
       description: description || siteMetadata.description,
       url: './',
       siteName: siteName || siteMetadata.title,
-      images: image ? [image] : [logo],
+      images: image
+        ? [{
+          url: image,
+        }] : [{
+          url: logo,
+          width: 600,
+          height: 350,
+        }],
       locale: 'en_US',
       type: 'website',
     },

@@ -45,7 +45,7 @@ const page = async ({ params: { category }, searchParams }) => {
       </div>
 
       <div className='md:hidden flex flex-col bg-[#f8f8f8] py-[10px]'>
-        <div className='grid grid-cols-1 md:grid-cols-2'>
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           {newsList?.slice(0, 2)?.map((news, index) => (
             <NewsCard titleSmall={false} hasExcerpt={false} key={index} data={news} />
           )) || null}
@@ -69,7 +69,7 @@ const page = async ({ params: { category }, searchParams }) => {
         <div className="flex items-start gap-[20px]">
           <div className="flex-1 flex flex-col gap-[10px]">
             <div className='flex flex-col bg-[#f8f8f8] py-[10px] gap-[10px] rounded-[8px]'>
-              <div className='grid grid-cols-1 md:grid-cols-2'>
+              <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
                 {newsList?.slice(0, 2)?.map((news, index) => (
                   <NewsCard titleSmall={false} hasExcerpt={true} key={index} data={news} />
                 )) || null}

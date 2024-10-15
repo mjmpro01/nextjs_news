@@ -426,7 +426,7 @@ const Home = async () => {
                   {cat?.attributes?.name}
                 </p>
               </Link>
-              <div className="grid grid-cols-1">
+              <div className="grid grid-cols-1 gap-4">
                 {cat?.attributes?.news?.data?.slice(0, 5)?.map((news, index) => (
                   <NewsCard key={index} hasExcerpt={false} data={news} isHorizontal bigThumbHorizontal />
                 )) || null}
