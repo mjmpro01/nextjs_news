@@ -354,7 +354,7 @@ const Home = async () => {
                       </p>
                       <Link
                         className="text-[#b1b1b1] text-[14px] flex gap-[10px] whitespace-nowrap"
-                        href={`/${highLightCategories?.[0]?.attributes?.slug}`}
+                        href={`/${cat?.attributes?.slug}`}
                       >
                         Xem tất cả
                         <ArrowRightIcon className="text-[#b1b1b1] w-[10px]" />
